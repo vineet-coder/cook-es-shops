@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { CakeList } from "./pages/CakeList";
+import { CookiesList } from "./pages/CookiesList";
+import { CupCakeList } from "./pages/CupCakeList";
+import { Home } from "./pages/Home";
+import { BrowniesList } from "./pages/BrowniesList";
+import { useRoute } from "./providers/RouteContext";
+import { ProductPage } from "./pages/ProductPage";
+import { Cart } from "./pages/Cart";
+import { Wishlist } from "./pages/Wishlist";
+import { Menu } from "./pages/Menu";
 
-function App() {
+export default function App() {
+  const { route } = useRoute();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {route === "home" && <Home />}
+      {route === "CAKE" && <CakeList />}
+      {route === "CUPCAKE" && <CupCakeList />}
+      {route === "BROWNIE" && <BrowniesList />}
+      {route === "COOKIE" && <CookiesList />}
+      {route === "PRODUCT" && <ProductPage />}
+      {route === "CART" && <Cart />}
+      {route === "WISHLIST" && <Wishlist />}
+      {route === "MENU" && <Menu />}
     </div>
   );
 }
-
-export default App;
