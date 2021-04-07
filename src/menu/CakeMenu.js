@@ -1,10 +1,9 @@
 import { CakeData } from "../data/Cakes";
-import { BiDish } from "react-icons/bi";
 import { useRoute } from "../providers/RouteContext";
 import { useCart } from "../providers/CartContext";
 
 export const CakeMenu = () => {
-  const { state, finalState } = useCart();
+  const { finalState } = useCart();
   return (
     <div className="product-list">
       {finalState.Data.cake.map((item) => (
@@ -21,14 +20,11 @@ const CakeMenuCard = ({ item }) => {
   const goToProductPage = (item) => {
     setRoute("PRODUCT");
     console.log(item);
-    // setProduct([item]);
-    dispatch(
-      {
-        type: "GO_TO_PRODUCT_PAGE",
+    dispatch({
+      type: "GO_TO_PRODUCT_PAGE",
 
-        payload: item,
-      }
-    )
+      payload: item,
+    });
   };
 
   return (

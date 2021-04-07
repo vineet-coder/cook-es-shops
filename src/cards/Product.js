@@ -1,11 +1,6 @@
-import { CakeData } from "../data/Cakes";
-import { AiOutlineHeart } from "react-icons/ai";
-import { useRoute } from "../providers/RouteContext";
 import { useCart } from "../providers/CartContext";
 
 export const Product = () => {
-  // const { product } = useRoute();
-  // console.log(product);
   const { state } = useCart();
 
   return (
@@ -18,21 +13,14 @@ export const Product = () => {
 };
 
 const ProductCard = ({ item }) => {
-  const { setProduct } = useRoute();
   const { dispatch } = useCart();
   console.log(item);
   return (
     <div className="product-sub-div">
       <div className="product-img-div">
         <div className="product-btn-div">
-          {/* <button className="btn-wishlist">Buy</button>
-          <button className="btn-cart">
-            Wishlist
-            <AiOutlineHeart />
-          </button> */}
-
           {item.cart ? (
-            <button className="btn-cart" >Added to Cart</button>
+            <button className="btn-cart">Added to Cart</button>
           ) : (
             <button
               className="btn-cart"

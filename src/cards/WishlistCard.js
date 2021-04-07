@@ -1,15 +1,12 @@
-import { CakeData } from "../data/Cakes";
-import { AiOutlineHeart } from "react-icons/ai";
 import { useRoute } from "../providers/RouteContext";
 import { useCart } from "../providers/CartContext";
 
 export const WishlistCard = ({ item }) => {
-  const { setRoute, setProduct } = useRoute();
+  const { setRoute } = useRoute();
   const { dispatch } = useCart();
 
   const goToProductPage = (item) => {
     setRoute("PRODUCT");
-    // setProduct([item]);
 
     dispatch({
       type: "GO_TO_PRODUCT_PAGE_FROM_WISHLIST",

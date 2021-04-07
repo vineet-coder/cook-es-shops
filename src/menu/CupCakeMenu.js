@@ -1,9 +1,8 @@
-import { AiOutlineHeart } from "react-icons/ai";
 import { useCart } from "../providers/CartContext";
 import { useRoute } from "../providers/RouteContext";
 
 export const CupCakeMenu = () => {
-  const { state, finalState } = useCart();
+  const { finalState } = useCart();
 
   return (
     <div className="product-list">

@@ -1,10 +1,9 @@
 import { AiOutlineHeart } from "react-icons/ai";
 import { useCart } from "../providers/CartContext";
-import { CookiesData } from "../data/Cookies";
 import { useRoute } from "../providers/RouteContext";
 
 export const CookieMenu = () => {
-  const { state, finalState } = useCart();
+  const { finalState } = useCart();
 
   return (
     <div className="product-list">

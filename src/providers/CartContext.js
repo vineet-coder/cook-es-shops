@@ -1,12 +1,9 @@
 import { createContext, useContext, useReducer } from "react";
 import Data from "../data/index";
-import { useRoute } from "./RouteContext";
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  // const { product } = useRoute();
-  // console.log(product);
   const [state, dispatch] = useReducer(reducer, {
     wishlistListItem: [],
     cartListItem: [],
@@ -140,8 +137,6 @@ export const CartProvider = ({ children }) => {
 
           wishlistListItem: state.wishlistListItem.filter(
             (item) => item.id !== value.payload.id
-            // ? { ...item, cart: !value.payload.cart }
-            // : { ...item }
           ),
           Data: {
             ...state.Data,
@@ -221,7 +216,6 @@ export const CartProvider = ({ children }) => {
         return console.log("heyyy");
     }
   }
-  // console.log(state);
 
   function getPopulorData(givenState) {
     return givenState.Populor === true
@@ -298,7 +292,6 @@ export const CartProvider = ({ children }) => {
   const discountedState = getDiscountedData(populorState);
 
   const finalState = getFastDeliveryData(discountedState);
-  // console.log(finalState);
 
   return (
     <CartContext.Provider value={{ state, dispatch, finalState }}>

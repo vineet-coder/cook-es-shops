@@ -1,9 +1,8 @@
-import { AiOutlineHeart } from "react-icons/ai";
 import { useCart } from "../providers/CartContext";
 import { useRoute } from "../providers/RouteContext";
 
 export const BrownieMenu = () => {
-  const { state, finalState } = useCart();
+  const { finalState } = useCart();
 
   return (
     <div className="product-list">
@@ -20,7 +19,6 @@ const BrownieMenuCard = ({ item }) => {
 
   const goToProductPage = (item) => {
     setRoute("PRODUCT");
-    // setProduct([item]);
 
     dispatch({
       type: "GO_TO_PRODUCT_PAGE",
