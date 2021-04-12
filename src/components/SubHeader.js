@@ -8,6 +8,13 @@ export const SubHeader = () => {
       <div className="sub-header">
         <div className="header-middle">
           <div className="header-middle-content">
+            {/* <div className="header-image-div">
+              <img
+                src="./images/header-cake.png"
+                alt="headerImg"
+                className="header-img"
+              />
+            </div> */}
             <div className="header-content">
               <h1 className="header-heading">
                 We prove our taste every time!!{" "}
@@ -25,13 +32,6 @@ export const SubHeader = () => {
                   DISCOVER MENU{" "}
                 </button>
               </div>
-            </div>
-            <div className="header-image-div">
-              <img
-                src="./images/header-cake.png"
-                alt="headerImg"
-                className="header-img"
-              />
             </div>
           </div>
         </div>

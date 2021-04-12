@@ -77,8 +77,9 @@ ul {
 
 .sub-header {
   /* background-color: white; */
-  background-image: url("http://susiecakes.com/app/uploads/2021/03/SC-Pineapple-Upside-CC-Slider.jpg");
+  background-image: url("http://susiecakes.com/app/uploads/2020/04/sc-7-layer-bar-slider.jpg");
   background-repeat: no-repeat;
+  background-color: #e0e0e2;
 
   width: 100%;
   height: 500px;
@@ -185,14 +186,14 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 }
 .header-middle-content {
   width: 85%;
   height: 80%;
   background-color: transparent;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
 
 .header-content {
@@ -338,7 +339,7 @@ ul {
   justify-content: center;
 }
 .super-content-img {
-  width: 85%;
+  width: 75%;
   height: 100%;
 }
 .super-content-content {

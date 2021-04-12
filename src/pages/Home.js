@@ -26,7 +26,7 @@ export const Home = () => {
           <div className="home-super-content">
             <div className="super-content-img-div">
               <img
-                src="./images/cake-piece1.png"
+                src="./images/cake-piece.png"
                 alt="superContentImg"
                 className="super-content-img"
               />
