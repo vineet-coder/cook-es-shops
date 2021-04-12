@@ -94,7 +94,7 @@ export const Cart = () => {
   );
 };
 const CartCard = ({ item }) => {
-  const { setRoute, setProduct } = useRoute();
+  const { setRoute } = useRoute();
   const { dispatch } = useCart();
   const goToProductPage = (item) => {
     setRoute("PRODUCT");
