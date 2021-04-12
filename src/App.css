@@ -503,7 +503,7 @@ ul {
   width: 350px;
 
   background-color: var(--primory-color);
-  margin: 3rem 5rem;
+  margin: 3rem 3rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
