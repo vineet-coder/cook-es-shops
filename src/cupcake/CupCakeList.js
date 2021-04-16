@@ -1,5 +1,5 @@
+import { CupCakeMenu } from "./CupCakeMenu";
 import { BsX } from "react-icons/bs";
-import { CakeMenu } from "../menu/CakeMenu";
 import { RiNavigationLine } from "react-icons/ri";
 import { useCart } from "../providers/CartContext";
 import { ToggleHeader } from "../components/ToggleHeader";
@@ -8,7 +8,7 @@ import { SubHeader } from "../components/SubHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
 
-export const CakeList = () => {
+export const CupCakeList = () => {
   const { state, dispatch, finalState } = useCart();
 
   const openRightNav = () => {
@@ -18,7 +18,6 @@ export const CakeList = () => {
   const closeRightNav = () => {
     document.getElementById("right-nav-id").style.width = "0";
   };
-
   return (
     <>
       <ToggleHeader />
@@ -28,7 +27,6 @@ export const CakeList = () => {
       <SubHeader />
 
       <button className="filter-nav-button" onClick={() => openRightNav()}>
-    
         <RiNavigationLine />
       </button>
       <div className="right-nav" id="right-nav-id">
@@ -89,11 +87,7 @@ export const CakeList = () => {
 
       <div className="background-img-div">
         {/* <div className="product-list"></div> */}
-        <CakeMenu />
-        {/* {route === "CAKE" && <CakeMenu />} */}
-        {/* {route === "CUPCAKE" && <CupCakeMenu />}
-        {route === "BROWNIE" && <BrownieMenu />}
-        {route === "COOKIE" && <CookieMenu />} */}
+        <CupCakeMenu />
       </div>
       <Footer />
     </>

@@ -3,6 +3,7 @@ import { ToggleSideNav } from "../components/ToggleSideNav";
 import { ToggleHeader } from "../components/ToggleHeader";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { Link } from "react-router-dom";
 
 export const Menu = () => {
   const { setRoute } = useRoute();
@@ -27,13 +28,6 @@ export const Menu = () => {
               </small>
               <div className="header-button-dv"></div>
             </div>
-            <div className="header-image-div">
-              <img
-                src="./images/header-cake.png"
-                alt="headerImg"
-                className="header-img"
-              />
-            </div>
           </div>
         </div>
         <div className="header-lower"></div>
@@ -44,18 +38,18 @@ export const Menu = () => {
           <h1>MENU</h1>
         </div>
         <div className="menu">
-          <div className="menu-card" onClick={() => setRoute("CAKE")}>
+          <Link className="menu-card link" to="/CAKE">
             <img src="./menu/cake.jpg" alt="img" className="menu-img" />
-          </div>
-          <div className="menu-card" onClick={() => setRoute("COOKIE")}>
+          </Link>
+          <Link className="menu-card link" to="/COOKIE">
             <img src="./menu/cookie.jpg" alt="img" className="menu-img" />
-          </div>
-          <div className="menu-card" onClick={() => setRoute("CUPCAKE")}>
+          </Link>
+          <Link className="menu-card link" to="/CUPCAKE">
             <img src="./menu/cupcake.jpg" alt="img" className="menu-img" />
-          </div>
-          <div className="menu-card" onClick={() => setRoute("BROWNIE")}>
+          </Link>
+          <Link className="menu-card link" to="/BROWNIE">
             <img src="./menu/brownie.jpg" alt="img" className="menu-img" />
-          </div>
+          </Link>
         </div>
       </div>
       <Footer />

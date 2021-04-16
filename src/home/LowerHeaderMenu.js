@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { headerCardObj } from "../data/HeaderCardObj";
 import { useRoute } from "../providers/RouteContext";
 
@@ -15,20 +16,20 @@ const HeaderMenuCard = ({ item }) => {
   const { setRoute } = useRoute();
 
   return (
-    <div className="header-menu-card">
+    <Link to={`/${item.name}`} className="header-menu-card link">
       <div
         className="header-menu-card-div"
-        onClick={() => setRoute(`${item.name}`)}
+        // onClick={() => setRoute(`${item.name}`)}
       >
-        <div>
+        <div className="header-menu-card-img-div">
           {/* <img src={item.image} alt="img" className="header-menu-img" /> */}
           {item.image}
         </div>
-        <div>
+        <div className="header-menu-card-title-div">
           {" "}
           <h4>{item.name} </h4>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

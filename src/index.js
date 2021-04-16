@@ -3,16 +3,20 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { RouteProvider } from "./providers/RouteContext";
 import { CartProvider } from "./providers/CartContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CartProvider>
-      <RouteProvider>
-        <App />
-      </RouteProvider>
-    </CartProvider>
+    <Router>
+      <CartProvider>
+        <RouteProvider>
+          <App />
+        </RouteProvider>
+      </CartProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

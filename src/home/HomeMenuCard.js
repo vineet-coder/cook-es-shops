@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { homeMenuCardData } from "../data/HomeMenuCardData";
 import { useRoute } from "../providers/RouteContext";
 
@@ -14,7 +15,7 @@ export const HomeMenu = () => {
 const HomeMenuCard = ({ item }) => {
   const { setRoute } = useRoute();
   return (
-    <div className="home-menu-card" onClick={() => setRoute("MENU")}>
+    <Link to="/menus" className="home-menu-card link">
       <div className="home-menu-card-img-div">
         <img src={item.image[0]} alt="img" className="home-menu-card-img" />
       </div>
@@ -22,6 +23,6 @@ const HomeMenuCard = ({ item }) => {
         <h3>{item.name}</h3>
         <h2>{item.price}/- Rs.</h2>
       </div>
-    </div>
+    </Link>
   );
 };

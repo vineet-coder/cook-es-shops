@@ -1,4 +1,4 @@
-import { CupCakeMenu } from "../menu/CupCakeMenu";
+import { CookieMenu } from "./CookieMenu";
 import { BsX } from "react-icons/bs";
 import { RiNavigationLine } from "react-icons/ri";
 import { useCart } from "../providers/CartContext";
@@ -8,7 +8,7 @@ import { SubHeader } from "../components/SubHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
 
-export const CupCakeList = () => {
+export const CookiesList = () => {
   const { state, dispatch, finalState } = useCart();
 
   const openRightNav = () => {
@@ -18,6 +18,7 @@ export const CupCakeList = () => {
   const closeRightNav = () => {
     document.getElementById("right-nav-id").style.width = "0";
   };
+
   return (
     <>
       <ToggleHeader />
@@ -27,6 +28,7 @@ export const CupCakeList = () => {
       <SubHeader />
 
       <button className="filter-nav-button" onClick={() => openRightNav()}>
+     
         <RiNavigationLine />
       </button>
       <div className="right-nav" id="right-nav-id">
@@ -87,7 +89,7 @@ export const CupCakeList = () => {
 
       <div className="background-img-div">
         {/* <div className="product-list"></div> */}
-        <CupCakeMenu />
+        <CookieMenu />
       </div>
       <Footer />
     </>

@@ -1,5 +1,5 @@
 import { BsX } from "react-icons/bs";
-import { BrownieMenu } from "../menu/BrownieMenu";
+import { BrownieMenu } from "./BrownieMenu";
 import { useCart } from "../providers/CartContext";
 import { RiNavigationLine } from "react-icons/ri";
 import { ToggleHeader } from "../components/ToggleHeader";

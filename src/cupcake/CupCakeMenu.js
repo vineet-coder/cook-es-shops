@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useCart } from "../providers/CartContext";
 import { useRoute } from "../providers/RouteContext";
 
@@ -27,7 +28,7 @@ const CupCakeMenuCard = ({ item }) => {
     });
   };
   return (
-    <div className="product-menu-card">
+    <Link to="/products" className="product-menu-card link">
       <div className="product-menu-img-div">
         <img
           src={item.image[0]}
@@ -81,6 +82,6 @@ const CupCakeMenuCard = ({ item }) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

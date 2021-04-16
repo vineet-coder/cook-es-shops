@@ -1,4 +1,5 @@
-import { LowerHeaderMenu } from "../cards/HeaderCard";
+import { Link } from "react-router-dom";
+import { LowerHeaderMenu } from "../home/LowerHeaderMenu";
 import { useRoute } from "../providers/RouteContext";
 
 export const SubHeader = () => {
@@ -24,14 +25,14 @@ export const SubHeader = () => {
                 providing our customers with a product fresh and fresh from the
                 oven.{" "}
               </small>
-              <div className="header-button-dv">
+              <Link to="/menus" className="header-button-dv link-sub-header">
                 <button
                   className="btn from-top"
-                  onClick={() => setRoute("MENU")}
+                  // onClick={() => setRoute("MENU")}
                 >
                   DISCOVER MENU{" "}
                 </button>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

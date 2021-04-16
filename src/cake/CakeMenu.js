@@ -1,33 +1,35 @@
-import { useCart } from "../providers/CartContext";
+import { CakeData } from "../data/Cakes";
 import { useRoute } from "../providers/RouteContext";
+import { useCart } from "../providers/CartContext";
+import { Link } from "react-router-dom";
 
-export const BrownieMenu = () => {
+export const CakeMenu = () => {
   const { finalState } = useCart();
-
   return (
     <div className="product-list">
-      {finalState.Data.brownie.map((item) => (
-        <BrownieMenuCard item={item} />
+      {finalState.Data.cake.map((item) => (
+        <CakeMenuCard item={item} />
       ))}
     </div>
   );
 };
 
-const BrownieMenuCard = ({ item }) => {
+const CakeMenuCard = ({ item }) => {
   const { setRoute, setProduct } = useRoute();
   const { dispatch } = useCart();
 
   const goToProductPage = (item) => {
-    setRoute("PRODUCT");
-
+    // setRoute("PRODUCT");
+    console.log(item);
     dispatch({
       type: "GO_TO_PRODUCT_PAGE",
 
       payload: item,
     });
   };
+
   return (
-    <div className="product-menu-card">
+    <Link to="/products" className="product-menu-card link">
       <div className="product-menu-img-div">
         <img
           src={item.image[0]}
@@ -44,7 +46,10 @@ const BrownieMenuCard = ({ item }) => {
           </h2>
 
           <p>{item.name} </p>
-          <p>Cooking Status: {item.ready}</p>
+          <p>
+            {/* <BiDish /> */}
+            Cooking Status: {item.ready}
+          </p>
         </div>
         <div className="card-btn-div">
           {item.cart ? (
@@ -81,6 +86,6 @@ const BrownieMenuCard = ({ item }) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

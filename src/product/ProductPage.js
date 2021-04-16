@@ -1,13 +1,10 @@
-import { useCart } from "../providers/CartContext";
-import { WishlistCard } from "../cards/WishlistCard";
+import { Product } from "./ProductCard";
 import { Header } from "../components/Header";
 import { ToggleSideNav } from "../components/ToggleSideNav";
 import { ToggleHeader } from "../components/ToggleHeader";
 import { Footer } from "../components/Footer";
 
-export const Wishlist = () => {
-  const { state } = useCart();
-
+export const ProductPage = () => {
   return (
     <>
       <ToggleHeader />
@@ -15,11 +12,7 @@ export const Wishlist = () => {
       <Header />
 
       <div className="background-img-div">
-        <div className="product-list">
-          {state.wishlistListItem.map((item) => (
-            <WishlistCard item={item} />
-          ))}
-        </div>
+        <Product />
       </div>
       <Footer />
     </>

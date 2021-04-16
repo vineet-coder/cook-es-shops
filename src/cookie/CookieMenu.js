@@ -1,4 +1,5 @@
 import { AiOutlineHeart } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import { useCart } from "../providers/CartContext";
 import { useRoute } from "../providers/RouteContext";
 
@@ -28,7 +29,7 @@ const CookieMenuCard = ({ item }) => {
     });
   };
   return (
-    <div className="product-menu-card">
+    <Link to="/products" className="product-menu-card link">
       <div className="product-menu-img-div">
         <img
           src={item.image[0]}
@@ -82,6 +83,6 @@ const CookieMenuCard = ({ item }) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };

@@ -1,5 +1,5 @@
-import { HomeMenu } from "../cards/HomeMenuCard";
-import { HotRecipeMenu } from "../cards/HotRecipeCard";
+import { HomeMenu } from "./HomeMenuCard";
+import { HotRecipeMenu } from "./HotRecipeCard";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SubHeader } from "../components/SubHeader";
