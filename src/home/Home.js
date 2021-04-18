@@ -7,7 +7,6 @@ import { Header } from "../components/Header";
 import { ToggleHeader } from "../components/ToggleHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
-import Carousel from "../libraries/Carousel";
 
 export const Home = () => {
   return (

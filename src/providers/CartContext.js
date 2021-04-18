@@ -1,7 +1,46 @@
-import { createContext, useContext, useReducer } from "react";
+import axios from "axios";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import Data from "../data/index";
 
 const CartContext = createContext();
+
+async function getCakeData() {
+  try {
+    const cakeResponse = await axios.get(`/CAKE`);
+    console.log(cakeResponse);
+  } catch (error) {
+    console.log(error);
+  }
+}
+async function getCupcakeData() {
+  try {
+    const cupcakeResponse = await axios.get(`/CUPCAKE`);
+    console.log(cupcakeResponse);
+  } catch (error) {
+    console.log(error);
+  }
+}
+async function getBrownieData() {
+  try {
+    const brownieResponse = await axios.get(`/BROWNIE`);
+    console.log(brownieResponse);
+  } catch (error) {
+    console.log(error);
+  }
+}
+async function getCookieData() {
+  try {
+    const cookieResponse = await axios.get(`/COOKIE`);
+    console.log(cookieResponse);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+getCakeData();
+getCookieData();
+getBrownieData();
+getCupcakeData();
 
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, {

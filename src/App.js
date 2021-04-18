@@ -10,9 +10,17 @@ import { Cart } from "./cart/Cart";
 import { Wishlist } from "./wishlist/Wishlist";
 import { Menu } from "./menu/Menu";
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
+import { useEffect } from "react";
 
 export default function App() {
-  const { route } = useRoute();
+  // const { route } = useRoute();
+
+  // useEffect(() => {
+  //   (async)();
+  // }, []);
+
+  
   return (
     // <div className="App">
     //   {route === "home" && <Home />}
@@ -25,6 +33,7 @@ export default function App() {
     //   {route === "WISHLIST" && <Wishlist />}
     //   {route === "MENU" && <Menu />}
     // </div>
+
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/CAkE" element={<CakeList />} />
