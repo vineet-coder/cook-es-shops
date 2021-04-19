@@ -10,7 +10,6 @@ import { Cart } from "./cart/Cart";
 import { Wishlist } from "./wishlist/Wishlist";
 import { Menu } from "./menu/Menu";
 import { Routes, Route } from "react-router-dom";
-import axios from "axios";
 import { useEffect } from "react";
 
 export default function App() {
@@ -20,7 +19,6 @@ export default function App() {
   //   (async)();
   // }, []);
 
-  
   return (
     // <div className="App">
     //   {route === "home" && <Home />}

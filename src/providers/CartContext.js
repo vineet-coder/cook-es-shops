@@ -1,33 +1,26 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import Data from "../data/index";
 
 const CartContext = createContext();
 
-async function getCakeData() {
-  try {
-    const cakeResponse = await axios.get(`/CAKE`);
-    console.log(cakeResponse);
-  } catch (error) {
-    console.log(error);
-  }
-}
 async function getCupcakeData() {
   try {
     const cupcakeResponse = await axios.get(`/CUPCAKE`);
-    console.log(cupcakeResponse);
+    console.log({ cupcakeResponse });
+    // const cupcakedata = cupcakeResponse.data;
+    // console.log(cupcakedata);
   } catch (error) {
     console.log(error);
   }
 }
-async function getBrownieData() {
-  try {
-    const brownieResponse = await axios.get(`/BROWNIE`);
-    console.log(brownieResponse);
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 async function getCookieData() {
   try {
     const cookieResponse = await axios.get(`/COOKIE`);
@@ -37,12 +30,35 @@ async function getCookieData() {
   }
 }
 
+async function getCakeData() {
+  try {
+    const cakeResponse = await axios.get(`/CAKE`);
+
+    console.log(cakeResponse);
+  } catch (error) {
+    console.log(error);
+  }
+}
+async function getBrownieData() {
+  try {
+    const brownieResponse = await axios.get(`/BROWNIE`);
+
+    console.log({ brownieResponse });
+  } catch (error) {
+    console.log(error);
+  }
+}
 getCakeData();
-getCookieData();
 getBrownieData();
+
+getCookieData();
 getCupcakeData();
 
 export const CartProvider = ({ children }) => {
+  const [cakeData, setCakeData] = useState([]);
+  const [cookieData, setCookieData] = useState([]);
+  const [brownieData, setBrownieData] = useState([]);
+  const [cupcakeData, setCupcakeData] = useState([]);
   const [state, dispatch] = useReducer(reducer, {
     wishlistListItem: [],
     cartListItem: [],

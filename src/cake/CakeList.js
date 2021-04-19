@@ -28,7 +28,6 @@ export const CakeList = () => {
       <SubHeader />
 
       <button className="filter-nav-button" onClick={() => openRightNav()}>
-    
         <RiNavigationLine />
       </button>
       <div className="right-nav" id="right-nav-id">
