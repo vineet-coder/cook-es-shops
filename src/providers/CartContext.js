@@ -6,63 +6,24 @@ import {
   useReducer,
   useState,
 } from "react";
-import Data from "../data/index";
+// import Data from "../data/index";
 
 const CartContext = createContext();
 
-async function getCupcakeData() {
-  try {
-    const cupcakeResponse = await axios.get(`/CUPCAKE`);
-    console.log({ cupcakeResponse });
-    // const cupcakedata = cupcakeResponse.data;
-    // console.log(cupcakedata);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function getCookieData() {
-  try {
-    const cookieResponse = await axios.get(`/COOKIE`);
-    console.log(cookieResponse);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-async function getCakeData() {
-  try {
-    const cakeResponse = await axios.get(`/CAKE`);
-
-    console.log(cakeResponse);
-  } catch (error) {
-    console.log(error);
-  }
-}
-async function getBrownieData() {
-  try {
-    const brownieResponse = await axios.get(`/BROWNIE`);
-
-    console.log({ brownieResponse });
-  } catch (error) {
-    console.log(error);
-  }
-}
-getCakeData();
-getBrownieData();
-
-getCookieData();
-getCupcakeData();
-
 export const CartProvider = ({ children }) => {
-  const [cakeData, setCakeData] = useState([]);
-  const [cookieData, setCookieData] = useState([]);
-  const [brownieData, setBrownieData] = useState([]);
-  const [cupcakeData, setCupcakeData] = useState([]);
+  const [isLoader, setIsLoader] = useState(true);
   const [state, dispatch] = useReducer(reducer, {
     wishlistListItem: [],
     cartListItem: [],
-    Data,
+    Data: {
+      cake: [],
+
+      cookie: [],
+
+      brownie: [],
+
+      cupcake: [],
+    },
     isHighToLow: false,
     isLowToHigh: false,
     Ready: false,
@@ -71,8 +32,33 @@ export const CartProvider = ({ children }) => {
     productPage: [],
   });
 
+  console.log(state);
+
   function reducer(state, value) {
     switch (value.type) {
+      case "INITIALIZE_CAKE_DATA":
+        return {
+          ...state,
+          Data: { ...state.Data, cake: value.payload },
+        };
+
+      case "INITIALIZE_BROWNIE_DATA":
+        return {
+          ...state,
+          Data: { ...state.Data, brownie: value.payload },
+        };
+      case "INITIALIZE_COOKIE_DATA":
+        return {
+          ...state,
+          Data: { ...state.Data, cookie: value.payload },
+        };
+
+      case "INITIALIZE_CUPCAKE_DATA":
+        return {
+          ...state,
+          Data: { ...state.Data, cupcake: value.payload },
+        };
+
       case "GO_TO_PRODUCT_PAGE":
         return {
           ...state,
@@ -343,13 +329,22 @@ export const CartProvider = ({ children }) => {
   }
 
   const populorState = getPopulorData(state);
+  console.log(state);
 
   const discountedState = getDiscountedData(populorState);
 
   const finalState = getFastDeliveryData(discountedState);
 
   return (
-    <CartContext.Provider value={{ state, dispatch, finalState }}>
+    <CartContext.Provider
+      value={{
+        state,
+        dispatch,
+        finalState,
+        isLoader,
+        setIsLoader,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );

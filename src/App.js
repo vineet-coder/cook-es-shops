@@ -11,13 +11,11 @@ import { Wishlist } from "./wishlist/Wishlist";
 import { Menu } from "./menu/Menu";
 import { Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
+import { useCart } from "./providers/CartContext";
 
 export default function App() {
   // const { route } = useRoute();
-
-  // useEffect(() => {
-  //   (async)();
-  // }, []);
+  // const { isLoader } = useCart();
 
   return (
     // <div className="App">

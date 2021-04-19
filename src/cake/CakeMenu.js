@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export const CakeMenu = () => {
   const { finalState } = useCart();
+  console.log(finalState);
   return (
     <div className="product-list">
       {finalState.Data.cake.map((item) => (

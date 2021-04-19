@@ -7,9 +7,12 @@ import { Header } from "../components/Header";
 import { SubHeader } from "../components/SubHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
+import axios from "axios";
+import { useEffect } from "react";
+import { Loader } from "../components/Loader";
 
 export const CupCakeList = () => {
-  const { state, dispatch, finalState } = useCart();
+  const { state, dispatch, finalState, isLoader, setIsLoader } = useCart();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "30%";
@@ -18,6 +21,23 @@ export const CupCakeList = () => {
   const closeRightNav = () => {
     document.getElementById("right-nav-id").style.width = "0";
   };
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const cupcakeResponse = await axios.get(`/api/cupcakes`);
+
+        dispatch({
+          type: "INITIALIZE_CUPCAKE_DATA",
+          payload: cupcakeResponse.data,
+        });
+        setIsLoader(false);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <ToggleHeader />
@@ -87,7 +107,8 @@ export const CupCakeList = () => {
 
       <div className="background-img-div">
         {/* <div className="product-list"></div> */}
-        <CupCakeMenu />
+
+        {isLoader ? <Loader /> : <CupCakeMenu />}
       </div>
       <Footer />
     </>

@@ -7,9 +7,12 @@ import { Header } from "../components/Header";
 import { SubHeader } from "../components/SubHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
+import axios from "axios";
+import { useEffect } from "react";
+import { Loader } from "../components/Loader";
 
 export const CookiesList = () => {
-  const { state, dispatch, finalState } = useCart();
+  const { state, dispatch, finalState, isLoader, setIsLoader } = useCart();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "30%";
@@ -18,6 +21,22 @@ export const CookiesList = () => {
   const closeRightNav = () => {
     document.getElementById("right-nav-id").style.width = "0";
   };
+
+  useEffect(() => {
+    (async function () {
+      try {
+        const cookieResponse = await axios.get(`/api/cookies`);
+
+        dispatch({
+          type: "INITIALIZE_COOKIE_DATA",
+          payload: cookieResponse.data,
+        });
+        setIsLoader(false);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
 
   return (
     <>
@@ -28,7 +47,6 @@ export const CookiesList = () => {
       <SubHeader />
 
       <button className="filter-nav-button" onClick={() => openRightNav()}>
-     
         <RiNavigationLine />
       </button>
       <div className="right-nav" id="right-nav-id">
@@ -89,7 +107,7 @@ export const CookiesList = () => {
 
       <div className="background-img-div">
         {/* <div className="product-list"></div> */}
-        <CookieMenu />
+        {isLoader ? <Loader /> : <CookieMenu />}
       </div>
       <Footer />
     </>

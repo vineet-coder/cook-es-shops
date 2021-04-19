@@ -7,9 +7,12 @@ import { Header } from "../components/Header";
 import { SubHeader } from "../components/SubHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
+import axios from "axios";
+import { useEffect } from "react";
+import { Loader } from "../components/Loader";
 
 export const CakeList = () => {
-  const { state, dispatch, finalState } = useCart();
+  const { state, dispatch, finalState, setIsLoader, isLoader } = useCart();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "30%";
@@ -18,6 +21,26 @@ export const CakeList = () => {
   const closeRightNav = () => {
     document.getElementById("right-nav-id").style.width = "0";
   };
+
+  useEffect(() => {
+    (async function () {
+      setIsLoader(true);
+      try {
+        const cakeResponse = await axios.get(`/api/cakes`);
+
+        // console.log(cakeResponse);
+        dispatch({
+          type: "INITIALIZE_CAKE_DATA",
+          payload: cakeResponse.data,
+        });
+        setIsLoader(false);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  // getCakeData();
 
   return (
     <>
@@ -88,7 +111,7 @@ export const CakeList = () => {
 
       <div className="background-img-div">
         {/* <div className="product-list"></div> */}
-        <CakeMenu />
+        {isLoader ? <Loader /> : <CakeMenu />}
         {/* {route === "CAKE" && <CakeMenu />} */}
         {/* {route === "CUPCAKE" && <CupCakeMenu />}
         {route === "BROWNIE" && <BrownieMenu />}
