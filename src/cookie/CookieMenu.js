@@ -29,15 +29,15 @@ const CookieMenuCard = ({ item }) => {
     });
   };
   return (
-    <Link to="/products" className="product-menu-card link">
-      <div className="product-menu-img-div">
+    <div className="product-menu-card ">
+      <Link to="/products" className="product-menu-img-div link">
         <img
           src={item.image[0]}
           alt="img"
           className="product-menu-img"
           onClick={() => goToProductPage(item)}
         />
-      </div>
+      </Link>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">
           <h2 className="menu-card-price">
@@ -83,6 +83,6 @@ const CookieMenuCard = ({ item }) => {
           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

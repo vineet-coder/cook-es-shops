@@ -2,6 +2,7 @@ import { CakeData } from "../data/Cakes";
 import { useRoute } from "../providers/RouteContext";
 import { useCart } from "../providers/CartContext";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export const CakeMenu = () => {
   const { finalState } = useCart();
@@ -29,16 +30,27 @@ const CakeMenuCard = ({ item }) => {
     });
   };
 
+  const addTocart = (id) => {
+    // console.log(id);
+
+    try {
+      const response = axios.post(`/api/cakes/${id}`);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <Link to="/products" className="product-menu-card link">
-      <div className="product-menu-img-div">
+    <div className="product-menu-card ">
+      <Link to="/products" className="product-menu-img-div link">
         <img
           src={item.image[0]}
           alt="img"
           className="product-menu-img"
           onClick={() => goToProductPage(item)}
         />
-      </div>
+      </Link>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">
           <h2 className="menu-card-price">
@@ -58,12 +70,14 @@ const CakeMenuCard = ({ item }) => {
           ) : (
             <button
               className="btn-cart"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_TO_CART",
-                  payload: item,
-                })
-              }
+              // onClick={() =>
+              //   dispatch({
+              //     type: "ADD_TO_CART",
+              //     payload: item,
+              //   })
+              // }
+
+              onClick={() => addTocart(item._id)}
             >
               Add to Cart
             </button>
@@ -87,6 +101,6 @@ const CakeMenuCard = ({ item }) => {
           )}
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
