@@ -16,7 +16,7 @@ const HeaderMenuCard = ({ item }) => {
   const { setRoute } = useRoute();
 
   return (
-    <Link to={`/${item.name}`} className="header-menu-card link">
+    <Link to={`/${item.route}`} className="header-menu-card link">
       <div
         className="header-menu-card-div"
         // onClick={() => setRoute(`${item.name}`)}

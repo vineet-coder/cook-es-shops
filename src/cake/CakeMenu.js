@@ -30,12 +30,50 @@ const CakeMenuCard = ({ item }) => {
     });
   };
 
-  const addTocart = (id) => {
-    // console.log(id);
-
+  const addToCart = async (_id) => {
     try {
-      const response = axios.post(`/api/cakes/${id}`);
-      console.log(response);
+      await axios.post("/cartproducts", {
+        id: _id,
+        qnt: 1,
+      });
+      const response1 = await axios.get("/cartproducts");
+      console.log(response1.data);
+      const cartList = response1.data;
+
+      const response2 = await axios.get("api/cakes");
+      console.log(response2.data);
+      const cakeList = response2.data;
+
+      dispatch({
+        type: "ADD_TO_CART",
+        payload1: cartList,
+        payload2: cakeList,
+        category: "cake",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToWishlist = async (_id) => {
+    try {
+      await axios.post("/wishlistproducts", {
+        id: _id,
+      });
+      const response1 = await axios.get("/wishlistproducts");
+      console.log(response1.data);
+      const wishlistList = response1.data;
+
+      const response2 = await axios.get("api/cakes");
+      console.log(response2.data);
+      const cakeList = response2.data;
+
+      dispatch({
+        type: "ADD_TO_WISHLIST",
+        payload1: wishlistList,
+        payload2: cakeList,
+        category: "cake",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -77,7 +115,7 @@ const CakeMenuCard = ({ item }) => {
               //   })
               // }
 
-              onClick={() => addTocart(item._id)}
+              onClick={() => addToCart(item._id)}
             >
               Add to Cart
             </button>
@@ -88,13 +126,15 @@ const CakeMenuCard = ({ item }) => {
           ) : (
             <button
               className="btn-wishlist"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_TO_WISHLIST",
+              // onClick={() =>
+              //   dispatch({
+              //     type: "ADD_TO_WISHLIST",
 
-                  payload: item,
-                })
-              }
+              //     payload: item,
+              //   })
+              // }
+
+              onClick={() => addToWishlist(item._id)}
             >
               Add to Wishlist
             </button>

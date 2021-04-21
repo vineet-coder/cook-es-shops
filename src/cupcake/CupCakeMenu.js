@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { useCart } from "../providers/CartContext";
 import { useRoute } from "../providers/RouteContext";
@@ -27,6 +28,55 @@ const CupCakeMenuCard = ({ item }) => {
       payload: item,
     });
   };
+
+  const addToCart = async (_id) => {
+    try {
+      await axios.post("/cartproducts", {
+        id: _id,
+        qnt: 1,
+      });
+      const response1 = await axios.get("/cartproducts");
+      console.log(response1.data);
+      const cartList = response1.data;
+
+      const response2 = await axios.get("api/cupcakes");
+      console.log(response2.data);
+      const cupcakeList = response2.data;
+
+      dispatch({
+        type: "ADD_TO_CART",
+        payload1: cartList,
+        payload2: cupcakeList,
+        category: "cupcake",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToWishlist = async (_id) => {
+    try {
+      await axios.post("/wishlistproducts", {
+        id: _id,
+      });
+      const response1 = await axios.get("/wishlistproducts");
+      console.log(response1.data);
+      const wishlistList = response1.data;
+
+      const response2 = await axios.get("api/cupcakes");
+      console.log(response2.data);
+      const cupcakeList = response2.data;
+
+      dispatch({
+        type: "ADD_TO_WISHLIST",
+        payload1: wishlistList,
+        payload2: cupcakeList,
+        category: "cupcake",
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="product-menu-card ">
       <Link to="/products" className="product-menu-img-div link">
@@ -53,12 +103,14 @@ const CupCakeMenuCard = ({ item }) => {
           ) : (
             <button
               className="btn-cart"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_TO_CART",
-                  payload: item,
-                })
-              }
+              // onClick={() =>
+              //   dispatch({
+              //     type: "ADD_TO_CART",
+              //     payload: item,
+              //   })
+              // }
+
+              onClick={() => addToCart(item._id)}
             >
               Add to Cart
             </button>
@@ -69,13 +121,15 @@ const CupCakeMenuCard = ({ item }) => {
           ) : (
             <button
               className="btn-wishlist"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_TO_WISHLIST",
+              // onClick={() =>
+              //   dispatch({
+              //     type: "ADD_TO_WISHLIST",
 
-                  payload: item,
-                })
-              }
+              //     payload: item,
+              //   })
+              // }
+
+              onClick={() => addToWishlist(item._id)}
             >
               Add to Wishlist
             </button>

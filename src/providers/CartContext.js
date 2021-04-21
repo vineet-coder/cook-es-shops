@@ -36,27 +36,12 @@ export const CartProvider = ({ children }) => {
 
   function reducer(state, value) {
     switch (value.type) {
-      case "INITIALIZE_CAKE_DATA":
+      case "INITIALIZE_DATA":
         return {
           ...state,
-          Data: { ...state.Data, cake: value.payload },
-        };
-
-      case "INITIALIZE_BROWNIE_DATA":
-        return {
-          ...state,
-          Data: { ...state.Data, brownie: value.payload },
-        };
-      case "INITIALIZE_COOKIE_DATA":
-        return {
-          ...state,
-          Data: { ...state.Data, cookie: value.payload },
-        };
-
-      case "INITIALIZE_CUPCAKE_DATA":
-        return {
-          ...state,
-          Data: { ...state.Data, cupcake: value.payload },
+          Data: { ...state.Data, [value.category]: value.payload1 },
+          cartListItem: value.payload2,
+          wishlistListItem: value.payload3,
         };
 
       case "GO_TO_PRODUCT_PAGE":
@@ -96,22 +81,17 @@ export const CartProvider = ({ children }) => {
       case "ADD_TO_CART":
         return {
           ...state,
-          cartListItem: [...state.cartListItem, value.payload],
+          cartListItem: value.payload1,
 
           Data: {
             ...state.Data,
-            [value.payload.category]: state.Data[
-              value.payload.category
-            ].map((item) =>
-              item.id === value.payload.id
-                ? { ...item, cart: true }
-                : { ...item }
-            ),
+
+            [value.category]: value.payload2,
           },
-          wishlistListItem: state.wishlistListItem.map((item) =>
-            item.id === value.payload.id ? { ...item, cart: true } : { ...item }
-          ),
-          productPage: [{ ...state.productPage[0], cart: true }],
+          // wishlistListItem: state.wishlistListItem.map((item) =>
+          //   item.id === value.payload.id ? { ...item, cart: true } : { ...item }
+          // ),
+          // productPage: [{ ...state.productPage[0], cart: true }],
         };
       case "INCREMENT":
         return {
@@ -136,77 +116,39 @@ export const CartProvider = ({ children }) => {
         return {
           ...state,
           cartListItem: state.cartListItem.filter(
-            (product) => product.id !== value.payload.id
-          ),
-          Data: {
-            ...state.Data,
-            [value.payload.category]: state.Data[
-              value.payload.category
-            ].map((item) =>
-              item.id === value.payload.id
-                ? { ...item, cart: !item.cart }
-                : { ...item }
-            ),
-          },
-          wishlistListItem: state.wishlistListItem.map((item) =>
-            item.id === value.payload.id
-              ? { ...item, cart: false }
-              : { ...item }
+            (product) => product._id !== value.payload._id
           ),
         };
 
       case "ADD_TO_WISHLIST":
         return {
           ...state,
-          wishlistListItem: [...state.wishlistListItem, value.payload],
+          wishlistListItem: value.payload1,
+
           Data: {
             ...state.Data,
-            [value.payload.category]: state.Data[
-              value.payload.category
-            ].map((item) =>
-              item.id === value.payload.id
-                ? { ...item, wishlist: true }
-                : { ...item }
-            ),
+
+            [value.category]: value.payload2,
           },
-          productPage: [{ ...state.productPage[0], wishlist: true }],
+
+          // productPage: [{ ...state.productPage[0], wishlist: true }],
         };
       case "MOVE_TO_CART_FROM_WISHLIST":
         return {
           ...state,
-          cartListItem: [...state.cartListItem, value.payload],
+          cartListItem: value.payload1,
 
           wishlistListItem: state.wishlistListItem.filter(
-            (item) => item.id !== value.payload.id
+            (item) => item._id !== value.payload2._id
           ),
-          Data: {
-            ...state.Data,
-            [value.payload.category]: state.Data[
-              value.payload.category
-            ].map((item) =>
-              item.id === value.payload.id
-                ? { ...item, cart: !value.payload.cart }
-                : { ...item }
-            ),
-          },
         };
 
       case "REMOVE_FROM_WISHLIST":
         return {
           ...state,
           wishlistListItem: state.wishlistListItem.filter(
-            (product) => product.id !== value.payload.id
+            (product) => product._id !== value.payload._id
           ),
-          Data: {
-            ...state.Data,
-            [value.payload.category]: state.Data[
-              value.payload.category
-            ].map((item) =>
-              item.id === value.payload.id
-                ? { ...item, wishlist: false }
-                : { ...item }
-            ),
-          },
         };
 
       case "HIGH_TO_LOW":

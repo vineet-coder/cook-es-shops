@@ -24,12 +24,19 @@ export const CupCakeList = () => {
 
   useEffect(() => {
     (async function () {
+      setIsLoader(true);
       try {
         const cupcakeResponse = await axios.get(`/api/cupcakes`);
+        const cartResponse = await axios.get(`cartproducts`);
+        const wishlistResponse = await axios.get(`wishlistproducts`);
 
         dispatch({
-          type: "INITIALIZE_CUPCAKE_DATA",
-          payload: cupcakeResponse.data,
+          type: "INITIALIZE_DATA",
+          payload1: cupcakeResponse.data,
+          payload2: cartResponse.data,
+          payload3: wishlistResponse.data,
+
+          category: "cupcake",
         });
         setIsLoader(false);
       } catch (error) {

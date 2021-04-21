@@ -32,10 +32,10 @@ export default function App() {
 
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/CAkE" element={<CakeList />} />
-      <Route path="/CUPCAKE" element={<CupCakeList />} />
-      <Route path="/BROWNIE" element={<BrowniesList />} />
-      <Route path="/COOKIE" element={<CookiesList />} />
+      <Route path="/cakes" element={<CakeList />} />
+      <Route path="/cupcakes" element={<CupCakeList />} />
+      <Route path="/brownies" element={<BrowniesList />} />
+      <Route path="/cookie" element={<CookiesList />} />
       <Route path="/products" element={<ProductPage />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/wishlist" element={<Wishlist />} />

@@ -7,8 +7,35 @@ import { Header } from "../components/Header";
 import { ToggleHeader } from "../components/ToggleHeader";
 import { Footer } from "../components/Footer";
 import { ToggleSideNav } from "../components/ToggleSideNav";
+import axios from "axios";
+import { useEffect } from "react";
+import { useCart } from "../providers/CartContext";
 
 export const Home = () => {
+  const { dispatch } = useCart();
+  useEffect(() => {
+    (async function () {
+      // setIsLoader(true);
+      try {
+        const cakeResponse = await axios.get(`/api/cakes`);
+        const cartResponse = await axios.get(`cartproducts`);
+        const wishlistResponse = await axios.get(`wishlistproducts`);
+
+        dispatch({
+          type: "INITIALIZE_DATA",
+          payload1: cakeResponse.data,
+          payload2: cartResponse.data,
+          payload3: wishlistResponse.data,
+
+          category: "cake",
+        });
+        // setIsLoader(false);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
   return (
     <>
       <ToggleHeader />

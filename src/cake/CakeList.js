@@ -27,11 +27,16 @@ export const CakeList = () => {
       setIsLoader(true);
       try {
         const cakeResponse = await axios.get(`/api/cakes`);
+        const cartResponse = await axios.get(`cartproducts`);
+        const wishlistResponse = await axios.get(`wishlistproducts`);
 
-        // console.log(cakeResponse);
         dispatch({
-          type: "INITIALIZE_CAKE_DATA",
-          payload: cakeResponse.data,
+          type: "INITIALIZE_DATA",
+          payload1: cakeResponse.data,
+          payload2: cartResponse.data,
+          payload3: wishlistResponse.data,
+
+          category: "cake",
         });
         setIsLoader(false);
       } catch (error) {

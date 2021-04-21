@@ -1,5 +1,6 @@
 import { useRoute } from "../providers/RouteContext";
 import { useCart } from "../providers/CartContext";
+import axios from "axios";
 
 export const WishlistCard = ({ item }) => {
   const { setRoute } = useRoute();
@@ -14,12 +15,52 @@ export const WishlistCard = ({ item }) => {
       payload: item,
     });
   };
+  const addTocart = async (item) => {
+    console.log(item);
+    console.log(item.id._id);
 
+    try {
+      await axios.post("/cartproducts", {
+        id: item.id._id,
+        qnt: 1,
+      });
+      const response = await axios.get("/cartproducts");
+      console.log(response.data);
+      const cartList = response.data;
+      const response2 = await axios.delete("/wishlistproducts", {
+        data: { wishlistProductId: item._id, productId: item.id._id },
+      });
+      console.log(response2.data);
+
+      dispatch({
+        type: "MOVE_TO_CART_FROM_WISHLIST",
+        payload1: cartList,
+        payload2: item,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const removeFromWishist = async (item) => {
+    console.log(item);
+    try {
+      await axios.delete("/wishlistproducts", {
+        data: { wishlistProductId: item._id, productId: item.id._id },
+      });
+
+      // const response = await axios.get("/cartproduts");
+
+      dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item });
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="product-menu-card">
       <div className="product-menu-img-div">
         <img
-          src={item.image[0]}
+          src={item.id.image[0]}
           alt="img"
           className="product-menu-img"
           onClick={() => goToProductPage(item)}
@@ -27,11 +68,11 @@ export const WishlistCard = ({ item }) => {
       </div>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">
-          <h2>{item.price}/- Rs. </h2>
-          <p>{item.name} </p>
+          <h2>{item.id.price}/- Rs. </h2>
+          <p>{item.id.name} </p>
         </div>
         <div className="card-btn-div">
-          {item.cart ? (
+          {item.id.cart ? (
             <button className="btn-cart">Added to Cart</button>
           ) : (
             <button
@@ -42,15 +83,18 @@ export const WishlistCard = ({ item }) => {
                   payload: item,
                 })
               }
+              onClick={() => addTocart(item)}
             >
               Move to cart
             </button>
           )}
           <button
             className="btn-wishlist"
-            onClick={() =>
-              dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
-            }
+            // onClick={() =>
+            //   dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
+            // }
+
+            onClick={() => removeFromWishist(item)}
           >
             Remove
           </button>

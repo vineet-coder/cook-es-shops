@@ -24,12 +24,19 @@ export const CookiesList = () => {
 
   useEffect(() => {
     (async function () {
+      setIsLoader(true);
       try {
-        const cookieResponse = await axios.get(`/api/cookies`);
+        const cakeResponse = await axios.get(`/api/cookies`);
+        const cartResponse = await axios.get(`cartproducts`);
+        const wishlistResponse = await axios.get(`wishlistproducts`);
 
         dispatch({
-          type: "INITIALIZE_COOKIE_DATA",
-          payload: cookieResponse.data,
+          type: "INITIALIZE_DATA",
+          payload1: cakeResponse.data,
+          payload2: cartResponse.data,
+          payload3: wishlistResponse.data,
+
+          category: "cookie",
         });
         setIsLoader(false);
       } catch (error) {

@@ -8,15 +8,42 @@ import { ToggleSideNav } from "../components/ToggleSideNav";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useCart } from "../providers/CartContext";
+import axios from "axios";
+import { useEffect } from "react";
 
 export const Cart = () => {
-  const { state } = useCart();
+  const { state, setIsLoader, dispatch } = useCart();
 
-  const priceArr = state.cartListItem.map((item) => item.quantity * item.price);
+  useEffect(() => {
+    (async function () {
+      setIsLoader(true);
+      try {
+        const cakeResponse = await axios.get(`/api/cakes`);
+        const cartResponse = await axios.get(`cartproducts`);
+        const wishlistResponse = await axios.get(`wishlistproducts`);
+
+        dispatch({
+          type: "INITIALIZE_DATA",
+          payload1: cakeResponse.data,
+          payload2: cartResponse.data,
+          payload3: wishlistResponse.data,
+
+          category: "cake",
+        });
+        setIsLoader(false);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  const priceArr = state.cartListItem.map(
+    (item) => item.id.quantity * item.id.price
+  );
 
   const priceSum = (total, price) => total + price;
   const totalAmount = priceArr.reduce(priceSum, 0);
-  console.log(totalAmount);
+  // console.log(totalAmount);
 
   return (
     <>
@@ -43,7 +70,7 @@ export const Cart = () => {
             <div className="order-item-list">
               <ol className="ordered-list">
                 {state.cartListItem.map((item) => (
-                  <li className="ordered-list-item">{item.name}</li>
+                  <li className="ordered-list-item">{item.id.name}</li>
                 ))}
               </ol>
               {state.cartListItem.length > 0 ? (
@@ -56,7 +83,7 @@ export const Cart = () => {
               <ul>
                 {state.cartListItem.map((item) => (
                   <li className="ordered-list-item-price">
-                    <small> {item.quantity} </small> X {item.price} /- Rs.
+                    <small> {item.id.quantity} </small> X {item.id.price} /- Rs.
                   </li>
                 ))}
               </ul>
@@ -89,26 +116,42 @@ const CartCard = ({ item }) => {
     });
   };
 
+  const removeFromCart = async (item) => {
+    console.log(item);
+    try {
+      await axios.delete("/cartproducts", {
+        data: { cartProductId: item._id, productId: item.id._id },
+      });
+
+      // const response = await axios.get("/cartproduts");
+
+      dispatch({ type: "REMOVE_FROM_CART", payload: item });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <div className="cart-card">
         <div className="cart-card-sub-div">
           <div className="cart-card-img-div">
             <img
-              src={item.image[0]}
+              src={item.id.image[0]}
               alt="img"
               className="cart-card-img"
               onClick={() => goToProductPage(item)}
             />
           </div>
           <div className="cart-card-content-div">
-            <h2>{item.price}/- Rs. </h2>
-            <p>{item.name} </p>
+            <h2>{item.id.price}/- Rs. </h2>
+            <p>{item.id.name} </p>
             <button
               className="btn-cart remove-btn"
-              onClick={() =>
-                dispatch({ type: "REMOVE_FROM_CART", payload: item })
-              }
+              // onClick={() =>
+              //   dispatch({ type: "REMOVE_FROM_CART", payload: item })
+              // }
+              onClick={() => removeFromCart(item)}
             >
               Remove from cart{" "}
             </button>
@@ -125,9 +168,11 @@ const CartCard = ({ item }) => {
               {item.quantity === 1 ? (
                 <button
                   className="btn-cart add-minus-btn"
-                  onClick={() =>
-                    dispatch({ type: "REMOVE_FROM_CART", payload: item })
-                  }
+                  // onClick={() =>
+                  //   dispatch({ type: "REMOVE_FROM_CART", payload: item })
+                  // }
+
+                  onClick={() => removeFromCart(item)}
                 >
                   <MdDeleteForever />
                 </button>

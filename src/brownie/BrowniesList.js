@@ -24,12 +24,19 @@ export const BrowniesList = () => {
 
   useEffect(() => {
     (async function () {
+      setIsLoader(true);
       try {
-        const brownieResponse = await axios.get(`/api/brownies`);
+        const cakeResponse = await axios.get(`/api/brownies`);
+        const cartResponse = await axios.get(`cartproducts`);
+        const wishlistResponse = await axios.get(`wishlistproducts`);
 
         dispatch({
-          type: "INITIALIZE_BROWNIE_DATA",
-          payload: brownieResponse.data,
+          type: "INITIALIZE_DATA",
+          payload1: cakeResponse.data,
+          payload2: cartResponse.data,
+          payload3: wishlistResponse.data,
+
+          category: "brownie",
         });
         setIsLoader(false);
       } catch (error) {
