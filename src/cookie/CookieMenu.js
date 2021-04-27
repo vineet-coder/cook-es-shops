@@ -57,14 +57,14 @@ const CookieMenuCard = ({ item }) => {
 
   const addToWishlist = async (_id) => {
     try {
-      await axios.post("/wishlistproducts", {
+      await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
         id: _id,
       });
-      const response1 = await axios.get("/wishlistproducts");
+      const response1 = await axios.get("https://cook-es-shops.herokuapp.com/wishlistproducts");
       console.log(response1.data);
       const wishlistList = response1.data;
 
-      const response2 = await axios.get("product/cookies");
+      const response2 = await axios.get("https://cook-es-shops.herokuapp.com/product/cookies");
       console.log(response2.data);
       const cookieList = response2.data;
 

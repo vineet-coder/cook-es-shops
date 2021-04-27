@@ -32,15 +32,15 @@ const BrownieMenuCard = ({ item }) => {
 
   const addToCart = async (_id) => {
     try {
-      await axios.post("/cartproducts", {
+      await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: _id,
         qnt: 1,
       });
-      const response1 = await axios.get("/cartproducts");
+      const response1 = await axios.get("https://cook-es-shops.herokuapp.com/cartproducts");
       // console.log(response1.data);
       const cartList = response1.data;
 
-      const response2 = await axios.get("product/brownies");
+      const response2 = await axios.get("https://cook-es-shops.herokuapp.com/product/brownies");
 
       // console.log(response2.data);
       const brownieList = response2.data;
@@ -58,14 +58,14 @@ const BrownieMenuCard = ({ item }) => {
 
   const addToWishlist = async (_id) => {
     try {
-      await axios.post("/wishlistproducts", {
+      await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
         id: _id,
       });
-      const response1 = await axios.get("/wishlistproducts");
+      const response1 = await axios.get("https://cook-es-shops.herokuapp.com/wishlistproducts");
       // console.log(response1.data);
       const wishlistList = response1.data;
 
-      const response2 = await axios.get("product/brownies");
+      const response2 = await axios.get("https://cook-es-shops.herokuapp.com/product/brownies");
       // console.log(response2.data);
       const brownieList = response2.data;
 
