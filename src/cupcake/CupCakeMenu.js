@@ -60,7 +60,7 @@ const CupCakeMenuCard = ({ item }) => {
 
   const addToWishlist = async (_id) => {
     try {
-      await axios.post("/wishlistproducts", {
+      await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
         id: _id,
       });
       const response1 = await axios.get(

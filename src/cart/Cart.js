@@ -18,9 +18,15 @@ export const Cart = () => {
     (async function () {
       setIsLoader(true);
       try {
-        const cakeResponse = await axios.get(`https://cook-es-shops.herokuapp.com/product/cakes`);
-        const cartResponse = await axios.get(`https://cook-es-shops.herokuapp.com/cartproducts`);
-        const wishlistResponse = await axios.get(`https://cook-es-shops.herokuapp.com/wishlistproducts`);
+        const cakeResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/product/cakes`
+        );
+        const cartResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/cartproducts`
+        );
+        const wishlistResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/wishlistproducts`
+        );
 
         dispatch({
           type: "INITIALIZE_DATA",
@@ -119,7 +125,7 @@ const CartCard = ({ item }) => {
   const removeFromCart = async (item) => {
     console.log(item);
     try {
-      await axios.delete("/cartproducts", {
+      await axios.delete("https://cook-es-shops.herokuapp.com/cartproducts", {
         data: { cartProductId: item._id, productId: item.id._id },
       });
 

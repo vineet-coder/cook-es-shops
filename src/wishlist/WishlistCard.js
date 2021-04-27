@@ -20,7 +20,7 @@ export const WishlistCard = ({ item }) => {
     console.log(item.id._id);
 
     try {
-      await axios.post("/cartproducts", {
+      await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: item.id._id,
         qnt: 1,
       });
@@ -50,9 +50,12 @@ export const WishlistCard = ({ item }) => {
   const removeFromWishist = async (item) => {
     console.log(item);
     try {
-      await axios.delete("https://cook-es-shops.herokuapp.com/wishlistproducts", {
-        data: { wishlistProductId: item._id, productId: item.id._id },
-      });
+      await axios.delete(
+        "https://cook-es-shops.herokuapp.com/wishlistproducts",
+        {
+          data: { wishlistProductId: item._id, productId: item.id._id },
+        }
+      );
 
       // const response = await axios.get("/cartproduts");
 

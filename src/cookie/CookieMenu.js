@@ -36,11 +36,15 @@ const CookieMenuCard = ({ item }) => {
         id: _id,
         qnt: 1,
       });
-      const response1 = await axios.get("/cartproducts");
+      const response1 = await axios.get(
+        "https://cook-es-shops.herokuapp.com/cartproducts"
+      );
       console.log(response1.data);
       const cartList = response1.data;
 
-      const response2 = await axios.get("product/cookies");
+      const response2 = await axios.get(
+        "https://cook-es-shops.herokuapp.com/product/cookies"
+      );
       console.log(response2.data);
       const cookieList = response2.data;
 
@@ -60,11 +64,15 @@ const CookieMenuCard = ({ item }) => {
       await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
         id: _id,
       });
-      const response1 = await axios.get("https://cook-es-shops.herokuapp.com/wishlistproducts");
+      const response1 = await axios.get(
+        "https://cook-es-shops.herokuapp.com/wishlistproducts"
+      );
       console.log(response1.data);
       const wishlistList = response1.data;
 
-      const response2 = await axios.get("https://cook-es-shops.herokuapp.com/product/cookies");
+      const response2 = await axios.get(
+        "https://cook-es-shops.herokuapp.com/product/cookies"
+      );
       console.log(response2.data);
       const cookieList = response2.data;
 
