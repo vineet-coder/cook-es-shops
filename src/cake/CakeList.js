@@ -26,9 +26,15 @@ export const CakeList = () => {
     (async function () {
       setIsLoader(true);
       try {
-        const cakeResponse = await axios.get(`/product/cakes`);
-        const cartResponse = await axios.get(`cartproducts`);
-        const wishlistResponse = await axios.get(`wishlistproducts`);
+        const cakeResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/product/cakes`
+        );
+        const cartResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/cartproducts`
+        );
+        const wishlistResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/wishlistproducts`
+        );
 
         dispatch({
           type: "INITIALIZE_DATA",
