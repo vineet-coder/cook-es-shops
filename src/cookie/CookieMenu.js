@@ -32,7 +32,7 @@ const CookieMenuCard = ({ item }) => {
 
   const addToCart = async (_id) => {
     try {
-      await axios.post("/cartproducts", {
+      await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: _id,
         qnt: 1,
       });
