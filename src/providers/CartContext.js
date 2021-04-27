@@ -93,6 +93,41 @@ export const CartProvider = ({ children }) => {
           // ),
           // productPage: [{ ...state.productPage[0], cart: true }],
         };
+
+      case "ADD_TO_CART_FROM_PRODUCTPAGE":
+        return {
+          ...state,
+          productPage: [value.payload1],
+          cartListItem: value.payload2,
+
+          // Data: {
+          //   ...state.Data,
+
+          //   [value.category]: value.payload2,
+          // },
+          // wishlistListItem: state.wishlistListItem.map((item) =>
+          //   item.id === value.payload.id ? { ...item, cart: true } : { ...item }
+          // ),
+          // productPage: [{ ...state.productPage[0], cart: true }],
+        };
+
+      case "ADD_TO_WISHLIST_FROM_PRODUCTPAGE":
+        return {
+          ...state,
+          productPage: [value.payload1],
+          wishlistListItem: value.payload2,
+
+          // Data: {
+          //   ...state.Data,
+
+          //   [value.category]: value.payload2,
+          // },
+          // wishlistListItem: state.wishlistListItem.map((item) =>
+          //   item.id === value.payload.id ? { ...item, cart: true } : { ...item }
+          // ),
+          // productPage: [{ ...state.productPage[0], cart: true }],
+        };
+
       case "INCREMENT":
         return {
           ...state,

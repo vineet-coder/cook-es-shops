@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useCart } from "../providers/CartContext";
 
 export const Product = () => {
@@ -14,7 +15,64 @@ export const Product = () => {
 
 const ProductCard = ({ item }) => {
   const { dispatch } = useCart();
-  console.log(item);
+  // console.log(item);
+
+  // const addToCart = async () => {
+  //   const res = await axios.get("/product/rams");
+  //   console.log(res);
+  // };
+
+  const addToCart = async (_id) => {
+    try {
+      const { data } = await axios.post(
+        "https://cook-es-shops.herokuapp.com/cartproducts/products",
+        {
+          id: _id,
+          qnt: 1,
+        }
+      );
+      console.log(data);
+
+      const response = await axios.get(
+        "https://cook-es-shops.herokuapp.com/cartproducts"
+      );
+      console.log(response.data);
+
+      dispatch({
+        type: "ADD_TO_CART_FROM_PRODUCTPAGE",
+        payload1: data,
+        payload2: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addToWishlist = async (_id) => {
+    try {
+      const { data } = await axios.post(
+        "https://cook-es-shops.herokuapp.com/wishlistproducts/products",
+        {
+          id: _id,
+        }
+      );
+      console.log(data);
+
+      const response = await axios.get(
+        "https://cook-es-shops.herokuapp.com/wishlistproducts"
+      );
+      console.log(response.data);
+
+      dispatch({
+        type: "ADD_TO_WISHLIST_FROM_PRODUCTPAGE",
+        payload1: data,
+        payload2: response.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="product-sub-div">
       <div className="product-img-div">
@@ -24,12 +82,14 @@ const ProductCard = ({ item }) => {
           ) : (
             <button
               className="btn-cart"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_TO_CART",
-                  payload: item,
-                })
-              }
+              // onClick={() =>
+              //   dispatch({
+              //     type: "ADD_TO_CART",
+              //     payload: item,
+              //   })
+              // }
+
+              onClick={() => addToCart(item._id)}
             >
               Add to Cart
             </button>
@@ -40,13 +100,14 @@ const ProductCard = ({ item }) => {
           ) : (
             <button
               className="btn-wishlist"
-              onClick={() =>
-                dispatch({
-                  type: "ADD_TO_WISHLIST",
+              // onClick={() =>
+              //   dispatch({
+              //     type: "ADD_TO_WISHLIST",
 
-                  payload: item,
-                })
-              }
+              //     payload: item,
+              //   })
+              // }
+              onClick={() => addToWishlist(item._id)}
             >
               Add to Wishlist
             </button>
