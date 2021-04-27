@@ -26,7 +26,7 @@ export const CupCakeList = () => {
     (async function () {
       setIsLoader(true);
       try {
-        const cupcakeResponse = await axios.get(`/api/cupcakes`);
+        const cupcakeResponse = await axios.get(`/product/cupcakes`);
         const cartResponse = await axios.get(`cartproducts`);
         const wishlistResponse = await axios.get(`wishlistproducts`);
 

@@ -40,7 +40,7 @@ const BrownieMenuCard = ({ item }) => {
       // console.log(response1.data);
       const cartList = response1.data;
 
-      const response2 = await axios.get("api/brownies");
+      const response2 = await axios.get("product/brownies");
 
       // console.log(response2.data);
       const brownieList = response2.data;
@@ -65,7 +65,7 @@ const BrownieMenuCard = ({ item }) => {
       // console.log(response1.data);
       const wishlistList = response1.data;
 
-      const response2 = await axios.get("api/brownies");
+      const response2 = await axios.get("product/brownies");
       // console.log(response2.data);
       const brownieList = response2.data;
 

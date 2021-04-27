@@ -26,7 +26,7 @@ export const CookiesList = () => {
     (async function () {
       setIsLoader(true);
       try {
-        const cakeResponse = await axios.get(`/api/cookies`);
+        const cakeResponse = await axios.get(`/product/cookies`);
         const cartResponse = await axios.get(`cartproducts`);
         const wishlistResponse = await axios.get(`wishlistproducts`);
 

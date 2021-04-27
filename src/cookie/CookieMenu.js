@@ -40,7 +40,7 @@ const CookieMenuCard = ({ item }) => {
       console.log(response1.data);
       const cartList = response1.data;
 
-      const response2 = await axios.get("api/cookies");
+      const response2 = await axios.get("product/cookies");
       console.log(response2.data);
       const cookieList = response2.data;
 
@@ -64,7 +64,7 @@ const CookieMenuCard = ({ item }) => {
       console.log(response1.data);
       const wishlistList = response1.data;
 
-      const response2 = await axios.get("api/cookies");
+      const response2 = await axios.get("product/cookies");
       console.log(response2.data);
       const cookieList = response2.data;
 

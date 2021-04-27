@@ -39,7 +39,7 @@ const CupCakeMenuCard = ({ item }) => {
       console.log(response1.data);
       const cartList = response1.data;
 
-      const response2 = await axios.get("api/cupcakes");
+      const response2 = await axios.get("product/cupcakes");
       console.log(response2.data);
       const cupcakeList = response2.data;
 
@@ -63,7 +63,7 @@ const CupCakeMenuCard = ({ item }) => {
       console.log(response1.data);
       const wishlistList = response1.data;
 
-      const response2 = await axios.get("api/cupcakes");
+      const response2 = await axios.get("product/cupcakes");
       console.log(response2.data);
       const cupcakeList = response2.data;
 
