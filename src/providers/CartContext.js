@@ -6,7 +6,6 @@ import {
   useReducer,
   useState,
 } from "react";
-// import Data from "../data/index";
 
 const CartContext = createContext();
 
@@ -88,10 +87,6 @@ export const CartProvider = ({ children }) => {
 
             [value.category]: value.payload2,
           },
-          // wishlistListItem: state.wishlistListItem.map((item) =>
-          //   item.id === value.payload.id ? { ...item, cart: true } : { ...item }
-          // ),
-          // productPage: [{ ...state.productPage[0], cart: true }],
         };
 
       case "ADD_TO_CART_FROM_PRODUCTPAGE":
@@ -99,16 +94,6 @@ export const CartProvider = ({ children }) => {
           ...state,
           productPage: [value.payload1],
           cartListItem: value.payload2,
-
-          // Data: {
-          //   ...state.Data,
-
-          //   [value.category]: value.payload2,
-          // },
-          // wishlistListItem: state.wishlistListItem.map((item) =>
-          //   item.id === value.payload.id ? { ...item, cart: true } : { ...item }
-          // ),
-          // productPage: [{ ...state.productPage[0], cart: true }],
         };
 
       case "ADD_TO_WISHLIST_FROM_PRODUCTPAGE":
@@ -116,16 +101,6 @@ export const CartProvider = ({ children }) => {
           ...state,
           productPage: [value.payload1],
           wishlistListItem: value.payload2,
-
-          // Data: {
-          //   ...state.Data,
-
-          //   [value.category]: value.payload2,
-          // },
-          // wishlistListItem: state.wishlistListItem.map((item) =>
-          //   item.id === value.payload.id ? { ...item, cart: true } : { ...item }
-          // ),
-          // productPage: [{ ...state.productPage[0], cart: true }],
         };
 
       case "INCREMENT":
@@ -306,7 +281,7 @@ export const CartProvider = ({ children }) => {
   }
 
   const populorState = getPopulorData(state);
-  console.log(state);
+  // console.log(state);
 
   const discountedState = getDiscountedData(populorState);
 

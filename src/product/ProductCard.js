@@ -1,9 +1,28 @@
 import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router";
 import { useCart } from "../providers/CartContext";
 
 export const Product = () => {
-  const { state } = useCart();
+  // const { state } = useCart();
 
+  const { productId } = useParams();
+  const { dispatch, state } = useCart();
+  useEffect(() => {
+    (async function () {
+      try {
+        const res = await axios.get(
+          `https://cook-es-shops.herokuapp.com/product/${productId}`
+        );
+        dispatch({
+          type: "GO_TO_PRODUCT_PAGE",
+          payload: res.data,
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
   return (
     <div className="product">
       {state.productPage.map((item) => (
