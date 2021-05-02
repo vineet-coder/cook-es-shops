@@ -1,6 +1,7 @@
 import { useRoute } from "../providers/RouteContext";
 
 import { FiAlignJustify } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export const ToggleHeader = () => {
   const { setRoute } = useRoute();
@@ -11,7 +12,17 @@ export const ToggleHeader = () => {
   return (
     <>
       <header className="toggle-header">
-        <div className="home-icon">home</div>
+        <Link
+          to="/"
+          className="header-top-left-element link"
+          // onClick={() => setRoute("home")}
+        >
+          <img
+            src="./images/company-logo.png"
+            alt="img"
+            className="header-logo-img"
+          />
+        </Link>
         <div className="toggle-button-div">
           <FiAlignJustify
             className="toggle-button"

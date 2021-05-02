@@ -10,6 +10,7 @@ import { ToggleSideNav } from "../components/ToggleSideNav";
 import axios from "axios";
 import { useEffect } from "react";
 import { useCart } from "../providers/CartContext";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { dispatch } = useCart();
@@ -17,9 +18,15 @@ export const Home = () => {
     (async function () {
       // setIsLoader(true);
       try {
-        const cakeResponse = await axios.get(`https://cook-es-shops.herokuapp.com/product/cakes`);
-        const cartResponse = await axios.get(`https://cook-es-shops.herokuapp.com/cartproducts`);
-        const wishlistResponse = await axios.get(`https://cook-es-shops.herokuapp.com/wishlistproducts`);
+        const cakeResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/product/cakes`
+        );
+        const cartResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/cartproducts`
+        );
+        const wishlistResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/wishlistproducts`
+        );
 
         dispatch({
           type: "INITIALIZE_DATA",
@@ -59,9 +66,18 @@ export const Home = () => {
             </div>
             <div className="super-content-content">
               <h5>WELCOME</h5>
-              <h2>About uor bakery</h2>
-              <p>Our bakery is falana dhikana</p>
-              <button className="btn">GET DISCRIPTION</button>
+              <h2 className="home-content-heading">
+                Our bakery is known for!!
+              </h2>
+              <p className="home-content-discription">
+                Our classic treats are made daily by in-house bakers, using the
+                freshest & finest ingredients. Come visit us for delicious,
+                sentimental sweets and a friendly, old-fashioned neighborhood
+                experience.
+              </p>
+              <Link to="/menus" className="header-button-dv link-sub-header">
+                <button className="btn">GET MENU</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -69,8 +85,7 @@ export const Home = () => {
           <div className="hot-seling-recipes">
             <div className="hot-seling-recipes-content">
               <h6 className="under-line">EXPLORE</h6>
-              <h1>Hot selling recipes</h1>
-              <small>Our bakery is falana dhikana</small>
+              <h2 className="home-content-heading">Hot Selling Recipes</h2>
             </div>
             <div className="hot-seling-recipes-card-list">
               <HotRecipeMenu />
@@ -81,8 +96,7 @@ export const Home = () => {
           <div className="home-menu">
             <div className="home-menu-content">
               <h5>SEE</h5>
-              <h2>Our menu</h2>
-              <p>Our bakery is falana dhikana</p>
+              <h2>Our Menu</h2>
             </div>
             <div className="home-menu-list">
               <HomeMenu />

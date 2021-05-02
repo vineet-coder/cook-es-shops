@@ -50,19 +50,19 @@ button:focus {
 .btn:hover {
   /* background-color: var(--secondary-color); */
   border-color: var(--third-color);
-  padding: 5rem;
-  padding: 1rem 4rem;
+  padding: 4rem;
+  padding: 1rem 3rem;
 }
 
 :root {
-  /* --primory-color: #e3e2df;
-  --secondary-color: #9a1750;
-  --third-color: #5d001e;
-  --fourth-color: #e3afbc; */
+  --primory-color: #fff;
+  --secondary-color: #7d2c6f;
+  --third-color: unset;
+  /* --fourth-color: #e3afbc; */
 
-  --primory-color: #f4f2cb;
+  /* --primory-color: #f4f2cb;
   --secondary-color: #c8743c;
-  --third-color: #533d24;
+  --third-color: #533d24; */
 }
 * {
   padding: 0;
@@ -294,12 +294,11 @@ ul {
 .content {
   width: 100%;
   height: 190rem;
-  /* background-color: burlywood; */
-  background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg");
+  background-color: var(--primory-color);
+  /* background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg"); */
 
   display: flex;
   flex-direction: column;
-  padding-top: 5rem;
   /* padding-bottom: 1rem; */
 
   justify-content: space-evenly;
@@ -309,6 +308,10 @@ ul {
   width: 90%;
   height: 20%;
   background-color: var(--primory-color);
+  /* box-shadow: 0px 0.1px 2rem gray; */
+
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 
   display: flex;
   flex-direction: column;
@@ -324,6 +327,9 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 }
 .home-content3 {
   width: 90%;
@@ -334,6 +340,9 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
 }
 
 .home-super-content {
@@ -409,7 +418,7 @@ ul {
 
   background-color: var(--primory-color);
   cursor: pointer;
-  box-shadow: 0.5rem 0.5rem 2rem gray;
+  box-shadow: 0.1rem 0.1rem 2rem gray;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -503,7 +512,9 @@ ul {
 .background-img-div {
   min-height: 100vh;
   width: 100%;
-  background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg");
+
+  background-color: var(--primory-color);
+  /* background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg"); */
 }
 .product-list {
   height: 100%;
@@ -512,8 +523,8 @@ ul {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: space-around;
-  padding-top: 8rem;
-  padding-bottom: 5rem;
+  padding-top: 5rem;
+  padding-bottom: 2rem;
 }
 .product-menu-card {
   height: 500px;
@@ -526,6 +537,7 @@ ul {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  box-shadow: 0.1rem 0.1rem 2rem gray;
 }
 .product-menu-card:hover {
   transform: scale(1.01);
@@ -1016,7 +1028,7 @@ ul {
   align-items: center;
 }
 .loader {
-  color: #ab4f4f;
+  color: var(--secondary-color);
   font-size: 90px;
   text-indent: -9999em;
   overflow: hidden;
@@ -1116,7 +1128,7 @@ ul {
 
 @media only screen and (max-width: 500px) {
   body {
-    color: brown;
+    color: var(--secondary-color);
     background-color: lightblue;
   }
   .toggle-header {
@@ -1126,8 +1138,8 @@ ul {
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    color: blueviolet;
-    background-color: rgb(8, 11, 44);
+    color: var(--primory-color);
+    background-color: var(--secondary-color);
     z-index: 1;
   }
 
@@ -1141,7 +1153,7 @@ ul {
     margin: 1rem;
   }
   .toggle-button {
-    color: brown;
+    color: var(--primory-color);
   }
   .home-menu-card {
     height: 100px;
@@ -1174,5 +1186,83 @@ ul {
     position: absolute;
     left: 90%;
     top: 2%;
+  }
+  .content {
+    height: 300rem;
+    /* padding-top: 5rem; */
+  }
+  .home-content1 {
+    height: 20%;
+  }
+  .home-content2 {
+    height: 30%;
+  }
+  .home-content3 {
+    height: 45%;
+  }
+  .home-super-content {
+    flex-direction: column;
+  }
+  .super-content-img-div {
+    width: 85%;
+    height: 60%;
+  }
+  .btn {
+    font-size: 1rem;
+    letter-spacing: 0.5rem;
+    padding: 0.5rem 0.5rem;
+  }
+  .home-content-heading {
+    text-align: center;
+  }
+  .super-content-img {
+    height: 95%;
+    width: 100%;
+  }
+  .home-content-discription {
+    text-align: center;
+    font-weight: 500;
+  }
+  .hot-recipe-menu {
+    flex-direction: column;
+  }
+
+  .hot-recipe-card {
+    width: 210px;
+    height: 230px;
+  }
+  .hot-seling-recipes-content {
+    height: 15%;
+  }
+  .hot-seling-recipes-card-list {
+    height: 85%;
+  }
+  .home-menu-card {
+    width: 210px;
+    height: 230px;
+  }
+  .home-menu-content {
+    height: 5%;
+  }
+  .home-menu-list {
+    height: 95%;
+  }
+  .hot-seling-recipes {
+    align-items: center;
+  }
+  .hot-seling-recipes-content {
+    align-items: center;
+  }
+  .header-top-left-element {
+    width: 65%;
+    padding-left: 0.5rem;
+  }
+  .hot-recipe-card-product-name {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .home-menu-card-product-name {
+    font-size: 1rem;
+    text-align: center;
   }
 }

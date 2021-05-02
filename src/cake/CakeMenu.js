@@ -20,15 +20,15 @@ const CakeMenuCard = ({ item }) => {
   const { setRoute, setProduct } = useRoute();
   const { dispatch } = useCart();
 
-  // const goToProductPage = (item) => {
-  //   // setRoute("PRODUCT");
-  //   console.log(item);
-  //   dispatch({
-  //     type: "GO_TO_PRODUCT_PAGE",
+  const goToProductPage = (item) => {
+    // setRoute("PRODUCT");
+    console.log(item);
+    dispatch({
+      type: "GO_TO_PRODUCT_PAGE",
 
-  //     payload: item,
-  //   });
-  // };
+      payload: item,
+    });
+  };
 
   const addToCart = async (_id) => {
     try {
@@ -89,12 +89,12 @@ const CakeMenuCard = ({ item }) => {
 
   return (
     <div className="product-menu-card ">
-      <Link to={`/products/${item._id}`} className="product-menu-img-div link">
+      <Link to="/products" className="product-menu-img-div link">
         <img
           src={item.image[0]}
           alt="img"
           className="product-menu-img"
-          // onClick={() => goToProductPage(item)}
+          onClick={() => goToProductPage(item)}
         />
       </Link>
       <div className="product-menu-card-content">

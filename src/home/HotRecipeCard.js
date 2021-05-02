@@ -17,7 +17,7 @@ const HotRecipeCard = ({ item }) => {
         <img src={item.image[0]} alt="img" className="hot-recipe-card-img" />
       </div>
       <div className="hot-recipe-card-content">
-        <h3>{item.name}</h3>
+        <h3 className="hot-recipe-card-product-name">{item.name}</h3>
         <h4>{item.price}</h4>
       </div>
     </div>

@@ -20,8 +20,8 @@ const HomeMenuCard = ({ item }) => {
         <img src={item.image[0]} alt="img" className="home-menu-card-img" />
       </div>
       <div className="home-menu-card-content">
-        <h3>{item.name}</h3>
-        <h2>{item.price}/- Rs.</h2>
+        <h3 className="home-menu-card-product-name">{item.name}</h3>
+        <h4>{item.price}/- Rs.</h4>
       </div>
     </Link>
   );
