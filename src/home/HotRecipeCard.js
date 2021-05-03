@@ -18,7 +18,7 @@ const HotRecipeCard = ({ item }) => {
       </div>
       <div className="hot-recipe-card-content">
         <h3 className="hot-recipe-card-product-name">{item.name}</h3>
-        <h4>{item.price}</h4>
+        <h4>{item.price}/- Rs.</h4>
       </div>
     </div>
   );

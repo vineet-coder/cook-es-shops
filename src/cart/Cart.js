@@ -80,7 +80,7 @@ export const Cart = () => {
                 ))}
               </ol>
               {state.cartListItem.length > 0 ? (
-                <p>Delaviry Change:</p>
+                <p className="delaviry-charges">Delaviry Change:</p>
               ) : (
                 <p></p>
               )}
@@ -93,7 +93,11 @@ export const Cart = () => {
                   </li>
                 ))}
               </ul>
-              {state.cartListItem.length > 0 ? <p>0 /- Rs.</p> : <p></p>}
+              {state.cartListItem.length > 0 ? (
+                <p className="delaviry-charges">0 /- Rs.</p>
+              ) : (
+                <p></p>
+              )}
             </div>
           </div>
           <div className="order-total">

@@ -15,7 +15,7 @@ export const CupCakeList = () => {
   const { state, dispatch, finalState, isLoader, setIsLoader } = useCart();
 
   const openRightNav = () => {
-    document.getElementById("right-nav-id").style.width = "30%";
+    document.getElementById("right-nav-id").style.width = "300px";
   };
 
   const closeRightNav = () => {
@@ -26,9 +26,15 @@ export const CupCakeList = () => {
     (async function () {
       setIsLoader(true);
       try {
-        const cupcakeResponse = await axios.get(`https://cook-es-shops.herokuapp.com/product/cupcakes`);
-        const cartResponse = await axios.get(`https://cook-es-shops.herokuapp.com/cartproducts`);
-        const wishlistResponse = await axios.get(`https://cook-es-shops.herokuapp.com/wishlistproducts`);
+        const cupcakeResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/product/cupcakes`
+        );
+        const cartResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/cartproducts`
+        );
+        const wishlistResponse = await axios.get(
+          `https://cook-es-shops.herokuapp.com/wishlistproducts`
+        );
 
         dispatch({
           type: "INITIALIZE_DATA",

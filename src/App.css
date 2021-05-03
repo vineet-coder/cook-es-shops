@@ -1,9 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
 .App {
   font-family: sans-serif;
   text-align: center;
 }
 body {
   color: var(--secondary-color);
+  word-spacing: 3px;
+
+  /* font-family: "Krona One", sans-serif; */
 }
 * {
   margin: 0;
@@ -196,7 +201,7 @@ ul {
   ); */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   padding-left: 3rem;
 }
@@ -292,6 +297,9 @@ ul {
   height: 5%;
 }
 .content {
+  font-family: "Vollkorn", serif;
+  word-spacing: 5px;
+  font-size: 1.2rem;
   width: 100%;
   height: 190rem;
   background-color: var(--primory-color);
@@ -333,7 +341,7 @@ ul {
 }
 .home-content3 {
   width: 90%;
-  height: 35%;
+  height: 40%;
 
   background-color: var(--primory-color);
   display: flex;
@@ -854,10 +862,11 @@ ul {
   width: 100%;
 }
 .cart-calcuation {
-  min-height: 400px;
+  height: 100%;
   width: 30%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--primory-color);
   margin: 5rem 1rem;
@@ -866,7 +875,7 @@ ul {
 .order-heading {
   background-color: transparent;
   width: 80%;
-  height: 50px;
+  height: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -875,14 +884,15 @@ ul {
 .ordered-item {
   background-color: transparent;
   width: 80%;
-  height: 250px;
+  height: 50%;
   display: flex;
   border-bottom: 1px solid var(--secondary-color);
+  padding-bottom: 1rem;
 }
 .order-item-list {
   background-color: transparent;
   width: 70%;
-  height: 250px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -902,7 +912,7 @@ ul {
 .order-price {
   background-color: transparent;
   width: 30%;
-  height: 250px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -911,8 +921,11 @@ ul {
 .order-total {
   background-color: transparent;
   width: 80%;
-  height: 100px;
+  height: 15%;
   display: flex;
+}
+.delaviry-charges {
+  padding: 1.5rem;
 }
 .total-heading {
   background-color: transparent;
@@ -996,6 +1009,7 @@ ul {
   color: var(--third-color);
   font-weight: bolder;
   font-size: 1.5rem;
+  font-family: "Vollkorn", serif;
 }
 .menu {
   display: grid;
@@ -1125,7 +1139,13 @@ ul {
     transform: rotate(360deg);
   }
 }
-
+.hot-recipe-card-product-name {
+  font-size: 1rem;
+  text-align: center;
+}
+.home-content-discription {
+  text-align: center;
+}
 @media only screen and (max-width: 500px) {
   body {
     color: var(--secondary-color);
@@ -1190,6 +1210,7 @@ ul {
   .content {
     height: 300rem;
     /* padding-top: 5rem; */
+    font-size: 1rem;
   }
   .home-content1 {
     height: 20%;
@@ -1257,12 +1278,67 @@ ul {
     width: 65%;
     padding-left: 0.5rem;
   }
-  .hot-recipe-card-product-name {
-    font-size: 1rem;
-    text-align: center;
-  }
+
   .home-menu-card-product-name {
     font-size: 1rem;
     text-align: center;
+  }
+  .menu {
+    grid-template-columns: 350px;
+    grid-template-rows: 300px;
+  }
+  .menu-background {
+    padding-top: 3rem;
+  }
+  .footer {
+    height: 75px;
+  }
+  .footer-list-item {
+    font-size: 2rem;
+  }
+  .footer-img {
+    width: 25%;
+  }
+  .product-menu-card {
+    margin: 1rem 2rem;
+  }
+  .product-menu-card-content {
+    width: 100%;
+    height: 45%;
+  }
+  .cart-background {
+    flex-direction: column;
+  }
+  .cart-div {
+    width: 100%;
+    font-size: 0.75rem;
+  }
+  .cart-calcuation {
+    width: 100%;
+    margin: 0rem;
+  }
+  .cart-card {
+    height: 190px;
+  }
+  .cart-card-sub-div {
+    width: 95%;
+  }
+  .cart-card-content-div {
+    font-size: 00.75rem;
+  }
+  .btn-cart {
+    font-size: 0.75rem;
+  }
+  .cart-card-img-div {
+    width: 35%;
+  }
+  .ordered-item {
+    font-size: 0.8rem;
+  }
+  .order-item-list {
+    width: 65%;
+  }
+  .order-price {
+    width: 35%;
   }
 }

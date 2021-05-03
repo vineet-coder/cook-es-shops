@@ -38,16 +38,16 @@ export const Menu = () => {
           <h1>MENU</h1>
         </div>
         <div className="menu">
-          <Link className="menu-card link" to="/CAKE">
+          <Link className="menu-card link" to="/cakes">
             <img src="./menu/cake.jpg" alt="img" className="menu-img" />
           </Link>
-          <Link className="menu-card link" to="/COOKIE">
+          <Link className="menu-card link" to="/cookies">
             <img src="./menu/cookie.jpg" alt="img" className="menu-img" />
           </Link>
-          <Link className="menu-card link" to="/CUPCAKE">
+          <Link className="menu-card link" to="/cupcakes">
             <img src="./menu/cupcake.jpg" alt="img" className="menu-img" />
           </Link>
-          <Link className="menu-card link" to="/BROWNIE">
+          <Link className="menu-card link" to="/brownies">
             <img src="./menu/brownie.jpg" alt="img" className="menu-img" />
           </Link>
         </div>

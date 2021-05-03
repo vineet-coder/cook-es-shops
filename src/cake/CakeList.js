@@ -15,7 +15,7 @@ export const CakeList = () => {
   const { state, dispatch, finalState, setIsLoader, isLoader } = useCart();
 
   const openRightNav = () => {
-    document.getElementById("right-nav-id").style.width = "30%";
+    document.getElementById("right-nav-id").style.width = "300px";
   };
 
   const closeRightNav = () => {

@@ -104,7 +104,7 @@ const CakeMenuCard = ({ item }) => {
             <label className="discount">({item.discount}% OFF)</label>{" "}
           </h2>
 
-          <p>{item.name} </p>
+          <h3>{item.name} </h3>
           <p>
             {/* <BiDish /> */}
             Cooking Status: {item.ready}

@@ -65,7 +65,7 @@ export const Home = () => {
               />
             </div>
             <div className="super-content-content">
-              <h5>WELCOME</h5>
+              <h4>WELCOME</h4>
               <h2 className="home-content-heading">
                 Our bakery is known for!!
               </h2>

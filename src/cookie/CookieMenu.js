@@ -103,7 +103,7 @@ const CookieMenuCard = ({ item }) => {
             <label className="discount">({item.discount}% OFF)</label>{" "}
           </h2>
 
-          <p>{item.name} </p>
+          <h3>{item.name} </h3>
           <p>Cooking Status: {item.ready}</p>
         </div>
         <div className="card-btn-div">

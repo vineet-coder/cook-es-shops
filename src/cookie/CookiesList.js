@@ -15,7 +15,7 @@ export const CookiesList = () => {
   const { state, dispatch, finalState, isLoader, setIsLoader } = useCart();
 
   const openRightNav = () => {
-    document.getElementById("right-nav-id").style.width = "30%";
+    document.getElementById("right-nav-id").style.width = "300px";
   };
 
   const closeRightNav = () => {
