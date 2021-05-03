@@ -111,15 +111,16 @@ export const ProductCard = ({ item }) => {
         <div className="product-content">
           <div className="product-price">
             <div className="product-price-main">
-              <h4>{item.name} </h4>
+              <h2>{item.name} </h2>
 
               <h1>{item.price}/- Rs. </h1>
-            </div>
-            <div className="product-price-discount">
-              <h4>{item.name} </h4>
 
-              <h1>{item.price}/- Rs. </h1>
+              <h4>
+                {item.discount}% OFF<label>(for limited time)</label>
+              </h4>
+              <h4>Cooking status: {item.ready} </h4>
             </div>
+            {/* <div className="product-price-discount"></div> */}
           </div>
           <div className="product-description">
             <div className="product-details">
