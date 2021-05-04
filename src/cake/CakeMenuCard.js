@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 export const CakeMenuCard = ({ item }) => {
-  const { dispatch } = useCart();
+  const { dispatch, setIsAddLoading } = useCart();
 
   const goToProductPage = (item) => {
     dispatch({
@@ -15,6 +15,7 @@ export const CakeMenuCard = ({ item }) => {
   };
 
   const addToCart = async (_id) => {
+    setIsAddLoading(true);
     try {
       await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: _id,
@@ -36,12 +37,15 @@ export const CakeMenuCard = ({ item }) => {
         payload2: cakeList,
         category: "cake",
       });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   const addToWishlist = async (_id) => {
+    setIsAddLoading(true);
+
     try {
       await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
         id: _id,
@@ -62,6 +66,7 @@ export const CakeMenuCard = ({ item }) => {
         payload2: cakeList,
         category: "cake",
       });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }

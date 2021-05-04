@@ -7,9 +7,10 @@ import { Footer } from "../components/Footer";
 import axios from "axios";
 import { useEffect } from "react";
 import { Loader } from "../components/Loader";
+import { AddProductLoder } from "../components/AddProductLoder";
 
 export const Wishlist = () => {
-  const { state, dispatch, setIsLoader, isLoader } = useCart();
+  const { state, dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
 
   useEffect(() => {
     (async function () {
@@ -42,6 +43,8 @@ export const Wishlist = () => {
 
   return (
     <>
+      {isAddLoading && <AddProductLoder />}
+
       <ToggleHeader />
       <ToggleSideNav />
       <Header />
@@ -51,7 +54,10 @@ export const Wishlist = () => {
       ) : state.wishlistListItem.length === 0 ? (
         <div className="empty-wishlist-card">
           {" "}
-          <h1 className="empty-wishlist-heading"> You haven't add anythimg in the wishlist yet... </h1>
+          <h1 className="empty-wishlist-heading">
+            {" "}
+            You haven't add anythimg in the wishlist yet...{" "}
+          </h1>
         </div>
       ) : (
         <div className="background-img-div">

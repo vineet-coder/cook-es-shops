@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 export const WishlistCard = ({ item }) => {
-  const { dispatch } = useCart();
+  const { dispatch, setIsAddLoading } = useCart();
 
   const goToProductPage = (item) => {
     dispatch({
@@ -13,6 +13,8 @@ export const WishlistCard = ({ item }) => {
     });
   };
   const addTocart = async (item) => {
+    setIsAddLoading(true);
+
     try {
       await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: item.id._id,
@@ -34,12 +36,15 @@ export const WishlistCard = ({ item }) => {
         payload1: cartList,
         payload2: item,
       });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   const removeFromWishist = async (item) => {
+    setIsAddLoading(true);
+
     try {
       await axios.delete(
         "https://cook-es-shops.herokuapp.com/wishlistproducts",
@@ -49,6 +54,7 @@ export const WishlistCard = ({ item }) => {
       );
 
       dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }

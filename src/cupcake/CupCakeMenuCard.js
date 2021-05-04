@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../providers/CartContext";
 
 export const CupCakeMenuCard = ({ item }) => {
-  const { dispatch } = useCart();
+  const { dispatch, setIsAddLoading } = useCart();
 
   const goToProductPage = (item) => {
     dispatch({
@@ -14,6 +14,8 @@ export const CupCakeMenuCard = ({ item }) => {
   };
 
   const addToCart = async (_id) => {
+    setIsAddLoading(true);
+
     try {
       await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: _id,
@@ -35,12 +37,15 @@ export const CupCakeMenuCard = ({ item }) => {
         payload2: cupcakeList,
         category: "cupcake",
       });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
 
   const addToWishlist = async (_id) => {
+    setIsAddLoading(true);
+
     try {
       await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
         id: _id,
@@ -61,6 +66,7 @@ export const CupCakeMenuCard = ({ item }) => {
         payload2: cupcakeList,
         category: "cupcake",
       });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }

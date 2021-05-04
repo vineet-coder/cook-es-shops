@@ -4,6 +4,8 @@ const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [isLoader, setIsLoader] = useState(true);
+  const [isAddLoading, setIsAddLoading] = useState(false);
+
   const [state, dispatch] = useReducer(reducer, {
     wishlistListItem: [],
     cartListItem: [],
@@ -283,6 +285,8 @@ export const CartProvider = ({ children }) => {
         finalState,
         isLoader,
         setIsLoader,
+        isAddLoading,
+        setIsAddLoading,
       }}
     >
       {children}

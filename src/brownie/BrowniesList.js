@@ -10,9 +10,10 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Loader } from "../components/Loader";
 import { FilterNav } from "../components/FilterNav";
+import { AddProductLoder } from "../components/AddProductLoder";
 
 export const BrowniesList = () => {
-  const { dispatch, isLoader, setIsLoader } = useCart();
+  const { dispatch, isLoader, setIsLoader, isAddLoading } = useCart();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "300px";
@@ -48,6 +49,8 @@ export const BrowniesList = () => {
   }, []);
   return (
     <>
+      {isAddLoading && <AddProductLoder />}
+
       <ToggleHeader />
       <ToggleSideNav />
       <Header />

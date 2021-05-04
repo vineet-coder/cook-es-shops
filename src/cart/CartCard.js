@@ -4,7 +4,7 @@ import { MdDeleteForever } from "react-icons/md";
 import axios from "axios";
 
 export const CartCard = ({ item }) => {
-  const { dispatch } = useCart();
+  const { dispatch, setIsAddLoading } = useCart();
   const goToProductPage = (item) => {
     dispatch({
       type: "GO_TO_PRODUCT_PAGE_FROM_CART",
@@ -14,13 +14,15 @@ export const CartCard = ({ item }) => {
   };
 
   const removeFromCart = async (item) => {
-    console.log(item);
+    setIsAddLoading(true);
+
     try {
       await axios.delete("https://cook-es-shops.herokuapp.com/cartproducts", {
         data: { cartProductId: item._id, productId: item.id._id },
       });
 
       dispatch({ type: "REMOVE_FROM_CART", payload: item });
+      setIsAddLoading(false);
     } catch (error) {
       console.log(error);
     }

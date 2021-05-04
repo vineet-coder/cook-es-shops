@@ -7,9 +7,10 @@ import axios from "axios";
 import { useEffect } from "react";
 import { CartCard } from "./CartCard";
 import { Loader } from "../components/Loader";
+import { AddProductLoder } from "../components/AddProductLoder";
 
 export const Cart = () => {
-  const { state, setIsLoader, dispatch, isLoader } = useCart();
+  const { state, setIsLoader, dispatch, isLoader, isAddLoading } = useCart();
 
   useEffect(() => {
     (async function () {
@@ -49,6 +50,8 @@ export const Cart = () => {
 
   return (
     <>
+      {isAddLoading && <AddProductLoder />}
+
       <ToggleHeader />
       <ToggleSideNav />
 
