@@ -4,7 +4,7 @@ export const HotRecipeMenu = () => {
   return (
     <div className="hot-recipe-menu">
       {hotRecipeData.map((item) => (
-        <HotRecipeCard item={item} />
+        <HotRecipeCard key={item.name} item={item} />
       ))}
     </div>
   );

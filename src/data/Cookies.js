@@ -1,353 +1,353 @@
-export const CookiesData = [
-  {
-    id: 11,
+// export const CookiesData = [
+//   {
+//     id: 11,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: false,
+//     isReady: false,
 
-    ready: "It will take  some time",
+//     ready: "It will take  some time",
 
-    isDiscount: false,
+//     isDiscount: false,
 
-    discount: 0,
+//     discount: 0,
 
-    isPopulor: true,
+//     isPopulor: true,
 
-    cart: false,
+//     cart: false,
 
-    name: "Nutella Stuffed Cookies",
+//     name: "Nutella Stuffed Cookies",
 
-    image: [
-      "./cookies/Nutella-Stuffed-Cookie1.jpg",
-      "./cookies/Nutella-Stuffed-Cookie2.jpg",
-    ],
-    price: 99,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Enjoy Taste of Nutella",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
+//     image: [
+//       "./cookies/Nutella-Stuffed-Cookie1.jpg",
+//       "./cookies/Nutella-Stuffed-Cookie2.jpg",
+//     ],
+//     price: 99,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Enjoy Taste of Nutella",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
 
-  {
-    id: 12,
+//   {
+//     id: 12,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: true,
+//     isReady: true,
 
-    ready: "READY TO EAT",
+//     ready: "READY TO EAT",
 
-    isDiscount: true,
+//     isDiscount: true,
 
-    discount: 10,
+//     discount: 10,
 
-    isPopulor: false,
+//     isPopulor: false,
 
-    cart: false,
+//     cart: false,
 
-    name: "Lotus Stuffed Cookies",
+//     name: "Lotus Stuffed Cookies",
 
-    image: [
-      "./cookies/Lotus-Stuffed-Cookies1.jpg",
-      "./cookies/Lotus-Stuffed-Cookies2.jpg",
-    ],
-    price: 89,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
-  {
-    id: 13,
+//     image: [
+//       "./cookies/Lotus-Stuffed-Cookies1.jpg",
+//       "./cookies/Lotus-Stuffed-Cookies2.jpg",
+//     ],
+//     price: 89,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
+//   {
+//     id: 13,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: true,
+//     isReady: true,
 
-    ready: "READY TO EAT",
+//     ready: "READY TO EAT",
 
-    isDiscount: true,
+//     isDiscount: true,
 
-    discount: 10,
+//     discount: 10,
 
-    isPopulor: false,
+//     isPopulor: false,
 
-    cart: false,
+//     cart: false,
 
-    name: "Chocolate Chip Butter cookies",
+//     name: "Chocolate Chip Butter cookies",
 
-    image: [
-      "./cookies/Chocolate-Chip-Butter-Cookies1.jpg",
-      "./cookies/Chocolate-Chip-Butter-Cookies2.jpg",
-    ],
-    price: 89,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
+//     image: [
+//       "./cookies/Chocolate-Chip-Butter-Cookies1.jpg",
+//       "./cookies/Chocolate-Chip-Butter-Cookies2.jpg",
+//     ],
+//     price: 89,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
 
-  {
-    id: 14,
+//   {
+//     id: 14,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: false,
+//     isReady: false,
 
-    ready: "It will take  some time",
+//     ready: "It will take  some time",
 
-    isDiscount: false,
+//     isDiscount: false,
 
-    discount: 0,
+//     discount: 0,
 
-    isPopulor: true,
+//     isPopulor: true,
 
-    cart: false,
+//     cart: false,
 
-    name: "Brookies - Cookies & Brownie Cross",
+//     name: "Brookies - Cookies & Brownie Cross",
 
-    image: [
-      "./cookies/Brookies-Cookies-&-Brownie-Cross1.jpg",
-      "./cookies/Brookies-Cookies-&-Brownie-Cross2.jpg",
-    ],
-    price: 99,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
+//     image: [
+//       "./cookies/Brookies-Cookies-&-Brownie-Cross1.jpg",
+//       "./cookies/Brookies-Cookies-&-Brownie-Cross2.jpg",
+//     ],
+//     price: 99,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
 
-  {
-    id: 15,
+//   {
+//     id: 15,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: true,
+//     isReady: true,
 
-    ready: "READY TO EAT",
+//     ready: "READY TO EAT",
 
-    isDiscount: true,
+//     isDiscount: true,
 
-    discount: 20,
+//     discount: 20,
 
-    isPopulor: true,
+//     isPopulor: true,
 
-    cart: false,
+//     cart: false,
 
-    name: "Dark Chocolate Digestive Biscuit",
+//     name: "Dark Chocolate Digestive Biscuit",
 
-    image: [
-      "./cookies/Dark-Chocolate-Digestive-Biscuit1.jpg",
-      "./cookies/Dark-Chocolate-Digestive-Biscuit2.jpg",
-    ],
-    price: 79,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
+//     image: [
+//       "./cookies/Dark-Chocolate-Digestive-Biscuit1.jpg",
+//       "./cookies/Dark-Chocolate-Digestive-Biscuit2.jpg",
+//     ],
+//     price: 79,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
 
-  {
-    id: 16,
+//   {
+//     id: 16,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: false,
+//     isReady: false,
 
-    ready: "It will take  some time",
+//     ready: "It will take  some time",
 
-    isDiscount: false,
+//     isDiscount: false,
 
-    discount: 0,
+//     discount: 0,
 
-    isPopulor: false,
+//     isPopulor: false,
 
-    cart: false,
+//     cart: false,
 
-    name: "Caramel Pecan cookies",
+//     name: "Caramel Pecan cookies",
 
-    image: [
-      "./cookies/Caramel-Pecan-cookies1.jpg",
-      "./cookies/Caramel-Pecan-cookies2.jpg",
-    ],
-    price: 79,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
+//     image: [
+//       "./cookies/Caramel-Pecan-cookies1.jpg",
+//       "./cookies/Caramel-Pecan-cookies2.jpg",
+//     ],
+//     price: 79,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
 
-  {
-    id: 17,
+//   {
+//     id: 17,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: true,
+//     isReady: true,
 
-    ready: "READY TO EAT",
+//     ready: "READY TO EAT",
 
-    isDiscount: false,
+//     isDiscount: false,
 
-    discount: 0,
+//     discount: 0,
 
-    isPopulor: true,
+//     isPopulor: true,
 
-    cart: false,
+//     cart: false,
 
-    name: "Oats Chocolate Chip Cookies",
+//     name: "Oats Chocolate Chip Cookies",
 
-    image: [
-      "./cookies/Oats-Chocolate-Chip-Cookies1.jpg",
-      "./cookies/Oats-Chocolate-Chip-Cookies2.jpg",
-    ],
-    price: 79,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
+//     image: [
+//       "./cookies/Oats-Chocolate-Chip-Cookies1.jpg",
+//       "./cookies/Oats-Chocolate-Chip-Cookies2.jpg",
+//     ],
+//     price: 79,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
 
-  {
-    id: 18,
+//   {
+//     id: 18,
 
-    category: "cookie",
+//     category: "cookie",
 
-    quantity: 1,
+//     quantity: 1,
 
-    wishlist: false,
+//     wishlist: false,
 
-    isReady: false,
+//     isReady: false,
 
-    ready: "It will take  some time",
+//     ready: "It will take  some time",
 
-    isDiscount: false,
+//     isDiscount: false,
 
-    discount: 0,
+//     discount: 0,
 
-    isPopulor: false,
+//     isPopulor: false,
 
-    cart: false,
+//     cart: false,
 
-    name: "Pistachio Almond Butter Cookies",
+//     name: "Pistachio Almond Butter Cookies",
 
-    image: [
-      "./cookies/Pistachio-Almond-ButterCookies1.jpg",
-      "./cookies/Pistachio-Almond-ButterCookies2.jpg",
-    ],
-    price: 99,
-    Description: {
-      Details: [
-        " No of Pieces- 6 Pieces",
-        "Approx Weight 50 gram per piece",
-        "Freshly baked",
-        "Signature Collection",
-        "Perfectly Crunchy from outside & Chewy from inside",
-      ],
-      Instructions: [
-        "Store the cookies in a cool, dry place.",
-        "Once you open the package, store the remaining cookies in a tightly sealed container.",
-        "Please refer to the expiration date on the package and consume them before that.",
-      ],
-    },
-  },
-];
+//     image: [
+//       "./cookies/Pistachio-Almond-ButterCookies1.jpg",
+//       "./cookies/Pistachio-Almond-ButterCookies2.jpg",
+//     ],
+//     price: 99,
+//     Description: {
+//       Details: [
+//         " No of Pieces- 6 Pieces",
+//         "Approx Weight 50 gram per piece",
+//         "Freshly baked",
+//         "Signature Collection",
+//         "Perfectly Crunchy from outside & Chewy from inside",
+//       ],
+//       Instructions: [
+//         "Store the cookies in a cool, dry place.",
+//         "Once you open the package, store the remaining cookies in a tightly sealed container.",
+//         "Please refer to the expiration date on the package and consume them before that.",
+//       ],
+//     },
+//   },
+// ];

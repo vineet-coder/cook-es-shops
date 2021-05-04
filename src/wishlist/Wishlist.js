@@ -48,7 +48,7 @@ export const Wishlist = () => {
       <div className="background-img-div">
         <div className="product-list">
           {state.wishlistListItem.map((item) => (
-            <WishlistCard item={item} />
+            <WishlistCard key={item._id} item={item} />
           ))}
         </div>
       </div>

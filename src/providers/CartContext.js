@@ -1,11 +1,4 @@
-import axios from "axios";
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useState,
-} from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 
 const CartContext = createContext();
 
@@ -30,8 +23,6 @@ export const CartProvider = ({ children }) => {
     Populor: false,
     productPage: [],
   });
-
-  console.log(state);
 
   function reducer(state, value) {
     switch (value.type) {
@@ -140,8 +131,6 @@ export const CartProvider = ({ children }) => {
 
             [value.category]: value.payload2,
           },
-
-          // productPage: [{ ...state.productPage[0], wishlist: true }],
         };
       case "MOVE_TO_CART_FROM_WISHLIST":
         return {
@@ -281,7 +270,6 @@ export const CartProvider = ({ children }) => {
   }
 
   const populorState = getPopulorData(state);
-  // console.log(state);
 
   const discountedState = getDiscountedData(populorState);
 

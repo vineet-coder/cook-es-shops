@@ -16,7 +16,6 @@ export const Home = () => {
   const { dispatch } = useCart();
   useEffect(() => {
     (async function () {
-      // setIsLoader(true);
       try {
         const cakeResponse = await axios.get(
           `https://cook-es-shops.herokuapp.com/product/cakes`
@@ -36,7 +35,6 @@ export const Home = () => {
 
           category: "cake",
         });
-        // setIsLoader(false);
       } catch (error) {
         console.log(error);
       }
@@ -52,9 +50,7 @@ export const Home = () => {
       <SubHeader />
 
       <div className="content">
-        {/* <div className="home-content1">
-          <Carousel />
-        </div> */}
+   
         <div className="home-content1">
           <div className="home-super-content">
             <div className="super-content-img-div">

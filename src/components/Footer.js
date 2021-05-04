@@ -1,10 +1,8 @@
-import { useRoute } from "../providers/RouteContext";
 import { SiGmail } from "react-icons/si";
 import { AiOutlineTwitter } from "react-icons/ai";
 import { FiInstagram } from "react-icons/fi";
 
 export const Footer = () => {
-  const { setRoute } = useRoute();
   return (
     <>
       <footer className="footer">

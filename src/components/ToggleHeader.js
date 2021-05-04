@@ -1,10 +1,8 @@
-import { useRoute } from "../providers/RouteContext";
 
 import { FiAlignJustify } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 export const ToggleHeader = () => {
-  const { setRoute } = useRoute();
 
   const openSideNav = () => {
     document.getElementById("side-nav-id").style.width = "90%";
@@ -15,7 +13,6 @@ export const ToggleHeader = () => {
         <Link
           to="/"
           className="header-top-left-element link"
-          // onClick={() => setRoute("home")}
         >
           <img
             src="./images/company-logo.png"

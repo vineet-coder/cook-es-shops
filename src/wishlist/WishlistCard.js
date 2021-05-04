@@ -1,14 +1,11 @@
-import { useRoute } from "../providers/RouteContext";
 import { useCart } from "../providers/CartContext";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const WishlistCard = ({ item }) => {
-  const { setRoute } = useRoute();
   const { dispatch } = useCart();
 
   const goToProductPage = (item) => {
-    setRoute("PRODUCT");
-
     dispatch({
       type: "GO_TO_PRODUCT_PAGE_FROM_WISHLIST",
 
@@ -16,9 +13,6 @@ export const WishlistCard = ({ item }) => {
     });
   };
   const addTocart = async (item) => {
-    console.log(item);
-    console.log(item.id._id);
-
     try {
       await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
         id: item.id._id,
@@ -27,15 +21,13 @@ export const WishlistCard = ({ item }) => {
       const response = await axios.get(
         "https://cook-es-shops.herokuapp.com/cartproducts"
       );
-      console.log(response.data);
       const cartList = response.data;
-      const response2 = await axios.delete(
+      await axios.delete(
         "https://cook-es-shops.herokuapp.com/wishlistproducts",
         {
           data: { wishlistProductId: item._id, productId: item.id._id },
         }
       );
-      console.log(response2.data);
 
       dispatch({
         type: "MOVE_TO_CART_FROM_WISHLIST",
@@ -48,7 +40,6 @@ export const WishlistCard = ({ item }) => {
   };
 
   const removeFromWishist = async (item) => {
-    console.log(item);
     try {
       await axios.delete(
         "https://cook-es-shops.herokuapp.com/wishlistproducts",
@@ -57,8 +48,6 @@ export const WishlistCard = ({ item }) => {
         }
       );
 
-      // const response = await axios.get("/cartproduts");
-
       dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item });
     } catch (error) {
       console.log(error);
@@ -66,14 +55,14 @@ export const WishlistCard = ({ item }) => {
   };
   return (
     <div className="product-menu-card">
-      <div className="product-menu-img-div">
+      <Link to="/products" className="product-menu-img-div">
         <img
           src={item.id.image[0]}
           alt="img"
           className="product-menu-img"
-          onClick={() => goToProductPage(item)}
+          onClick={() => goToProductPage(item.id)}
         />
-      </div>
+      </Link>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">
           <h2>{item.id.price}/- Rs. </h2>
@@ -98,10 +87,6 @@ export const WishlistCard = ({ item }) => {
           )}
           <button
             className="btn-wishlist"
-            // onClick={() =>
-            //   dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item })
-            // }
-
             onClick={() => removeFromWishist(item)}
           >
             Remove

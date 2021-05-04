@@ -1,19 +1,17 @@
 import { Link } from "react-router-dom";
 import { homeMenuCardData } from "../data/HomeMenuCardData";
-import { useRoute } from "../providers/RouteContext";
 
 export const HomeMenu = () => {
   return (
     <div className="home-menu">
       {homeMenuCardData.map((item) => (
-        <HomeMenuCard item={item} />
+        <HomeMenuCard key={item.name} item={item} />
       ))}
     </div>
   );
 };
 
 const HomeMenuCard = ({ item }) => {
-  const { setRoute } = useRoute();
   return (
     <Link to="/menus" className="home-menu-card link">
       <div className="home-menu-card-img-div">

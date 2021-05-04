@@ -1024,6 +1024,7 @@ ul {
   background-color: transparent;
   opacity: 0.9;
   cursor: pointer;
+  position: relative;
 }
 .menu-card:hover {
   opacity: 1;
@@ -1032,6 +1033,15 @@ ul {
 .menu-img {
   height: 100%;
   width: 100%;
+}
+.menu-heading {
+  position: absolute;
+  top: 84%;
+  left: 36%;
+  font-size: 2rem;
+}
+.cupcake {
+  left: 29%;
 }
 .loader-div {
   height: 100vh;
@@ -1193,20 +1203,30 @@ ul {
     top: 0;
     left: 0;
     z-index: 1;
-    background-color: burlywood;
+    background-color: var(--primory-color);
+    color: var(--secondary-color);
     overflow-x: hidden;
     transition: all 0.5s;
   }
   .side-nav-list {
     padding-top: 2rem;
+    padding-left: 1rem;
   }
   .side-nav-list-item {
     padding: 1rem;
   }
+  .side-nav-list-item:hover {
+    color: var(--primory-color);
+    background-color: var(--secondary-color);
+
+    opacity: 0.9;
+  }
   .close-icon-div {
     position: absolute;
-    left: 90%;
-    top: 2%;
+    left: 89%;
+    top: 1.5%;
+    font-size: 2rem;
+    font-weight: 900;
   }
   .content {
     height: 300rem;

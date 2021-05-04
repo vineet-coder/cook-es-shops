@@ -1,5 +1,4 @@
 import { CookieMenu } from "./CookieMenu";
-import { BsX } from "react-icons/bs";
 import { RiNavigationLine } from "react-icons/ri";
 import { useCart } from "../providers/CartContext";
 import { ToggleHeader } from "../components/ToggleHeader";
@@ -10,16 +9,13 @@ import { ToggleSideNav } from "../components/ToggleSideNav";
 import axios from "axios";
 import { useEffect } from "react";
 import { Loader } from "../components/Loader";
+import { FilterNav } from "../components/FilterNav";
 
 export const CookiesList = () => {
-  const { state, dispatch, finalState, isLoader, setIsLoader } = useCart();
+  const {  dispatch,  isLoader, setIsLoader } = useCart();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "300px";
-  };
-
-  const closeRightNav = () => {
-    document.getElementById("right-nav-id").style.width = "0";
   };
 
   useEffect(() => {
@@ -62,64 +58,9 @@ export const CookiesList = () => {
       <button className="filter-nav-button" onClick={() => openRightNav()}>
         <RiNavigationLine />
       </button>
-      <div className="right-nav" id="right-nav-id">
-        <div className="close-icon-div-right-nav">
-          <BsX onClick={() => closeRightNav()} size="3rem" />
-        </div>
-        <div className="filter-div">
-          <fieldset className="fieldset">
-            <legend>Sort By</legend>
-            <div>
-              <input
-                type="radio"
-                onClick={() => dispatch({ type: "HIGH_TO_LOW" })}
-                checked={state.isHighToLow}
-              />{" "}
-              Price- High to Low
-            </div>
-            <div>
-              <input
-                type="radio"
-                onClick={() => dispatch({ type: "LOW_TO_HIGH" })}
-                checked={state.isLowToHigh}
-              />{" "}
-              Price- Low to High
-            </div>
-          </fieldset>
-        </div>
-        <div className="filter-div">
-          <fieldset className="fieldset">
-            <legend>Sort By</legend>
-            <div>
-              <input
-                type="checkbox"
-                onClick={() => dispatch({ type: "READY" })}
-                checked={finalState.Ready}
-              />{" "}
-              Fast pickup's
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                onClick={() => dispatch({ type: "DISCOUNT" })}
-                checked={finalState.Discount}
-              />{" "}
-              Discount
-            </div>
-            <div>
-              <input
-                type="checkbox"
-                onClick={() => dispatch({ type: "POPULOR" })}
-                checked={finalState.Populor}
-              />{" "}
-              Popular cakes
-            </div>
-          </fieldset>
-        </div>
-      </div>
+      <FilterNav />
 
       <div className="background-img-div">
-        {/* <div className="product-list"></div> */}
         {isLoader ? <Loader /> : <CookieMenu />}
       </div>
       <Footer />

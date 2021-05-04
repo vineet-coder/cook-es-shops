@@ -1,17 +1,8 @@
 import axios from "axios";
-import { useEffect } from "react";
-import { useParams } from "react-router";
 import { useCart } from "../providers/CartContext";
 
 export const ProductCard = ({ item }) => {
   const { dispatch } = useCart();
-  // console.log(item);
-
-  // const addToCart = async () => {
-  //   const res = await axios.get("/product/rams");
-  //   console.log(res);
-  // };
-  console.log(item);
 
   const addToCart = async (_id) => {
     try {
@@ -22,12 +13,10 @@ export const ProductCard = ({ item }) => {
           qnt: 1,
         }
       );
-      console.log(data);
 
       const response = await axios.get(
         "https://cook-es-shops.herokuapp.com/cartproducts"
       );
-      console.log(response.data);
 
       dispatch({
         type: "ADD_TO_CART_FROM_PRODUCTPAGE",
@@ -47,12 +36,10 @@ export const ProductCard = ({ item }) => {
           id: _id,
         }
       );
-      console.log(data);
 
       const response = await axios.get(
         "https://cook-es-shops.herokuapp.com/wishlistproducts"
       );
-      console.log(response.data);
 
       dispatch({
         type: "ADD_TO_WISHLIST_FROM_PRODUCTPAGE",
@@ -72,17 +59,7 @@ export const ProductCard = ({ item }) => {
             {item.cart ? (
               <button className="btn-cart">Added to Cart</button>
             ) : (
-              <button
-                className="btn-cart"
-                // onClick={() =>
-                //   dispatch({
-                //     type: "ADD_TO_CART",
-                //     payload: item,
-                //   })
-                // }
-
-                onClick={() => addToCart(item._id)}
-              >
+              <button className="btn-cart" onClick={() => addToCart(item._id)}>
                 Add to Cart
               </button>
             )}
@@ -92,13 +69,6 @@ export const ProductCard = ({ item }) => {
             ) : (
               <button
                 className="btn-wishlist"
-                // onClick={() =>
-                //   dispatch({
-                //     type: "ADD_TO_WISHLIST",
-
-                //     payload: item,
-                //   })
-                // }
                 onClick={() => addToWishlist(item._id)}
               >
                 Add to Wishlist
@@ -120,19 +90,18 @@ export const ProductCard = ({ item }) => {
               </h4>
               <h4>Cooking status: {item.ready} </h4>
             </div>
-            {/* <div className="product-price-discount"></div> */}
           </div>
           <div className="product-description">
             <div className="product-details">
               <h2>Details:</h2>
               {item.Description.Details.map((item) => (
-                <li>{item}</li>
+                <li key={item}>{item}</li>
               ))}
             </div>
             <div className="product-instrections">
               <h2>Details:</h2>
               {item.Description.Instructions.map((item) => (
-                <li>{item}</li>
+                <li key={item}>{item}</li>
               ))}
             </div>
           </div>
