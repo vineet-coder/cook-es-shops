@@ -6,9 +6,10 @@ import { ToggleHeader } from "../components/ToggleHeader";
 import { Footer } from "../components/Footer";
 import axios from "axios";
 import { useEffect } from "react";
+import { Loader } from "../components/Loader";
 
 export const Wishlist = () => {
-  const { state, dispatch, setIsLoader } = useCart();
+  const { state, dispatch, setIsLoader, isLoader } = useCart();
 
   useEffect(() => {
     (async function () {
@@ -45,13 +46,23 @@ export const Wishlist = () => {
       <ToggleSideNav />
       <Header />
 
-      <div className="background-img-div">
-        <div className="product-list">
-          {state.wishlistListItem.map((item) => (
-            <WishlistCard key={item._id} item={item} />
-          ))}
+      {isLoader ? (
+        <Loader />
+      ) : state.wishlistListItem.length === 0 ? (
+        <div className="empty-wishlist-card">
+          {" "}
+          <h1 className="empty-wishlist-heading"> You haven't add anythimg in the wishlist yet... </h1>
         </div>
-      </div>
+      ) : (
+        <div className="background-img-div">
+          <div className="product-list">
+            {state.wishlistListItem.map((item) => (
+              <WishlistCard key={item._id} item={item} />
+            ))}
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );
