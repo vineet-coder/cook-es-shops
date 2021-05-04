@@ -893,7 +893,7 @@ ul {
 }
 .ordered-item {
   background-color: transparent;
-  width: 80%;
+  width: 10s0%;
   height: 50%;
   display: flex;
   border-bottom: 1px solid var(--secondary-color);
