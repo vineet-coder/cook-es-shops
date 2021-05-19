@@ -1,14 +1,16 @@
 import "./App.css";
-import { CakeList } from "./cake/CakeList";
-import { CookiesList } from "./cookie/CookiesList";
-import { CupCakeList } from "./cupcake/CupCakeList";
-import { Home } from "./home/Home";
-import { BrowniesList } from "./brownie/BrowniesList";
-import { ProductPage } from "./product/ProductPage";
-import { Cart } from "./cart/Cart";
-import { Wishlist } from "./wishlist/Wishlist";
-import { Menu } from "./menu/Menu";
+import { CakeList } from "./pages/cake/CakeList";
+import { CookiesList } from "./pages/cookie/CookiesList";
+import { CupCakeList } from "./pages/cupcake/CupCakeList";
+import { Home } from "./pages/home/Home";
+import { BrowniesList } from "./pages/brownie/BrowniesList";
+import { ProductPage } from "./pages/product/ProductPage";
+import { Cart } from "./pages/cart/Cart";
+import { Wishlist } from "./pages/wishlist/Wishlist";
+import { Menu } from "./pages/menu/Menu";
 import { Routes, Route } from "react-router-dom";
+import { Login } from "./pages/login/Login";
+import { Profile } from "./pages/profile/Profile";
 
 export default function App() {
   return (
@@ -22,6 +24,8 @@ export default function App() {
       <Route path="/cart" element={<Cart />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/menus" element={<Menu />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

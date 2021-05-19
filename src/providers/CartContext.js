@@ -197,7 +197,7 @@ export const CartProvider = ({ children }) => {
         };
 
       default:
-        return console.log("heyyy");
+        return console.log("ERROR IN CART REDUCER");
     }
   }
 
