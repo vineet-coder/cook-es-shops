@@ -11,9 +11,11 @@ import { useEffect } from "react";
 import { Loader } from "../../components/loader/Loader";
 import { FilterNav } from "../../components/filterNav/FilterNav";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const CakeList = () => {
   const { dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
+  const { token } = useAuth();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "300px";
@@ -24,7 +26,9 @@ export const CakeList = () => {
       setIsLoader(true);
       try {
         const cakeResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/product/cakes`
+          // `https://cook-es-shops.herokuapp.com/product/cakes`
+          `http://localhost:8000/product/cakes`,
+          { headers: { authorization: token } }
         );
         const cartResponse = await axios.get(
           `https://cook-es-shops.herokuapp.com/cartproducts`

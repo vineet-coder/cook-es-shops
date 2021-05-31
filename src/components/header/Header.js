@@ -3,11 +3,15 @@ import { AiOutlineHeart } from "react-icons/ai";
 import { useCart } from "../../providers/CartContext";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../providers/loginProvider/LoginContext";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const Header = () => {
   const { state } = useCart();
   const { loginState } = useLogin();
-  console.log(loginState);
+  const { isUserLogin, userName } = useAuth();
+
+  // console.log(loginState);
+  console.log(userName?.split(" ")[0]);
   return (
     <>
       <header className="home-header">
@@ -26,9 +30,9 @@ export const Header = () => {
                 Menu
               </Link>
               <div className="header-list-item">Order</div>
-              {loginState.isLogin ? (
-                <Link to="/profile" className="header-list-item link-header">
-                  Profile
+              {isUserLogin ? (
+                <Link to="/login" className="header-list-item link-header">
+                  {userName?.split(" ")[0]}
                 </Link>
               ) : (
                 <Link to="/login" className="header-list-item link-header">

@@ -1,53 +1,120 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import { Header } from "../../components/header/Header";
+import { useAuth } from "../../providers/AuthProvider";
 import { useLogin } from "../../providers/loginProvider/LoginContext";
 import "./Login.css";
 import { LoginHandler } from "./Login.Utils";
 export const Login = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const { loginDispatch } = useLogin();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const {
+    setToken,
+    setLogin,
+    isUserLogin,
+    setUserName,
+    loginFailedModel,
+    setLoginFailedModel,
+  } = useAuth();
 
-  //   console.log(userName);
+  const LogInHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/login",
+        // `https://cook-es-shops.herokuapp.com/login`,
+
+        {
+          email,
+          password,
+        }
+      );
+      console.log(res);
+
+      setEmail("");
+      setPassword("");
+      loginUser(res);
+    } catch (error) {
+      setLoginFailedModel(true);
+      setEmail("");
+      setPassword("");
+    }
+    function loginUser(res) {
+      setLogin(true);
+
+      setToken(res.data.token);
+      navigate("/");
+      setUserName(res.data.userName);
+
+      localStorage?.setItem(
+        "login",
+        JSON.stringify({
+          isUserLoggedIn: true,
+          token: res.data.token,
+          name: res.data.userName,
+        })
+      );
+    }
+  };
+
+  function Logout() {
+    localStorage?.removeItem("login");
+    setLogin(false);
+    setToken(null);
+  }
+
   return (
     <div className="login-page">
-      <div class="main">
-        <p class="sign" align="center">
-          Sign in
+      {/* <Header /> */}
+      <div className="main-login">
+        <Link to="/" className=" link">
+          <img
+            src="./images/company-logo.png"
+            alt="img"
+            className="login-logo-img"
+          />
+        </Link>
+        <p className="login-sign" align="center">
+          Log In
         </p>
-        <form class="form1" />
+        <form className="form1" />
         <input
-          class="user-name "
-          type="text"
+          className="input"
+          type="email"
           align="center"
-          placeholder="Username"
-          onChange={(e) => setUserName(e.target.value)}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          class="pass"
+          className="input"
           type="password"
           align="center"
           placeholder="Password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <a
-          class="submit"
-          align="center"
-          onClick={() =>
-            LoginHandler(userName, password, loginDispatch, navigate)
-          }
-        >
-          Sign in
-        </a>
-        <p class="forgot" align="center">
+
+        <div className="login-signup-btn-div">
+          {isUserLogin ? (
+            <button className="submit" onClick={() => Logout()}>
+              Log Out
+            </button>
+          ) : (
+            <button className="submit" onClick={(e) => LogInHandler(e)}>
+              Log In
+            </button>
+          )}
+          <Link to="/signup">
+            <button className="submit">Sign Up</button>
+          </Link>
+        </div>
+
+        <p className="forgot" align="center">
           <a href="#" />
           Forgot Password?
         </p>
-
-        {/* <a class="submit" align="center">
-          Sign in
-        </a> */}
       </div>
     </div>
   );

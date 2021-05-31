@@ -10,7 +10,8 @@ import { Wishlist } from "./pages/wishlist/Wishlist";
 import { Menu } from "./pages/menu/Menu";
 import { Routes, Route } from "react-router-dom";
 import { Login } from "./pages/login/Login";
-import { Profile } from "./pages/profile/Profile";
+// import { Profile } from "./pages/profile/Profile";
+import { SignUp } from "./pages/signup/SignUp";
 
 export default function App() {
   return (
@@ -25,7 +26,7 @@ export default function App() {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/menus" element={<Menu />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 }

@@ -11,6 +11,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useCart } from "../../providers/CartContext";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const Home = () => {
   const { dispatch } = useCart();
