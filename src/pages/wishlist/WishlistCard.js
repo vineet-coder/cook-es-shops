@@ -1,10 +1,16 @@
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import {
+  addToCart,
+  removeFromCart,
+  removeFromWishlist,
+} from "../../utils/menu.utils";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const WishlistCard = ({ item }) => {
-  const { dispatch, setIsAddLoading } = useCart();
-
+  const { dispatch, setIsAddLoading, finalState } = useCart();
+  const { token } = useAuth();
   const goToProductPage = (item) => {
     dispatch({
       type: "GO_TO_PRODUCT_PAGE_FROM_WISHLIST",
@@ -12,58 +18,19 @@ export const WishlistCard = ({ item }) => {
       payload: item,
     });
   };
-  const addTocart = async (item) => {
-    setIsAddLoading(true);
 
-    try {
-      await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
-        id: item.id._id,
-        qnt: 1,
-      });
-      const response = await axios.get(
-        "https://cook-es-shops.herokuapp.com/cartproducts"
-      );
-      const cartList = response.data;
-      await axios.delete(
-        "https://cook-es-shops.herokuapp.com/wishlistproducts",
-        {
-          data: { wishlistProductId: item._id, productId: item.id._id },
-        }
-      );
+  let isProductInCart = finalState.cartListItem
+    ?.map((item) => item._id)
+    .includes(item._id);
 
-      dispatch({
-        type: "MOVE_TO_CART_FROM_WISHLIST",
-        payload1: cartList,
-        payload2: item,
-      });
-      setIsAddLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log({ isProductInCart });
 
-  const removeFromWishist = async (item) => {
-    setIsAddLoading(true);
-
-    try {
-      await axios.delete(
-        "https://cook-es-shops.herokuapp.com/wishlistproducts",
-        {
-          data: { wishlistProductId: item._id, productId: item.id._id },
-        }
-      );
-
-      dispatch({ type: "REMOVE_FROM_WISHLIST", payload: item });
-      setIsAddLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log(item);
   return (
     <div className="product-menu-card">
       <Link to="/products" className="product-menu-img-div">
         <img
-          src={item.id.image[0]}
+          src={item.image[0]}
           alt="img"
           className="product-menu-img"
           onClick={() => goToProductPage(item.id)}
@@ -71,12 +38,17 @@ export const WishlistCard = ({ item }) => {
       </Link>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">
-          <h2>{item.id.price}/- Rs. </h2>
-          <p>{item.id.name} </p>
+          <h2>{item.price}/- Rs. </h2>
+          <p>{item.name} </p>
         </div>
         <div className="card-btn-div">
-          {item.id.cart ? (
-            <button className="btn-cart">Added to Cart</button>
+          {isProductInCart ? (
+            <button
+              className="btn-cart"
+              onClick={() => removeFromCart(item._id, token, dispatch)}
+            >
+              Added to Cart
+            </button>
           ) : (
             <button
               className="btn-cart"
@@ -86,14 +58,16 @@ export const WishlistCard = ({ item }) => {
                   payload: item,
                 })
               }
-              onClick={() => addTocart(item)}
+              onClick={() =>
+                addToCart(item._id, token, dispatch, setIsAddLoading)
+              }
             >
               Move to cart
             </button>
           )}
           <button
             className="btn-wishlist"
-            onClick={() => removeFromWishist(item)}
+            onClick={() => removeFromWishlist(item._id, token, dispatch)}
           >
             Remove
           </button>

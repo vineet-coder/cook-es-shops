@@ -9,32 +9,36 @@ import { Footer } from "../../components/footer/Footer";
 import { ToggleSideNav } from "../../components/toggleSideNav/ToggleSideNav";
 import axios from "axios";
 import { useEffect } from "react";
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../providers/AuthProvider";
+import { ApiService } from "../../utils/ApiServices";
 
 export const Home = () => {
   const { dispatch } = useCart();
+  const { token } = useAuth();
   useEffect(() => {
     (async function () {
       try {
-        const cakeResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/product/cakes`
-        );
-        const cartResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/cartproducts`
-        );
-        const wishlistResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/wishlistproducts`
-        );
+        const cartResponse = await ApiService("get", "cartproducts", {
+          headers: { authorization: token },
+        });
+
+        console.log(cartResponse);
+
+        const wishlistResponse = await ApiService("get", "wishlistproducts", {
+          headers: { authorization: token },
+        });
+
+        console.log(wishlistResponse);
 
         dispatch({
           type: "INITIALIZE_DATA",
-          payload1: cakeResponse.data,
-          payload2: cartResponse.data,
-          payload3: wishlistResponse.data,
 
-          category: "cake",
+          payload: {
+            cartProducts: cartResponse.result[0]?.products,
+            wishlistProducts: wishlistResponse.result[0]?.products,
+          },
         });
       } catch (error) {
         console.log(error);

@@ -1,6 +1,6 @@
 import { FaShoppingCart } from "react-icons/fa";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { Link } from "react-router-dom";
 import { useLogin } from "../../providers/loginProvider/LoginContext";
 import { useAuth } from "../../providers/AuthProvider";
@@ -45,19 +45,21 @@ export const Header = () => {
           <div className="header-top-right-element">
             <Link to="/cart" className="cart link-header">
               cart <FaShoppingCart />{" "}
-              {state.cartListItem.length === 0 ? (
+              {state.cartListItem?.length === 0 ? (
                 <></>
               ) : (
-                <div className="cart-quantity">{state.cartListItem.length}</div>
+                <div className="cart-quantity">
+                  {state.cartListItem?.length}
+                </div>
               )}
             </Link>
             <Link to="/wishlist" className="wishlist link-header">
               wishlist <AiOutlineHeart />
-              {state.wishlistListItem.length === 0 ? (
+              {state.wishlistListItem?.length === 0 ? (
                 <div></div>
               ) : (
                 <div className="wishlist-quantity">
-                  {state.wishlistListItem.length}
+                  {state.wishlistListItem?.length}
                 </div>
               )}
             </Link>

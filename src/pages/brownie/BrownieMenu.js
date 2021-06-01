@@ -1,4 +1,4 @@
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { BrownieMenuCard } from "./BrownieMenuCard";
 
 export const BrownieMenu = () => {
@@ -6,7 +6,7 @@ export const BrownieMenu = () => {
 
   return (
     <div className="product-list">
-      {finalState.Data.brownie.map((item) => (
+      {finalState.Data.brownie?.map((item) => (
         <BrownieMenuCard key={item._id} item={item} />
       ))}
     </div>

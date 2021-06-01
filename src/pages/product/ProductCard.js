@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 
 export const ProductCard = ({ item }) => {
   const { dispatch } = useCart();

@@ -19,7 +19,7 @@ export const Footer = () => {
 
         <img
           src="./images/susie-ilus-header.png"
-          alt="fotterImg"
+          alt="footerImg"
           className="footer-img"
         />
       </footer>{" "}

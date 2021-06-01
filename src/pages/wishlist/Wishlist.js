@@ -1,4 +1,4 @@
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { WishlistCard } from "./WishlistCard";
 import { Header } from "../../components/header/Header";
 import { ToggleSideNav } from "../../components/toggleSideNav/ToggleSideNav";
@@ -8,33 +8,41 @@ import axios from "axios";
 import { useEffect } from "react";
 import { Loader } from "../../components/loader/Loader";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
+import { ApiService } from "../../utils/ApiServices";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const Wishlist = () => {
   const { state, dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
+  const { token } = useAuth();
 
   useEffect(() => {
     (async function () {
       setIsLoader(true);
       try {
-        const cakeResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/product/cakes`
-        );
-        const cartResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/cartproducts`
-        );
-        const wishlistResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/wishlistproducts`
-        );
+    
+
+        const cartResponse = await ApiService("get", "cartproducts", {
+          headers: { authorization: token },
+        });
+
+        console.log(cartResponse);
+
+        const wishlistResponse = await ApiService("get", "wishlistproducts", {
+          headers: { authorization: token },
+        });
+
+        setIsLoader(false);
 
         dispatch({
           type: "INITIALIZE_DATA",
-          payload1: cakeResponse.data,
-          payload2: cartResponse.data,
-          payload3: wishlistResponse.data,
-
           category: "cake",
+
+          payload: {
+            // data: cakeResponse,
+            cartProducts: cartResponse.result[0]?.products,
+            wishlistProducts: wishlistResponse.result[0]?.products,
+          },
         });
-        setIsLoader(false);
       } catch (error) {
         console.log(error);
       }

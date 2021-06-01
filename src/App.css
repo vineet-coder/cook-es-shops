@@ -1,4 +1,12 @@
-/* @import "./style/SignUp.css"; */
+@import "./style/SignUp.css";
+@import "./style/Login.css";
+@import "./style/Header.css";
+@import "./style/Footer.css";
+@import "./style/FilterNav.css";
+@import "./style/Loader.css";
+@import "./style/SubHeader.css";
+@import "./style/ToggleSideNav.css";
+@import "./style/ToggleHeader.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
@@ -79,10 +87,16 @@ button:focus {
 ul {
   list-style: none;
 }
-.toggle-header {
+/* .toggle-header {
   display: none;
+} */
+.carousel-img {
+  width: 800px;
+  height: 500px;
+  background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg");
 }
-.home-header {
+
+/* .home-header {
   color: var(--primary-color);
   background-color: var(--secondary-color);
   width: 100%;
@@ -92,22 +106,6 @@ ul {
   position: fixed;
   display: block;
   z-index: 1;
-}
-
-.sub-header {
-  background-image: url("https://usa.fage/sites/usa.fage/files/recipes/hero/FAGE_ChocolateCake5_RecipeHeader_web%20%281%29.jpg");
-  background-repeat: no-repeat;
-
-  width: 100%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  padding-top: 75px;
-}
-.carousel-img {
-  width: 800px;
-  height: 500px;
-  background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg");
 }
 .header-top {
   width: 100%;
@@ -184,6 +182,17 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+} */
+
+/* .sub-header {
+  background-image: url("https://usa.fage/sites/usa.fage/files/recipes/hero/FAGE_ChocolateCake5_RecipeHeader_web%20%281%29.jpg");
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 75px;
 }
 
 .header-middle {
@@ -219,7 +228,7 @@ ul {
 }
 .header-heading {
   font-size: 3rem;
-}
+} */
 .header-image-div {
   background-color: transparent;
   width: 40%;
@@ -619,7 +628,7 @@ ul {
 .btn-cart:hover {
   opacity: 0.8;
 }
-.footer {
+/* .footer {
   width: 100%;
   height: 100px;
   background-color: var(--secondary-color);
@@ -638,10 +647,10 @@ ul {
 .footer-img {
   width: 10%;
   height: 100%;
-}
-.side-nav {
+} */
+/* .side-nav {
   display: none;
-}
+} */
 .product {
   flex: 1;
   width: 100%;
@@ -936,7 +945,7 @@ ul {
   justify-content: center;
   align-items: center;
 }
-.right-nav {
+/* .right-nav {
   display: block;
   width: 0%;
   height: 100vh;
@@ -966,7 +975,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
+} */
 .filter-nav-button {
   background-color: var(--primary-color);
   color: black;
@@ -1032,7 +1041,7 @@ ul {
 .cupcake {
   left: 29%;
 }
-.loader-div {
+/* .loader-div {
   height: 100vh;
   width: 100%;
   background-color: var(--primary-color);
@@ -1138,7 +1147,7 @@ ul {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
+} */
 .hot-recipe-card-product-name {
   font-size: 1rem;
   text-align: center;
@@ -1173,7 +1182,15 @@ ul {
     color: var(--secondary-color);
     background-color: lightblue;
   }
-  .toggle-header {
+
+  /* .home-header {
+    display: none;
+  } */
+  .home-icon {
+    margin: 1rem;
+  }
+
+  /* .toggle-header {
     width: 100%;
     height: 50px;
     display: flex;
@@ -1184,28 +1201,13 @@ ul {
     background-color: var(--secondary-color);
     z-index: 1;
   }
-
-  .home-header {
-    display: none;
-  }
-  .home-icon {
-    margin: 1rem;
-  }
   .toggle-button-div {
     margin: 1rem;
   }
   .toggle-button {
     color: var(--primary-color);
-  }
-  .home-menu-card {
-    height: 100px;
-    width: 50px;
-  }
-  .sub-header {
-    padding-top: 50px;
-    display: none;
-  }
-
+  } */
+  /* 
   .side-nav {
     display: block;
     width: 0%;
@@ -1231,7 +1233,16 @@ ul {
     background-color: var(--secondary-color);
 
     opacity: 0.9;
+  } */
+  .home-menu-card {
+    height: 100px;
+    width: 50px;
   }
+  /* .sub-header {
+    padding-top: 50px;
+    display: none;
+  } */
+
   .close-icon-div {
     position: absolute;
     left: 89%;
@@ -1321,7 +1332,7 @@ ul {
   .menu-background {
     padding-top: 3rem;
   }
-  .footer {
+  /* .footer {
     height: 75px;
   }
   .footer-list-item {
@@ -1329,7 +1340,7 @@ ul {
   }
   .footer-img {
     width: 25%;
-  }
+  } */
   .product-menu-card {
     margin: 1rem 2rem;
   }

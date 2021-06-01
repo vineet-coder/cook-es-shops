@@ -1,4 +1,4 @@
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { CookieMenuCard } from "./CookieMenuCard";
 
 export const CookieMenu = () => {
@@ -6,7 +6,7 @@ export const CookieMenu = () => {
 
   return (
     <div className="product-list">
-      {finalState.Data.cookie.map((item) => (
+      {finalState.Data.cookie?.map((item) => (
         <CookieMenuCard key={item._id} item={item} />
       ))}
     </div>

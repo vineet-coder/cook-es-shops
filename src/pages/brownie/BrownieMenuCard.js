@@ -1,9 +1,28 @@
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useCart } from "../../providers/CartContext";
+import { useAuth } from "../../providers/AuthProvider";
+import { useCart } from "../../providers/cartContext/CartContext";
+import {
+  addToCart,
+  addToWishlist,
+  removeFromCart,
+  removeFromWishlist,
+} from "../../utils/menu.utils";
 
 export const BrownieMenuCard = ({ item }) => {
-  const { dispatch, setIsAddLoading } = useCart();
+  const { dispatch, setIsAddLoading, finalState } = useCart();
+  const { token } = useAuth();
+
+  let isProductInCart = finalState.cartListItem
+    ?.map((item) => item._id)
+    .includes(item._id);
+
+  let isProductInWishlist = finalState.wishlistListItem
+    ?.map((item) => item._id)
+    .includes(item._id);
+
+  console.log({ isProductInCart });
+  console.log({ isProductInWishlist });
 
   const goToProductPage = (item) => {
     dispatch({
@@ -13,65 +32,6 @@ export const BrownieMenuCard = ({ item }) => {
     });
   };
 
-  const addToCart = async (_id) => {
-    setIsAddLoading(true);
-
-    try {
-      await axios.post("https://cook-es-shops.herokuapp.com/cartproducts", {
-        id: _id,
-        qnt: 1,
-      });
-      const response1 = await axios.get(
-        "https://cook-es-shops.herokuapp.com/cartproducts"
-      );
-      const cartList = response1.data;
-
-      const response2 = await axios.get(
-        "https://cook-es-shops.herokuapp.com/product/brownies"
-      );
-
-      const brownieList = response2.data;
-
-      dispatch({
-        type: "ADD_TO_CART",
-        payload1: cartList,
-        payload2: brownieList,
-        category: "brownie",
-      });
-      setIsAddLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const addToWishlist = async (_id) => {
-    setIsAddLoading(true);
-
-    try {
-      await axios.post("https://cook-es-shops.herokuapp.com/wishlistproducts", {
-        id: _id,
-      });
-      const response1 = await axios.get(
-        "https://cook-es-shops.herokuapp.com/wishlistproducts"
-      );
-      const wishlistList = response1.data;
-
-      const response2 = await axios.get(
-        "https://cook-es-shops.herokuapp.com/product/brownies"
-      );
-      const brownieList = response2.data;
-
-      dispatch({
-        type: "ADD_TO_WISHLIST",
-        payload1: wishlistList,
-        payload2: brownieList,
-        category: "brownie",
-      });
-      setIsAddLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div className="product-menu-card ">
       <Link to="/products" className="product-menu-img-div link">
@@ -93,20 +53,37 @@ export const BrownieMenuCard = ({ item }) => {
           <p>Cooking Status: {item.ready}</p>
         </div>
         <div className="card-btn-div">
-          {item.cart ? (
-            <button className="btn-cart">Added to Cart</button>
+          {isProductInCart ? (
+            <button
+              className="btn-cart"
+              onClick={() => removeFromCart(item._id, token, dispatch)}
+            >
+              Added to Cart
+            </button>
           ) : (
-            <button className="btn-cart" onClick={() => addToCart(item._id)}>
+            <button
+              className="btn-cart"
+              onClick={() =>
+                addToCart(item._id, token, dispatch, setIsAddLoading)
+              }
+            >
               Add to Cart
             </button>
           )}
 
-          {item.wishlist ? (
-            <button className="btn-wishlist">Added to Wishlist</button>
+          {isProductInWishlist ? (
+            <button
+              className="btn-wishlist"
+              onClick={() => removeFromWishlist(item._id, token, dispatch)}
+            >
+              Added to Wishlist
+            </button>
           ) : (
             <button
               className="btn-wishlist"
-              onClick={() => addToWishlist(item._id)}
+              onClick={() =>
+                addToWishlist(item._id, token, dispatch, setIsAddLoading)
+              }
             >
               Add to Wishlist
             </button>

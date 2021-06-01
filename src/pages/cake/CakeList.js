@@ -1,6 +1,6 @@
 import { CakeMenu } from "./CakeMenu";
 import { RiNavigationLine } from "react-icons/ri";
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { ToggleHeader } from "../../components/toggleHeader/ToggleHeader";
 import { Header } from "../../components/header/Header";
 import { SubHeader } from "../../components/subHeader/SubHeader";
@@ -12,6 +12,7 @@ import { Loader } from "../../components/loader/Loader";
 import { FilterNav } from "../../components/filterNav/FilterNav";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
 import { useAuth } from "../../providers/AuthProvider";
+import { ApiService } from "../../utils/ApiServices";
 
 export const CakeList = () => {
   const { dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
@@ -25,27 +26,32 @@ export const CakeList = () => {
     (async function () {
       setIsLoader(true);
       try {
-        const cakeResponse = await axios.get(
-          // `https://cook-es-shops.herokuapp.com/product/cakes`
-          `http://localhost:8000/product/cakes`,
-          { headers: { authorization: token } }
-        );
-        const cartResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/cartproducts`
-        );
-        const wishlistResponse = await axios.get(
-          `https://cook-es-shops.herokuapp.com/wishlistproducts`
-        );
+        const cakeResponse = await ApiService("get", "product/cakes");
+
+        console.log(cakeResponse);
+
+        const cartResponse = await ApiService("get", "cartproducts", {
+          headers: { authorization: token },
+        });
+
+        console.log(cartResponse);
+
+        const wishlistResponse = await ApiService("get", "wishlistproducts", {
+          headers: { authorization: token },
+        });
+
+        setIsLoader(false);
 
         dispatch({
           type: "INITIALIZE_DATA",
-          payload1: cakeResponse.data,
-          payload2: cartResponse.data,
-          payload3: wishlistResponse.data,
-
           category: "cake",
+
+          payload: {
+            data: cakeResponse,
+            cartProducts: cartResponse.result[0]?.products,
+            wishlistProducts: wishlistResponse.result[0]?.products,
+          },
         });
-        setIsLoader(false);
       } catch (error) {
         console.log(error);
       }

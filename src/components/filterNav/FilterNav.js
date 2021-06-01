@@ -1,6 +1,6 @@
 import React from "react";
 import { BsX } from "react-icons/bs";
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 export const FilterNav = () => {
   const { state, dispatch, finalState } = useCart();
 

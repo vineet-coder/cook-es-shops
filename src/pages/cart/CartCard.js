@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
-import { useCart } from "../../providers/CartContext";
+import { useCart } from "../../providers/cartContext/CartContext";
 import { MdDeleteForever } from "react-icons/md";
 import axios from "axios";
+import { removeFromCart } from "../../utils/menu.utils";
+import { useAuth } from "../../providers/AuthProvider";
 
 export const CartCard = ({ item }) => {
   const { dispatch, setIsAddLoading } = useCart();
+  const { token } = useAuth();
+
   const goToProductPage = (item) => {
     dispatch({
       type: "GO_TO_PRODUCT_PAGE_FROM_CART",
@@ -13,20 +17,20 @@ export const CartCard = ({ item }) => {
     });
   };
 
-  const removeFromCart = async (item) => {
-    setIsAddLoading(true);
+  // const removeFromCart = async (item) => {
+  //   setIsAddLoading(true);
 
-    try {
-      await axios.delete("https://cook-es-shops.herokuapp.com/cartproducts", {
-        data: { cartProductId: item._id, productId: item.id._id },
-      });
+  //   try {
+  //     await axios.delete("https://cook-es-shops.herokuapp.com/cartproducts", {
+  //       data: { cartProductId: item._id, productId: item._id },
+  //     });
 
-      dispatch({ type: "REMOVE_FROM_CART", payload: item });
-      setIsAddLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     dispatch({ type: "REMOVE_FROM_CART", payload: item });
+  //     setIsAddLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
     <>
@@ -34,18 +38,18 @@ export const CartCard = ({ item }) => {
         <div className="cart-card-sub-div">
           <Link to="/products" className="cart-card-img-div">
             <img
-              src={item.id.image[0]}
+              src={item.image[0]}
               alt="img"
               className="cart-card-img"
-              onClick={() => goToProductPage(item.id)}
+              onClick={() => goToProductPage(item)}
             />
           </Link>
           <div className="cart-card-content-div">
-            <h2>{item.id.price}/- Rs. </h2>
-            <p>{item.id.name} </p>
+            <h2>{item.price}/- Rs. </h2>
+            <p>{item.name} </p>
             <button
               className="btn-cart remove-btn"
-              onClick={() => removeFromCart(item)}
+              onClick={() => removeFromCart(item._id, token, dispatch)}
             >
               Remove from cart{" "}
             </button>
@@ -62,7 +66,7 @@ export const CartCard = ({ item }) => {
               {item.quantity === 1 ? (
                 <button
                   className="btn-cart add-minus-btn"
-                  onClick={() => removeFromCart(item)}
+                  onClick={() => removeFromCart(item._id, token, dispatch)}
                 >
                   <MdDeleteForever />
                 </button>
