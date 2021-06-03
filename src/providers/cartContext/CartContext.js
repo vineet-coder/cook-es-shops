@@ -37,7 +37,7 @@ export const CartProvider = ({ children }) => {
   const discountedState = getDiscountedData(populorState);
 
   const finalState = getFastDeliveryData(discountedState);
-
+  console.log(state);
   return (
     <CartContext.Provider
       value={{

@@ -11,13 +11,13 @@ import { useAuth } from "../../providers/AuthProvider";
 export const WishlistCard = ({ item }) => {
   const { dispatch, setIsAddLoading, finalState } = useCart();
   const { token } = useAuth();
-  const goToProductPage = (item) => {
-    dispatch({
-      type: "GO_TO_PRODUCT_PAGE_FROM_WISHLIST",
+  // const goToProductPage = (item) => {
+  //   dispatch({
+  //     type: "GO_TO_PRODUCT_PAGE_FROM_WISHLIST",
 
-      payload: item,
-    });
-  };
+  //     payload: item,
+  //   });
+  // };
 
   let isProductInCart = finalState.cartListItem
     ?.map((item) => item.productid._id)
@@ -28,12 +28,12 @@ export const WishlistCard = ({ item }) => {
   console.log(item);
   return (
     <div className="product-menu-card">
-      <Link to="/products" className="product-menu-img-div">
+      <Link to={`/products/${item._id}`} className="product-menu-img-div">
         <img
           src={item.image[0]}
           alt="img"
           className="product-menu-img"
-          onClick={() => goToProductPage(item.id)}
+          // onClick={() => goToProductPage(item.id)}
         />
       </Link>
       <div className="product-menu-card-content">

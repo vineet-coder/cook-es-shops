@@ -14,16 +14,16 @@ export function CartReducer(state, value) {
         productPage: [value.payload],
       };
 
-    case "GO_TO_PRODUCT_PAGE_FROM_CART":
-      return {
-        ...state,
-        productPage: [{ ...value.payload, cart: true }],
-      };
-    case "GO_TO_PRODUCT_PAGE_FROM_WISHLIST":
-      return {
-        ...state,
-        productPage: [{ ...value.payload, wishlist: true }],
-      };
+    // case "GO_TO_PRODUCT_PAGE_FROM_CART":
+    //   return {
+    //     ...state,
+    //     productPage: [{ ...value.payload, cart: true }],
+    //   };
+    // case "GO_TO_PRODUCT_PAGE_FROM_WISHLIST":
+    //   return {
+    //     ...state,
+    //     productPage: [{ ...value.payload, wishlist: true }],
+    //   };
 
     case "POPULOR":
       return {
@@ -68,24 +68,24 @@ export function CartReducer(state, value) {
     //     wishlistListItem: value.payload2,
     //   };
 
-    case "INCREMENT":
-      return {
-        ...state,
-        cartListItem: state.cartListItem.map((product) =>
-          product.id === value.payload.id
-            ? { ...product, quantity: product.quantity + 1 }
-            : { ...product }
-        ),
-      };
-    case "DECREMENT":
-      return {
-        ...state,
-        cartListItem: state.cartListItem.map((product) =>
-          product.id === value.payload.id
-            ? { ...product, quantity: product.quantity - 1 }
-            : { ...product }
-        ),
-      };
+    // case "INCREMENT":
+    //   return {
+    //     ...state,
+    //     cartListItem: state.cartListItem.map((product) =>
+    //       product.id === value.payload.id
+    //         ? { ...product, quantity: product.quantity + 1 }
+    //         : { ...product }
+    //     ),
+    //   };
+    // case "DECREMENT":
+    //   return {
+    //     ...state,
+    //     cartListItem: state.cartListItem.map((product) =>
+    //       product.id === value.payload.id
+    //         ? { ...product, quantity: product.quantity - 1 }
+    //         : { ...product }
+    //     ),
+    //   };
 
     // case "REMOVE_FROM_CART":
     //   return {
@@ -99,13 +99,13 @@ export function CartReducer(state, value) {
       return {
         ...state,
         wishlistListItem: value.payload.wishlistProducts,
-
-        // Data: {
-        //   ...state.Data,
-
-        //   [value.category]: value.payload2,
-        // },
       };
+    // Data: {
+    //   ...state.Data,
+
+    //   [value.category]: value.payload2,
+    // },
+
     // case "MOVE_TO_CART_FROM_WISHLIST":
     //   return {
     //     ...state,

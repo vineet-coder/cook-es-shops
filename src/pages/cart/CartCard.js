@@ -9,13 +9,13 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
   const { dispatch, setIsAddLoading } = useCart();
   const { token } = useAuth();
 
-  const goToProductPage = (item) => {
-    dispatch({
-      type: "GO_TO_PRODUCT_PAGE_FROM_CART",
+  // const goToProductPage = (item) => {
+  //   dispatch({
+  //     type: "GO_TO_PRODUCT_PAGE_FROM_CART",
 
-      payload: item,
-    });
-  };
+  //     payload: item,
+  //   });
+  // };
 
   // const removeFromCart = async (item) => {
   //   setIsAddLoading(true);
@@ -39,12 +39,12 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
     <>
       <div className="cart-card">
         <div className="cart-card-sub-div">
-          <Link to="/products" className="cart-card-img-div">
+          <Link to={`/products/${item._id}`} className="cart-card-img-div">
             <img
               src={item.image[0]}
               alt="img"
               className="cart-card-img"
-              onClick={() => goToProductPage(item)}
+              // onClick={() => goToProductPage(item)}
             />
           </Link>
           <div className="cart-card-content-div">

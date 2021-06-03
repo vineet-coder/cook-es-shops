@@ -51,6 +51,8 @@ export const addToCart = async (
       }
     );
 
+    console.log(data);
+
     dispatch({
       type: "ADD_TO_CART",
       payload: {

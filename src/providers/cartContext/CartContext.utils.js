@@ -1,5 +1,5 @@
 export function getPopulorData(givenState) {
-  return givenState.Populor === true
+  return givenState?.Populor === true
     ? {
         ...givenState,
         Data: {

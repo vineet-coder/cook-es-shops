@@ -18,7 +18,7 @@ export const Footer = () => {
         </ul>
 
         <img
-          src="./images/susie-ilus-header.png"
+          src="/./images/susie-ilus-header.png"
           alt="footerImg"
           className="footer-img"
         />

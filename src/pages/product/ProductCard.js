@@ -1,82 +1,102 @@
 import axios from "axios";
+import { useEffect } from "react";
+import { useAuth } from "../../providers/AuthProvider";
 import { useCart } from "../../providers/cartContext/CartContext";
+import { ApiService } from "../../utils/ApiServices";
+import {
+  addToCart,
+  addToWishlist,
+  removeFromCart,
+  removeFromWishlist,
+} from "../../utils/menu.utils";
 
 export const ProductCard = ({ item }) => {
-  const { dispatch } = useCart();
+  const { dispatch, finalState, setIsAddLoading } = useCart();
+  const { token } = useAuth();
 
-  const addToCart = async (_id) => {
-    try {
-      const { data } = await axios.post(
-        "https://cook-es-shops.herokuapp.com/cartproducts/products",
-        {
-          id: _id,
-          qnt: 1,
-        }
-      );
+  useEffect(() => {
+    (async function () {
+      // setIsLoader(true);
+      try {
+        const cartResponse = await ApiService("get", "cartproducts", {
+          headers: { authorization: token },
+        });
 
-      const response = await axios.get(
-        "https://cook-es-shops.herokuapp.com/cartproducts"
-      );
+        console.log(cartResponse);
 
-      dispatch({
-        type: "ADD_TO_CART_FROM_PRODUCTPAGE",
-        payload1: data,
-        payload2: response.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+        const wishlistResponse = await ApiService("get", "wishlistproducts", {
+          headers: { authorization: token },
+        });
 
-  const addToWishlist = async (_id) => {
-    try {
-      const { data } = await axios.post(
-        "https://cook-es-shops.herokuapp.com/wishlistproducts/products",
-        {
-          id: _id,
-        }
-      );
+        // setIsLoader(false);
+        console.log({ wishlistResponse });
 
-      const response = await axios.get(
-        "https://cook-es-shops.herokuapp.com/wishlistproducts"
-      );
+        dispatch({
+          type: "INITIALIZE_DATA",
+          category: "cake",
 
-      dispatch({
-        type: "ADD_TO_WISHLIST_FROM_PRODUCTPAGE",
-        payload1: data,
-        payload2: response.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+          payload: {
+            cartProducts: cartResponse.result[0]?.products,
+            wishlistProducts: wishlistResponse.result[0]?.products,
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, []);
+
+  let isProductInCart = finalState.cartListItem
+    ?.map((item) => item.productid?._id)
+    .includes(item._id);
+
+  let isProductInWishlist = finalState.wishlistListItem
+    ?.map((item) => item.productid?._id)
+    .includes(item._id);
 
   return (
     <div className="product">
       <div className="product-sub-div">
         <div className="product-img-div">
           <div className="product-btn-div">
-            {item.cart ? (
-              <button className="btn-cart">Added to Cart</button>
+            {isProductInCart ? (
+              <button
+                className="btn-cart"
+                onClick={() => removeFromCart(item._id, token, dispatch)}
+              >
+                Added to Cart
+              </button>
             ) : (
-              <button className="btn-cart" onClick={() => addToCart(item._id)}>
+              <button
+                className="btn-cart"
+                onClick={() =>
+                  addToCart(item._id, 1, token, dispatch, setIsAddLoading)
+                }
+              >
                 Add to Cart
               </button>
             )}
 
-            {item.wishlist ? (
-              <button className="btn-wishlist">Added to Wishlist</button>
+            {isProductInWishlist ? (
+              <button
+                className="btn-wishlist"
+                onClick={() => removeFromWishlist(item._id, token, dispatch)}
+              >
+                Added to Wishlist
+              </button>
             ) : (
               <button
                 className="btn-wishlist"
-                onClick={() => addToWishlist(item._id)}
+                onClick={() =>
+                  addToWishlist(item._id, 1, token, dispatch, setIsAddLoading)
+                }
               >
                 Add to Wishlist
               </button>
             )}
           </div>
-          <img src={item.image[0]} alt="img" className="product-img1" />
-          <img src={item.image[1]} alt="img" className="product-img2" />
+          <img src={`/${item.image[0]}`} alt="img" className="product-img1" />
+          <img src={`/${item.image[1]}`} alt="img" className="product-img2" />
         </div>
         <div className="product-content">
           <div className="product-price">

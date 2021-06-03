@@ -30,24 +30,24 @@ export const CakeMenuCard = ({ item }) => {
   // let product_Id = finalState.cartListItem[0]._id;
   // console.log(product_Id);
 
-  const goToProductPage = (item) => {
-    dispatch({
-      type: "GO_TO_PRODUCT_PAGE",
+  // const goToProductPage = (item) => {
+  //   dispatch({
+  //     type: "GO_TO_PRODUCT_PAGE",
 
-      payload: item,
-    });
-  };
+  //     payload: item,
+  //   });
+  // };
   // console.log(finalState.cartListItem);
-  // console.log(item);
+  console.log(item);
 
   return (
     <div className="product-menu-card ">
-      <Link to="/products" className="product-menu-img-div link">
+      <Link to={`/products/${item._id}`} className="product-menu-img-div link">
         <img
           src={item.image[0]}
           alt="img"
           className="product-menu-img"
-          onClick={() => goToProductPage(item)}
+          // onClick={() => goToProductPage(item)}
         />
       </Link>
       <div className="product-menu-card-content">
