@@ -21,16 +21,15 @@ export const CookieMenuCard = ({ item }) => {
   };
 
   let isProductInCart = finalState.cartListItem
-    ?.map((item) => item._id)
+    ?.map((item) => item.productid?._id)
     .includes(item._id);
 
   let isProductInWishlist = finalState.wishlistListItem
-    ?.map((item) => item._id)
+    ?.map((item) => item.productid?._id)
     .includes(item._id);
 
-  console.log({ isProductInCart });
-  console.log({ isProductInWishlist });
-
+  // console.log({ isProductInCart });
+  // console.log({ isProductInWishlist });
 
   return (
     <div className="product-menu-card ">
@@ -64,7 +63,7 @@ export const CookieMenuCard = ({ item }) => {
             <button
               className="btn-cart"
               onClick={() =>
-                addToCart(item._id, token, dispatch, setIsAddLoading)
+                addToCart(item._id, 1, token, dispatch, setIsAddLoading)
               }
             >
               Add to Cart
@@ -82,7 +81,7 @@ export const CookieMenuCard = ({ item }) => {
             <button
               className="btn-wishlist"
               onClick={() =>
-                addToWishlist(item._id, token, dispatch, setIsAddLoading)
+                addToWishlist(item._id, 1, token, dispatch, setIsAddLoading)
               }
             >
               Add to Wishlist

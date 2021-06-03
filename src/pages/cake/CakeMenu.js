@@ -5,6 +5,8 @@ export const CakeMenu = () => {
   const { finalState } = useCart();
   console.log(finalState);
 
+  console.log(finalState.Data.cake);
+
   return (
     <div className="product-list">
       {finalState.Data.cake?.map((item) => (

@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../providers/cartContext/CartContext";
 import { MdDeleteForever } from "react-icons/md";
 import axios from "axios";
-import { removeFromCart } from "../../utils/menu.utils";
+import { removeFromCart, updateCart } from "../../utils/menu.utils";
 import { useAuth } from "../../providers/AuthProvider";
 
-export const CartCard = ({ item }) => {
+export const CartCard = ({ item, quantity, productObject_Id }) => {
   const { dispatch, setIsAddLoading } = useCart();
   const { token } = useAuth();
 
@@ -31,6 +31,9 @@ export const CartCard = ({ item }) => {
   //     console.log(error);
   //   }
   // };
+  console.log(quantity);
+  let plusUpdatedQuantity = quantity + 1;
+  let minusUpdatedQuantity = quantity - 1;
 
   return (
     <>
@@ -58,12 +61,20 @@ export const CartCard = ({ item }) => {
             <div className="cart-card-btn-sub-div">
               <button
                 className="btn-cart add-minus-btn"
-                onClick={() => dispatch({ type: "INCREMENT", payload: item })}
+                onClick={() =>
+                  updateCart(
+                    productObject_Id,
+                    plusUpdatedQuantity,
+                    token,
+                    dispatch
+                  )
+                }
+                // onClick={() => dispatch({ type: "INCREMENT", payload: item })}
               >
                 +
               </button>
-              {item.quantity}
-              {item.quantity === 1 ? (
+              {quantity}
+              {quantity === 1 ? (
                 <button
                   className="btn-cart add-minus-btn"
                   onClick={() => removeFromCart(item._id, token, dispatch)}
@@ -73,7 +84,15 @@ export const CartCard = ({ item }) => {
               ) : (
                 <button
                   className="btn-cart add-minus-btn"
-                  onClick={() => dispatch({ type: "DECREMENT", payload: item })}
+                  // onClick={() => dispatch({ type: "DECREMENT", payload: item })}
+                  onClick={() =>
+                    updateCart(
+                      productObject_Id,
+                      minusUpdatedQuantity,
+                      token,
+                      dispatch
+                    )
+                  }
                 >
                   -
                 </button>

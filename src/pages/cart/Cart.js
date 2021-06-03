@@ -10,6 +10,7 @@ import { Loader } from "../../components/loader/Loader";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
+import { CartCalculationCard } from "./CartCalculationCard";
 
 export const Cart = () => {
   const { state, setIsLoader, dispatch, isLoader, isAddLoading } = useCart();
@@ -44,10 +45,10 @@ export const Cart = () => {
     })();
   }, []);
 
-  const priceArr = state.cartListItem.map((item) => item.quantity * item.price);
+  // const priceArr = state.cartListItem.map((item) => item.quantity * item.price);
 
-  const priceSum = (total, price) => total + price;
-  const totalAmount = priceArr.reduce(priceSum, 0);
+  // const priceSum = (total, price) => total + price;
+  // const totalAmount = priceArr.reduce(priceSum, 0);
 
   return (
     <>
@@ -67,10 +68,17 @@ export const Cart = () => {
               <h2>Items in cart: {state.cartListItem.length}</h2>
             </div>
             {state.cartListItem.map((item) => (
-              <CartCard key={item._id} item={item} />
+              <CartCard
+                key={item._id}
+                item={item.productid}
+                quantity={item.quantity}
+                productObject_Id={item._id}
+              />
             ))}
           </div>
-          <div className="cart-calculation">
+
+          <CartCalculationCard />
+          {/* <div className="cart-calculation">
             <div className="order-heading">
               <h2>Your orders are here</h2>
             </div>
@@ -110,7 +118,7 @@ export const Cart = () => {
               </div>
               <div className="total-amount">{totalAmount} /- Rs.</div>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
 

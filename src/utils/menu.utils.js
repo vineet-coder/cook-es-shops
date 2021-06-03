@@ -2,6 +2,7 @@ import { ApiService } from "./ApiServices";
 
 export const addToWishlist = async (
   productId,
+  quantity,
   token,
   dispatch,
   setIsAddLoading
@@ -13,7 +14,7 @@ export const addToWishlist = async (
       "post",
       "wishlistproducts",
 
-      { productId: productId },
+      { productId: productId, quantity: quantity },
       {
         headers: { authorization: token },
       }
@@ -34,6 +35,7 @@ export const addToWishlist = async (
 
 export const addToCart = async (
   productId,
+  quantity,
   token,
   dispatch,
   setIsAddLoading
@@ -43,7 +45,7 @@ export const addToCart = async (
     const data = await ApiService(
       "post",
       "cartproducts",
-      { productId: productId },
+      { productId: productId, quantity: quantity },
       {
         headers: { authorization: token },
       }
@@ -56,6 +58,37 @@ export const addToCart = async (
       },
     });
     setIsAddLoading(false);
+  } catch (error) {
+    console.log(error, "axios error");
+  }
+};
+
+export const updateCart = async (
+  productObject_Id,
+  updatedQuantity,
+  token,
+  dispatch
+  // setIsAddLoading
+) => {
+  // setIsAddLoading(true);
+  try {
+    const data = await ApiService(
+      "post",
+      "cartproducts/products",
+      { product_Id: productObject_Id, updatedQuantity: updatedQuantity },
+      {
+        headers: { authorization: token },
+      }
+    );
+
+    console.log(data.result[0].products);
+    dispatch({
+      type: "ADD_TO_CART",
+      payload: {
+        cartProducts: data.result[0].products,
+      },
+    });
+    // setIsAddLoading(false);
   } catch (error) {
     console.log(error, "axios error");
   }

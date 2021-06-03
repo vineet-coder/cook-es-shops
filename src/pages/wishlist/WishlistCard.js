@@ -20,7 +20,7 @@ export const WishlistCard = ({ item }) => {
   };
 
   let isProductInCart = finalState.cartListItem
-    ?.map((item) => item._id)
+    ?.map((item) => item.productid._id)
     .includes(item._id);
 
   console.log({ isProductInCart });
@@ -52,14 +52,14 @@ export const WishlistCard = ({ item }) => {
           ) : (
             <button
               className="btn-cart"
+              // onClick={() =>
+              //   dispatch({
+              //     type: "MOVE_TO_CART_FROM_WISHLIST",
+              //     payload: item,
+              //   })
+              // }
               onClick={() =>
-                dispatch({
-                  type: "MOVE_TO_CART_FROM_WISHLIST",
-                  payload: item,
-                })
-              }
-              onClick={() =>
-                addToCart(item._id, token, dispatch, setIsAddLoading)
+                addToCart(item._id, 1, token, dispatch, setIsAddLoading)
               }
             >
               Move to cart

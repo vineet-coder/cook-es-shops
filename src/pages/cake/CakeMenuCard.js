@@ -17,15 +17,18 @@ export const CakeMenuCard = ({ item }) => {
   const { token } = useAuth();
 
   let isProductInCart = finalState.cartListItem
-    ?.map((item) => item._id)
+    ?.map((item) => item.productid?._id)
     .includes(item._id);
 
   let isProductInWishlist = finalState.wishlistListItem
-    ?.map((item) => item._id)
+    ?.map((item) => item.productid?._id)
     .includes(item._id);
 
-  console.log({ isProductInCart });
-  console.log({ isProductInWishlist });
+  // console.log({ isProductInCart });
+  // console.log({ isProductInWishlist });
+
+  // let product_Id = finalState.cartListItem[0]._id;
+  // console.log(product_Id);
 
   const goToProductPage = (item) => {
     dispatch({
@@ -34,6 +37,8 @@ export const CakeMenuCard = ({ item }) => {
       payload: item,
     });
   };
+  // console.log(finalState.cartListItem);
+  // console.log(item);
 
   return (
     <div className="product-menu-card ">
@@ -67,7 +72,7 @@ export const CakeMenuCard = ({ item }) => {
             <button
               className="btn-cart"
               onClick={() =>
-                addToCart(item._id, token, dispatch, setIsAddLoading)
+                addToCart(item._id, 1, token, dispatch, setIsAddLoading)
               }
             >
               Add to Cart
@@ -85,7 +90,7 @@ export const CakeMenuCard = ({ item }) => {
             <button
               className="btn-wishlist"
               onClick={() =>
-                addToWishlist(item._id, token, dispatch, setIsAddLoading)
+                addToWishlist(item._id, 1, token, dispatch, setIsAddLoading)
               }
             >
               Add to Wishlist

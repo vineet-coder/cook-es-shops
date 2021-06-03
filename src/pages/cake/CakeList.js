@@ -28,7 +28,7 @@ export const CakeList = () => {
       try {
         const cakeResponse = await ApiService("get", "product/cakes");
 
-        console.log(cakeResponse);
+        // console.log(cakeResponse);
 
         const cartResponse = await ApiService("get", "cartproducts", {
           headers: { authorization: token },

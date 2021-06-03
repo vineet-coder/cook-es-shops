@@ -19,8 +19,6 @@ export const Wishlist = () => {
     (async function () {
       setIsLoader(true);
       try {
-    
-
         const cartResponse = await ApiService("get", "cartproducts", {
           headers: { authorization: token },
         });
@@ -71,7 +69,7 @@ export const Wishlist = () => {
         <div className="background-img-div">
           <div className="product-list">
             {state.wishlistListItem.map((item) => (
-              <WishlistCard key={item._id} item={item} />
+              <WishlistCard key={item._id} item={item.productid} />
             ))}
           </div>
         </div>

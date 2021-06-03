@@ -11,7 +11,7 @@ export const Header = () => {
   const { isUserLogin, userName } = useAuth();
 
   // console.log(loginState);
-  console.log(userName?.split(" ")[0]);
+  // console.log(userName?.split(" ")[0]);
   return (
     <>
       <header className="home-header">
@@ -45,23 +45,21 @@ export const Header = () => {
           <div className="header-top-right-element">
             <Link to="/cart" className="cart link-header">
               cart <FaShoppingCart />{" "}
-              {state.cartListItem?.length === 0 ? (
+              {/* {state.cartListItem?.length === 0 ? (
                 <></>
-              ) : (
-                <div className="cart-quantity">
-                  {state.cartListItem?.length}
-                </div>
-              )}
+              ) : ( */}
+              <div className="cart-quantity">{state.cartListItem?.length}</div>
+              {/* )} */}
             </Link>
             <Link to="/wishlist" className="wishlist link-header">
               wishlist <AiOutlineHeart />
-              {state.wishlistListItem?.length === 0 ? (
+              {/* {state.wishlistListItem?.length === 0 ? (
                 <div></div>
-              ) : (
-                <div className="wishlist-quantity">
-                  {state.wishlistListItem?.length}
-                </div>
-              )}
+              ) : ( */}
+              <div className="wishlist-quantity">
+                {state.wishlistListItem?.length}
+              </div>
+              {/* )} */}
             </Link>
           </div>
         </div>
