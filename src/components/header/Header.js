@@ -48,7 +48,9 @@ export const Header = () => {
               {/* {state.cartListItem?.length === 0 ? (
                 <></>
               ) : ( */}
-              <div className="cart-quantity">{state.cartListItem?.length}</div>
+              <div className="cart-quantity">
+                {isUserLogin ? state.cartListItem?.length : 0}
+              </div>
               {/* )} */}
             </Link>
             <Link to="/wishlist" className="wishlist link-header">
@@ -57,7 +59,7 @@ export const Header = () => {
                 <div></div>
               ) : ( */}
               <div className="wishlist-quantity">
-                {state.wishlistListItem?.length}
+                {isUserLogin ? state.wishlistListItem?.length : 0}
               </div>
               {/* )} */}
             </Link>
