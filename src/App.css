@@ -1,3 +1,14 @@
+@import "./style/SignUp.css";
+@import "./style/Login.css";
+@import "./style/Header.css";
+@import "./style/Footer.css";
+@import "./style/FilterNav.css";
+@import "./style/Loader.css";
+@import "./style/SubHeader.css";
+@import "./style/ToggleSideNav.css";
+@import "./style/ToggleHeader.css";
+@import "./style/InformationalModal.css";
+
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
 .App {
@@ -20,7 +31,7 @@ body {
   text-decoration: none;
 }
 .link-header {
-  color: var(--primory-color);
+  color: var(--primary-color);
   text-decoration: none;
 }
 .link-sub-header {
@@ -60,12 +71,12 @@ button:focus {
 }
 
 :root {
-  --primory-color: #fff;
+  --primary-color: #fff;
   --secondary-color: #7d2c6f;
   --third-color: unset;
   /* --fourth-color: #e3afbc; */
 
-  /* --primory-color: #f4f2cb;
+  /* --primary-color: #f4f2cb;
   --secondary-color: #c8743c;
   --third-color: #533d24; */
 }
@@ -77,11 +88,17 @@ button:focus {
 ul {
   list-style: none;
 }
-.toggle-header {
+/* .toggle-header {
   display: none;
+} */
+.carousel-img {
+  width: 800px;
+  height: 500px;
+  background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg");
 }
-.home-header {
-  color: var(--primory-color);
+
+/* .home-header {
+  color: var(--primary-color);
   background-color: var(--secondary-color);
   width: 100%;
   height: 75px;
@@ -90,23 +107,6 @@ ul {
   position: fixed;
   display: block;
   z-index: 1;
-}
-
-.sub-header {
-  /* background-color: white; */
-  background-image: url("https://usa.fage/sites/usa.fage/files/recipes/hero/FAGE_ChocolateCake5_RecipeHeader_web%20%281%29.jpg");
-  background-repeat: no-repeat;
-
-  width: 100%;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  padding-top: 75px;
-}
-.carousel-img {
-  width: 800px;
-  height: 500px;
-  background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg");
 }
 .header-top {
   width: 100%;
@@ -132,7 +132,7 @@ ul {
   cursor: pointer;
 }
 .cart-quantity {
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   border-radius: 50%;
@@ -146,7 +146,7 @@ ul {
   cursor: pointer;
 }
 .wishlist-quantity {
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   border-radius: 50%;
@@ -155,9 +155,7 @@ ul {
   left: 90%;
   padding: 0.1rem 0.3rem;
 }
-.compony-name {
-  /* margin: auto; */
-}
+
 .header-list-div {
   background-color: transparent;
   width: 55%;
@@ -176,9 +174,7 @@ ul {
   align-items: center;
   justify-content: space-around;
 }
-.header-list-item {
-  /* margin: auto; */
-}
+
 .header-top-right-element {
   background-color: transparent;
   width: 25%;
@@ -187,18 +183,24 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+} */
+
+/* .sub-header {
+  background-image: url("https://usa.fage/sites/usa.fage/files/recipes/hero/FAGE_ChocolateCake5_RecipeHeader_web%20%281%29.jpg");
+  background-repeat: no-repeat;
+
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 75px;
 }
 
 .header-middle {
   width: 100%;
   height: 85%;
   background-color: transparent;
-  /* background: rgb(154, 23, 80);
-  background: radial-gradient(
-    circle,
-    rgba(154, 23, 80, 1) 0%,
-    rgba(227, 226, 223, 1) 100%
-  ); */
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -227,7 +229,7 @@ ul {
 }
 .header-heading {
   font-size: 3rem;
-}
+} */
 .header-image-div {
   background-color: transparent;
   width: 40%;
@@ -267,17 +269,13 @@ ul {
   border: 0.1rem solid;
   border-radius: 0.6rem;
   padding: 1rem;
-  background-color: var(--primory-color);
-  /* margin: 2rem 4rem; */
+  background-color: var(--primary-color);
   width: 9%;
   height: 115px;
-  /* margin: auto; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* justify-items: center;
-  align-content: space-around; */
 }
 .header-menu-card-div {
   cursor: pointer;
@@ -302,12 +300,10 @@ ul {
   font-size: 1.2rem;
   width: 100%;
   height: 190rem;
-  background-color: var(--primory-color);
-  /* background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg"); */
+  background-color: var(--primary-color);
 
   display: flex;
   flex-direction: column;
-  /* padding-bottom: 1rem; */
 
   justify-content: space-evenly;
   align-items: center;
@@ -315,8 +311,7 @@ ul {
 .home-content1 {
   width: 90%;
   height: 20%;
-  background-color: var(--primory-color);
-  /* box-shadow: 0px 0.1px 2rem gray; */
+  background-color: var(--primary-color);
 
   border-left: 1px solid gray;
   border-right: 1px solid gray;
@@ -329,7 +324,7 @@ ul {
 .home-content2 {
   width: 90%;
   height: 25%;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
 
   display: flex;
   flex-direction: column;
@@ -343,7 +338,7 @@ ul {
   width: 90%;
   height: 40%;
 
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -356,7 +351,7 @@ ul {
 .home-super-content {
   width: 100%;
   height: 100%;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   display: flex;
 
   align-items: center;
@@ -385,7 +380,7 @@ ul {
   align-items: center;
   justify-content: space-evenly;
 }
-.hot-seling-recipes {
+.hot-selling-recipes {
   width: 95%;
   height: 100%;
   background-color: transparent;
@@ -394,7 +389,7 @@ ul {
   align-items: flex-start;
   justify-content: center;
 }
-.hot-seling-recipes-content {
+.hot-selling-recipes-content {
   width: 40%;
   height: 40%;
   background-color: transparent;
@@ -404,7 +399,7 @@ ul {
   justify-content: space-evenly;
   font-size: 1.5rem;
 }
-.hot-seling-recipes-card-list {
+.hot-selling-recipes-card-list {
   width: 100%;
   height: 60%;
   background-color: transparent;
@@ -424,7 +419,7 @@ ul {
   height: 100%;
   width: 250px;
 
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   cursor: pointer;
   box-shadow: 0.1rem 0.1rem 2rem gray;
   display: flex;
@@ -488,7 +483,7 @@ ul {
   height: 350px;
   width: 310px;
 
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   cursor: pointer;
   box-shadow: 0.5rem 0.5rem 2rem gray;
   display: flex;
@@ -521,14 +516,13 @@ ul {
   min-height: 100vh;
   width: 100%;
   color: var(--secondary-color);
-  background-color: var(--primory-color);
-  /* background-image: url("https://st2.depositphotos.com/3283585/5383/v/600/depositphotos_53839577-stock-illustration-vector-pattern-with-hand-drawn.jpg"); */
+  background-color: var(--primary-color);
 }
 .empty-wishlist-card {
   min-height: 100vh;
   width: 100%;
   color: var(--secondary-color);
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -547,7 +541,7 @@ ul {
   height: 500px;
   width: 350px;
 
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   margin: 3rem 3rem;
   cursor: pointer;
   display: flex;
@@ -616,7 +610,7 @@ ul {
   border-radius: 10px;
   letter-spacing: 0.1rem;
   font-weight: bolder;
-  color: var(--primory-color);
+  color: var(--primary-color);
 }
 .btn-wishlist:hover {
   opacity: 0.7;
@@ -626,7 +620,7 @@ ul {
   height: 60%;
   font-size: 1.1rem;
   border: 1px solid var(--secondary-color);
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   border-radius: 10px;
   letter-spacing: 0.1rem;
   font-weight: bolder;
@@ -635,11 +629,11 @@ ul {
 .btn-cart:hover {
   opacity: 0.8;
 }
-.footer {
+/* .footer {
   width: 100%;
   height: 100px;
   background-color: var(--secondary-color);
-  color: var(--primory-color);
+  color: var(--primary-color);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -654,12 +648,11 @@ ul {
 .footer-img {
   width: 10%;
   height: 100%;
-}
-.side-nav {
+} */
+/* .side-nav {
   display: none;
-}
+} */
 .product {
-  /* min-height: 1000px; */
   flex: 1;
   width: 100%;
   display: flex;
@@ -701,7 +694,7 @@ ul {
 .product-content {
   width: 50%;
   height: 90%;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -782,7 +775,7 @@ ul {
 .cart-heading {
   height: 50px;
   width: 90%;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -793,7 +786,7 @@ ul {
   height: 300px;
   width: 90%;
 
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -871,14 +864,14 @@ ul {
   height: 20%;
   width: 100%;
 }
-.cart-calcuation {
+.cart-calculation {
   height: 100%;
   width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   margin: 5rem 1rem;
   padding: 1rem;
 }
@@ -893,7 +886,7 @@ ul {
 }
 .ordered-item {
   background-color: transparent;
-  width: 10s0%;
+  width: 100%;
   height: 50%;
   display: flex;
   border-bottom: 1px solid var(--secondary-color);
@@ -934,7 +927,7 @@ ul {
   height: 15%;
   display: flex;
 }
-.delaviry-charges {
+.delivery-charges {
   padding: 1.5rem;
 }
 .total-heading {
@@ -953,16 +946,15 @@ ul {
   justify-content: center;
   align-items: center;
 }
-.right-nav {
+/* .right-nav {
   display: block;
   width: 0%;
   height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
-  /* left: 10%; */
   z-index: 1;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   overflow-x: hidden;
   transition: all 0.5s;
 }
@@ -984,9 +976,9 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-}
+} */
 .filter-nav-button {
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   color: black;
 
   border-radius: 50%;
@@ -1000,7 +992,6 @@ ul {
   justify-content: center;
   align-items: center;
   border: 1px solid transparent;
-  /* z-index: 1; */
   opacity: 1;
   box-shadow: 5px 5px 15px gray;
 }
@@ -1013,7 +1004,6 @@ ul {
   justify-content: space-around;
   align-items: center;
   height: 100%;
-  /* padding: 3rem 0rem; */
 }
 .menu-heading-div {
   color: var(--third-color);
@@ -1052,10 +1042,10 @@ ul {
 .cupcake {
   left: 29%;
 }
-.loader-div {
+/* .loader-div {
   height: 100vh;
   width: 100%;
-  background-color: var(--primory-color);
+  background-color: var(--primary-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1158,12 +1148,12 @@ ul {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-}
+} */
 .hot-recipe-card-product-name {
   font-size: 1rem;
   text-align: center;
 }
-.home-content-discription {
+.home-content-description {
   text-align: center;
 }
 .add-product-loader {
@@ -1176,9 +1166,9 @@ ul {
   height: 40px;
   width: 300px;
   z-index: 1;
-  color: var(--primory-color);
-  border-left: 1px solid var(--primory-color);
-  border-right: 1px solid var(--primory-color);
+  color: var(--primary-color);
+  border-left: 1px solid var(--primary-color);
+  border-right: 1px solid var(--primary-color);
 
   background: rgba(125, 44, 111, 0.9);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -1193,39 +1183,32 @@ ul {
     color: var(--secondary-color);
     background-color: lightblue;
   }
-  .toggle-header {
+
+  /* .home-header {
+    display: none;
+  } */
+  .home-icon {
+    margin: 1rem;
+  }
+
+  /* .toggle-header {
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
-    color: var(--primory-color);
+    color: var(--primary-color);
     background-color: var(--secondary-color);
     z-index: 1;
-  }
-
-  .home-header {
-    display: none;
-  }
-  .home-icon {
-    margin: 1rem;
   }
   .toggle-button-div {
     margin: 1rem;
   }
   .toggle-button {
-    color: var(--primory-color);
-  }
-  .home-menu-card {
-    height: 100px;
-    width: 50px;
-  }
-  .sub-header {
-    padding-top: 50px;
-    display: none;
-  }
-
+    color: var(--primary-color);
+  } */
+  /* 
   .side-nav {
     display: block;
     width: 0%;
@@ -1234,7 +1217,7 @@ ul {
     top: 0;
     left: 0;
     z-index: 1;
-    background-color: var(--primory-color);
+    background-color: var(--primary-color);
     color: var(--secondary-color);
     overflow-x: hidden;
     transition: all 0.5s;
@@ -1247,11 +1230,20 @@ ul {
     padding: 1rem;
   }
   .side-nav-list-item:hover {
-    color: var(--primory-color);
+    color: var(--primary-color);
     background-color: var(--secondary-color);
 
     opacity: 0.9;
+  } */
+  .home-menu-card {
+    height: 100px;
+    width: 50px;
   }
+  /* .sub-header {
+    padding-top: 50px;
+    display: none;
+  } */
+
   .close-icon-div {
     position: absolute;
     left: 89%;
@@ -1261,7 +1253,6 @@ ul {
   }
   .content {
     height: 300rem;
-    /* padding-top: 5rem; */
     font-size: 1rem;
   }
   .home-content1 {
@@ -1292,7 +1283,7 @@ ul {
     height: 95%;
     width: 100%;
   }
-  .home-content-discription {
+  .home-content-description {
     text-align: center;
     font-weight: 500;
   }
@@ -1304,10 +1295,10 @@ ul {
     width: 210px;
     height: 230px;
   }
-  .hot-seling-recipes-content {
+  .hot-selling-recipes-content {
     height: 15%;
   }
-  .hot-seling-recipes-card-list {
+  .hot-selling-recipes-card-list {
     height: 85%;
   }
   .home-menu-card {
@@ -1320,10 +1311,10 @@ ul {
   .home-menu-list {
     height: 95%;
   }
-  .hot-seling-recipes {
+  .hot-selling-recipes {
     align-items: center;
   }
-  .hot-seling-recipes-content {
+  .hot-selling-recipes-content {
     align-items: center;
   }
   .header-top-left-element {
@@ -1342,7 +1333,7 @@ ul {
   .menu-background {
     padding-top: 3rem;
   }
-  .footer {
+  /* .footer {
     height: 75px;
   }
   .footer-list-item {
@@ -1350,7 +1341,7 @@ ul {
   }
   .footer-img {
     width: 25%;
-  }
+  } */
   .product-menu-card {
     margin: 1rem 2rem;
   }
@@ -1365,7 +1356,7 @@ ul {
     width: 100%;
     font-size: 0.75rem;
   }
-  .cart-calcuation {
+  .cart-calculation {
     width: 100%;
     margin: 0rem;
   }

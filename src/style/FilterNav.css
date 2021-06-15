@@ -1,0 +1,31 @@
+.right-nav {
+  display: block;
+  width: 0%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--primary-color);
+  overflow-x: hidden;
+  transition: all 0.5s;
+}
+.close-icon-div-right-nav {
+  position: absolute;
+}
+.filter-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  padding-top: 4rem;
+}
+.fieldset {
+  width: 70%;
+  height: 30%;
+  border-color: var(--secondary-color);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}

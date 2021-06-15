@@ -1,0 +1,32 @@
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.footer-list {
+  display: flex;
+}
+.footer-list-item {
+  padding: 0rem 1rem;
+  font-size: 3rem;
+}
+.footer-img {
+  width: 10%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 500px) {
+  .footer {
+    height: 75px;
+  }
+  .footer-list-item {
+    font-size: 2rem;
+  }
+  .footer-img {
+    width: 25%;
+  }
+}
