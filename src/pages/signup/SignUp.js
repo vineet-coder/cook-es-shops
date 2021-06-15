@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ApiService } from "../../utils/ApiServices";
 
 export const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -13,17 +14,23 @@ export const SignUp = () => {
   const SignUpHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:8000/signup",
-        // `https://cook-es-shops.herokuapp.com/signup`,
+      // await axios.post(
+      //   // "http://localhost:8000/signup",
+      //   `https://cook-es-shops.herokuapp.com/signup`,
 
-        {
-          userName,
-          email,
-          password: password1,
-          confirmPassword: password2,
-        }
-      );
+      //   {
+      //     userName,
+      //     email,
+      //     password: password1,
+      //     confirmPassword: password2,
+      //   }
+      // );
+      await ApiService("post", "signup", {
+        userName,
+        email,
+        password: password1,
+        confirmPassword: password2,
+      });
 
       setUserName("");
       setEmail("");

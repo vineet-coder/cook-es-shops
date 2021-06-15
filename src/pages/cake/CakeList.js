@@ -13,10 +13,11 @@ import { FilterNav } from "../../components/filterNav/FilterNav";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
+import { InformationalModal } from "../../components/informationalModal/InformationalModal";
 
 export const CakeList = () => {
   const { dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
-  const { token } = useAuth();
+  const { token, isAxiosFullfil, setIsAxiosFullfil } = useAuth();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "300px";
@@ -40,8 +41,6 @@ export const CakeList = () => {
           headers: { authorization: token },
         });
 
-        setIsLoader(false);
-
         dispatch({
           type: "INITIALIZE_DATA",
           category: "cake",
@@ -52,14 +51,24 @@ export const CakeList = () => {
             wishlistProducts: wishlistResponse.result[0]?.products,
           },
         });
+
+        setIsLoader(false);
       } catch (error) {
         console.log(error);
+        setIsAxiosFullfil(true);
+        setTimeout(() => {
+          setIsAxiosFullfil(false);
+        }, 2000);
       }
     })();
   }, []);
 
   return (
     <>
+      {isAxiosFullfil && (
+        <InformationalModal info={"You Haven't Logged In!!"} />
+      )}
+
       {isAddLoading && <AddProductLoader />}
       <ToggleHeader />
       <ToggleSideNav />

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Header } from "../../components/header/Header";
 import { useAuth } from "../../providers/AuthProvider";
 import { useLogin } from "../../providers/loginProvider/LoginContext";
+import { ApiService } from "../../utils/ApiServices";
 // import "./Login.css";
 import { LoginHandler } from "./Login.Utils";
 export const Login = () => {
@@ -23,38 +24,48 @@ export const Login = () => {
   const LogInHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:8000/login",
-        // `https://cook-es-shops.herokuapp.com/login`,
+      const data = await ApiService(
+        "post",
+        "login",
 
         {
           email,
           password,
         }
       );
-      console.log(res);
+
+      // const res = await axios.post(
+      //   // "http://localhost:8000/login",
+      //   `https://cook-es-shops.herokuapp.com/login`,
+
+      //   {
+      //     email,
+      //     password,
+      //   }
+      // );
+      console.log(data);
 
       setEmail("");
       setPassword("");
-      loginUser(res);
+      loginUser(data);
     } catch (error) {
       setLoginFailedModel(true);
       setEmail("");
       setPassword("");
     }
-    function loginUser(res) {
+    function loginUser(data) {
       setLogin(true);
 
-      setToken(res.data.token);
+      setToken(data.token);
       navigate("/");
-      setUserName(res.data.userName);
+      setUserName(data.userName);
 
       localStorage?.setItem(
         "login",
         JSON.stringify({
           isUserLoggedIn: true,
-          token: res.data.token,
-          name: res.data.userName,
+          token: data.token,
+          name: data.userName,
         })
       );
     }

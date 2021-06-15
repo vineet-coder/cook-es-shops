@@ -11,10 +11,11 @@ import { AddProductLoader } from "../../components/addProductLoader/AddProductLo
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
 import { CartCalculationCard } from "./CartCalculationCard";
+import { InformationalModal } from "../../components/informationalModal/InformationalModal";
 
 export const Cart = () => {
   const { state, setIsLoader, dispatch, isLoader, isAddLoading } = useCart();
-  const { token } = useAuth();
+  const { token, isAxiosFullfil, setIsAxiosFullfil } = useAuth();
 
   useEffect(() => {
     (async function () {
@@ -41,6 +42,10 @@ export const Cart = () => {
         });
       } catch (error) {
         console.log(error, "axios error");
+        setIsAxiosFullfil(true);
+        setTimeout(() => {
+          setIsAxiosFullfil(false);
+        }, 2000);
       }
     })();
   }, []);
@@ -52,6 +57,10 @@ export const Cart = () => {
 
   return (
     <>
+      {isAxiosFullfil && (
+        <InformationalModal info={"You Haven't Logged In!!"} />
+      )}
+
       {isAddLoading && <AddProductLoader />}
 
       <ToggleHeader />

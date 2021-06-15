@@ -10,8 +10,8 @@ export const Header = () => {
   const { loginState } = useLogin();
   const { isUserLogin, userName } = useAuth();
 
-  // console.log(loginState);
-  // console.log(userName?.split(" ")[0]);
+  console.log(state.wishlistListItem);
+  console.log(state.cartListItem);
   return (
     <>
       <header className="home-header">

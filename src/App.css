@@ -7,6 +7,7 @@
 @import "./style/SubHeader.css";
 @import "./style/ToggleSideNav.css";
 @import "./style/ToggleHeader.css";
+@import "./style/InformationalModal.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");

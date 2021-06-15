@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
   const [userName, setUserName] = useState(savedUserName);
   const [loginFailedModel, setLoginFailedModel] = useState(false);
   const [loginStatus, setLoginStatus] = useState(false);
+  const [isAxiosFullfil, setIsAxiosFullfil] = useState(false);
 
   console.log(isUserLogin, token, userName);
 
@@ -35,6 +36,8 @@ export const AuthProvider = ({ children }) => {
         setUserName,
         loginStatus,
         setLoginStatus,
+        isAxiosFullfil,
+        setIsAxiosFullfil,
       }}
     >
       {children}
