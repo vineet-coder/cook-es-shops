@@ -15,18 +15,21 @@ import { SignUp } from "./pages/signup/SignUp";
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/cakes" element={<CakeList />} />
-      <Route path="/cupcakes" element={<CupCakeList />} />
-      <Route path="/brownies" element={<BrowniesList />} />
-      <Route path="/cookie" element={<CookiesList />} />
-      <Route path="/products/:productId" element={<ProductPage />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/wishlist" element={<Wishlist />} />
-      <Route path="/menus" element={<Menu />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<SignUp />} />
-    </Routes>
+    <div className="App">
+      {" "}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/cakes" element={<CakeList />} />
+        <Route path="/cupcakes" element={<CupCakeList />} />
+        <Route path="/brownies" element={<BrowniesList />} />
+        <Route path="/cookie" element={<CookiesList />} />
+        <Route path="/products/:productId" element={<ProductPage />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/menus" element={<Menu />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+      </Routes>
+    </div>
   );
 }

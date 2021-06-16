@@ -5,7 +5,7 @@
   height: 75px;
   display: flex;
   flex-direction: column;
-  position: fixed;
+  position: sticky;
   display: block;
   z-index: 1;
 }

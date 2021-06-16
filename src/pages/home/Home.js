@@ -13,6 +13,7 @@ import { useCart } from "../../providers/cartContext/CartContext";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
+import Interceptor from "../../middlewares/interseptor";
 
 export const Home = () => {
   const { dispatch } = useCart();
@@ -48,6 +49,7 @@ export const Home = () => {
 
   return (
     <>
+      <Interceptor />
       <ToggleHeader />
       <ToggleSideNav />
 
