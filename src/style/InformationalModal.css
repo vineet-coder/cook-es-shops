@@ -3,19 +3,20 @@
   align-items: center;
   justify-content: center;
   position: fixed;
-  top: 12%;
-  left: 40%;
-  height: 40px;
-  width: 300px;
+  top: 20%;
+  left: 25%;
+  min-height: 10%;
+  min-width: 40%;
   z-index: 1;
   color: var(--primary-color);
   border-left: 1px solid var(--primary-color);
   border-right: 1px solid var(--primary-color);
-
+  font-size: 1.25rem;
   background: rgba(125, 44, 111, 0.9);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 3rem;
 }

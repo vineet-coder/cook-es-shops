@@ -11,6 +11,7 @@ import { AddProductLoader } from "../../components/addProductLoader/AddProductLo
 import { ApiService } from "../../utils/ApiServices";
 import { useAuth } from "../../providers/AuthProvider";
 import { InformationalModal } from "../../components/informationalModal/InformationalModal";
+import Interceptor from "../../middlewares/interseptor";
 
 export const Wishlist = () => {
   const { state, dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
@@ -44,16 +45,17 @@ export const Wishlist = () => {
         });
       } catch (error) {
         console.log(error);
-        setIsAxiosFullfil(true);
-        setTimeout(() => {
-          setIsAxiosFullfil(false);
-        }, 2000);
+        // setIsAxiosFullfil(true);
+        // setTimeout(() => {
+        //   setIsAxiosFullfil(false);
+        // }, 2000);
       }
     })();
   }, []);
 
   return (
     <>
+      <Interceptor />
       {isAxiosFullfil && (
         <InformationalModal info={"You Haven't Logged In!!"} />
       )}

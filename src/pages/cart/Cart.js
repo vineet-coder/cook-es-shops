@@ -12,6 +12,7 @@ import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
 import { CartCalculationCard } from "./CartCalculationCard";
 import { InformationalModal } from "../../components/informationalModal/InformationalModal";
+import Interceptor from "../../middlewares/interseptor";
 
 export const Cart = () => {
   const { state, setIsLoader, dispatch, isLoader, isAddLoading } = useCart();
@@ -42,10 +43,10 @@ export const Cart = () => {
         });
       } catch (error) {
         console.log(error, "axios error");
-        setIsAxiosFullfil(true);
-        setTimeout(() => {
-          setIsAxiosFullfil(false);
-        }, 2000);
+        // setIsAxiosFullfil(true);
+        // setTimeout(() => {
+        //   setIsAxiosFullfil(false);
+        // }, 2000);
       }
     })();
   }, []);
@@ -57,6 +58,7 @@ export const Cart = () => {
 
   return (
     <>
+      <Interceptor />
       {isAxiosFullfil && (
         <InformationalModal info={"You Haven't Logged In!!"} />
       )}

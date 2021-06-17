@@ -14,6 +14,7 @@ import { AddProductLoader } from "../../components/addProductLoader/AddProductLo
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
 import { InformationalModal } from "../../components/informationalModal/InformationalModal";
+import Interceptor from "../../middlewares/interseptor";
 
 export const CupCakeList = () => {
   const { dispatch, isLoader, setIsLoader, isAddLoading } = useCart();
@@ -55,16 +56,17 @@ export const CupCakeList = () => {
         });
       } catch (error) {
         console.log(error);
-        setIsAxiosFullfil(true);
-        setTimeout(() => {
-          setIsAxiosFullfil(false);
-        }, 2000);
+        // setIsAxiosFullfil(true);
+        // setTimeout(() => {
+        //   setIsAxiosFullfil(false);
+        // }, 2000);
       }
     })();
   }, []);
 
   return (
     <>
+      <Interceptor />
       {isAxiosFullfil && (
         <InformationalModal info={"You Haven't Logged In!!"} />
       )}
