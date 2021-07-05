@@ -1,19 +1,19 @@
-export function getPopulorData(givenState) {
-  return givenState?.Populor === true
+export function getPopularData(givenState) {
+  return givenState?.popular === true
     ? {
         ...givenState,
         Data: {
           ...givenState.Data,
-          cake: givenState.Data.cake.filter((item) => item.isPopulor === true),
+          cake: givenState.Data.cake.filter((item) => item.isPopular === true),
 
           cupcake: givenState.Data.cupcake.filter(
-            (item) => item.isPopulor === true
+            (item) => item.isPopular === true
           ),
           cookie: givenState.Data.cookie.filter(
-            (item) => item.isPopulor === true
+            (item) => item.isPopular === true
           ),
           brownie: givenState.Data.brownie.filter(
-            (item) => item.isPopulor === true
+            (item) => item.isPopular === true
           ),
         },
       }

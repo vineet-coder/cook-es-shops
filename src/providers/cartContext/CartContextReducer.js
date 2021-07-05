@@ -14,21 +14,10 @@ export function CartReducer(state, value) {
         productPage: [value.payload],
       };
 
-    // case "GO_TO_PRODUCT_PAGE_FROM_CART":
-    //   return {
-    //     ...state,
-    //     productPage: [{ ...value.payload, cart: true }],
-    //   };
-    // case "GO_TO_PRODUCT_PAGE_FROM_WISHLIST":
-    //   return {
-    //     ...state,
-    //     productPage: [{ ...value.payload, wishlist: true }],
-    //   };
-
-    case "POPULOR":
+    case "POPULAR":
       return {
         ...state,
-        Populor: !state.Populor,
+        popular: !state.popular,
       };
 
     case "DISCOUNT":
@@ -46,83 +35,13 @@ export function CartReducer(state, value) {
       return {
         ...state,
         cartListItem: value.payload.cartProducts,
-
-        // Data: {
-        //   ...state.Data,
-
-        //   [value.category]: value.payload2,
-        // },
       };
-
-    // case "ADD_TO_CART_FROM_PRODUCTPAGE":
-    //   return {
-    //     ...state,
-    //     productPage: [value.payload1],
-    //     cartListItem: value.payload2,
-    //   };
-
-    // case "ADD_TO_WISHLIST_FROM_PRODUCTPAGE":
-    //   return {
-    //     ...state,
-    //     productPage: [value.payload1],
-    //     wishlistListItem: value.payload2,
-    //   };
-
-    // case "INCREMENT":
-    //   return {
-    //     ...state,
-    //     cartListItem: state.cartListItem.map((product) =>
-    //       product.id === value.payload.id
-    //         ? { ...product, quantity: product.quantity + 1 }
-    //         : { ...product }
-    //     ),
-    //   };
-    // case "DECREMENT":
-    //   return {
-    //     ...state,
-    //     cartListItem: state.cartListItem.map((product) =>
-    //       product.id === value.payload.id
-    //         ? { ...product, quantity: product.quantity - 1 }
-    //         : { ...product }
-    //     ),
-    //   };
-
-    // case "REMOVE_FROM_CART":
-    //   return {
-    //     ...state,
-    //     cartListItem: state.cartListItem.filter(
-    //       (product) => product._id !== value.payload._id
-    //     ),
-    //   };
 
     case "ADD_TO_WISHLIST":
       return {
         ...state,
         wishlistListItem: value.payload.wishlistProducts,
       };
-    // Data: {
-    //   ...state.Data,
-
-    //   [value.category]: value.payload2,
-    // },
-
-    // case "MOVE_TO_CART_FROM_WISHLIST":
-    //   return {
-    //     ...state,
-    //     cartListItem: value.payload1,
-
-    //     wishlistListItem: state.wishlistListItem.filter(
-    //       (item) => item._id !== value.payload2._id
-    //     ),
-    //   };
-
-    // case "REMOVE_FROM_WISHLIST":
-    //   return {
-    //     ...state,
-    //     wishlistListItem: state.wishlistListItem.filter(
-    //       (product) => product._id !== value.payload._id
-    //     ),
-    //   };
 
     case "HIGH_TO_LOW":
       return {

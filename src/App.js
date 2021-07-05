@@ -12,11 +12,13 @@ import { Routes, Route } from "react-router-dom";
 import { Login } from "./pages/login/Login";
 // import { Profile } from "./pages/profile/Profile";
 import { SignUp } from "./pages/signup/SignUp";
+import Interceptor from "./middlewares/interseptor";
 
 export default function App() {
   return (
     <div className="App">
       {" "}
+      <Interceptor />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cakes" element={<CakeList />} />

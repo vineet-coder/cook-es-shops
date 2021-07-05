@@ -21,8 +21,6 @@ export const AuthProvider = ({ children }) => {
   const [loginStatus, setLoginStatus] = useState(false);
   const [isAxiosFullfil, setIsAxiosFullfil] = useState(false);
 
-  console.log(isUserLogin, token, userName);
-
   return (
     <AuthContext.Provider
       value={{

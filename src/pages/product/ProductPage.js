@@ -9,34 +9,36 @@ import { useEffect } from "react";
 import { ApiService } from "../../utils/ApiServices";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
 import { useAuth } from "../../providers/AuthProvider";
-
+import { InformationalModal } from "../../components/informationalModal/InformationalModal";
+import Interceptor from "../../middlewares/interseptor";
 export const ProductPage = () => {
   const { state, dispatch, isAddLoading } = useCart();
-  const { token } = useAuth();
+  const { isAxiosFullfil } = useAuth();
 
   let { productId } = useParams();
-  console.log(productId);
 
-  useEffect(async () => {
-    try {
-      const res = await ApiService("get", `product/${productId}`);
-      console.log(res);
+  useEffect(() => {
+    (async function () {
+      try {
+        const res = await ApiService("get", `product/${productId}`);
 
-      dispatch({
-        type: "GO_TO_PRODUCT_PAGE",
-        payload: res.item,
-      });
-    } catch (error) {
-      console.log(error, "axios errror");
-    }
-  }, []);
-
-
-
-  console.log({ state });
+        dispatch({
+          type: "GO_TO_PRODUCT_PAGE",
+          payload: res.item,
+        });
+      } catch (error) {
+        console.log(error, "axios errror");
+      }
+    })();
+  }, [productId, dispatch]);
 
   return (
     <>
+      <Interceptor />
+      {isAxiosFullfil && (
+        <InformationalModal info={"You Haven't Logged In!!"} />
+      )}
+
       {isAddLoading && <AddProductLoader />}
       <ToggleHeader />
       <ToggleSideNav />

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LowerHeaderMenu } from "../../pages/home/LowerHeaderMenu";
+import { LowerHeaderMenu } from "./LowerHeaderMenu";
 export const SubHeader = () => {
   return (
     <>

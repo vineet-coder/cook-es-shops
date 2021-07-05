@@ -8,6 +8,7 @@
   position: sticky;
   display: block;
   z-index: 1;
+  text-transform: capitalize;
 }
 .header-top {
   width: 100%;
@@ -89,5 +90,9 @@
 @media only screen and (max-width: 500px) {
   .home-header {
     display: none;
+  }
+  .header-top-left-element {
+    width: 65%;
+    padding-left: 0.5rem;
   }
 }

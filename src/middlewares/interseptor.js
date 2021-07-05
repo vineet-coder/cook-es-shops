@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../providers/AuthProvider";
 
@@ -26,6 +26,14 @@ function Interceptor() {
               setTimeout(() => {
                 setIsAxiosFullfil(false);
               }, 5000);
+            }
+            if (code === 400) {
+              console.log("You’re not authorized to do that.");
+
+              setIsAxiosFullfil(true);
+              setTimeout(() => {
+                setIsAxiosFullfil(false);
+              }, 4000);
             } else if (error.message) {
               console.log(error.message);
             }
@@ -38,7 +46,7 @@ function Interceptor() {
 
   useEffect(() => {
     addErrorInterceptor();
-  }, []);
+  });
 
   return null;
 }

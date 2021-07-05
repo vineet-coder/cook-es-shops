@@ -1,40 +1,24 @@
 import { useCart } from "../../providers/cartContext/CartContext";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   addToCart,
   removeFromCart,
   removeFromWishlist,
-} from "../../utils/menu.utils";
+} from "../../utils/menu";
 import { useAuth } from "../../providers/AuthProvider";
 
 export const WishlistCard = ({ item }) => {
   const { dispatch, setIsAddLoading, finalState } = useCart();
   const { token } = useAuth();
-  // const goToProductPage = (item) => {
-  //   dispatch({
-  //     type: "GO_TO_PRODUCT_PAGE_FROM_WISHLIST",
-
-  //     payload: item,
-  //   });
-  // };
 
   let isProductInCart = finalState.cartListItem
     ?.map((item) => item.productid._id)
     .includes(item._id);
 
-  console.log({ isProductInCart });
-
-  console.log(item);
   return (
     <div className="product-menu-card">
       <Link to={`/products/${item._id}`} className="product-menu-img-div">
-        <img
-          src={item.image[0]}
-          alt="img"
-          className="product-menu-img"
-          // onClick={() => goToProductPage(item.id)}
-        />
+        <img src={item.image[0]} alt="img" className="product-menu-img" />
       </Link>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">
@@ -52,12 +36,6 @@ export const WishlistCard = ({ item }) => {
           ) : (
             <button
               className="btn-cart"
-              // onClick={() =>
-              //   dispatch({
-              //     type: "MOVE_TO_CART_FROM_WISHLIST",
-              //     payload: item,
-              //   })
-              // }
               onClick={() =>
                 addToCart(item._id, 1, token, dispatch, setIsAddLoading)
               }

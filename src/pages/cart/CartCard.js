@@ -1,37 +1,13 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../providers/cartContext/CartContext";
 import { MdDeleteForever } from "react-icons/md";
-import axios from "axios";
-import { removeFromCart, updateCart } from "../../utils/menu.utils";
+import { removeFromCart, updateCart } from "../../utils/menu";
 import { useAuth } from "../../providers/AuthProvider";
 
 export const CartCard = ({ item, quantity, productObject_Id }) => {
-  const { dispatch, setIsAddLoading } = useCart();
+  const { dispatch } = useCart();
   const { token } = useAuth();
 
-  // const goToProductPage = (item) => {
-  //   dispatch({
-  //     type: "GO_TO_PRODUCT_PAGE_FROM_CART",
-
-  //     payload: item,
-  //   });
-  // };
-
-  // const removeFromCart = async (item) => {
-  //   setIsAddLoading(true);
-
-  //   try {
-  //     await axios.delete("https://cook-es-shops.herokuapp.com/cartproducts", {
-  //       data: { cartProductId: item._id, productId: item._id },
-  //     });
-
-  //     dispatch({ type: "REMOVE_FROM_CART", payload: item });
-  //     setIsAddLoading(false);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  console.log(quantity);
   let plusUpdatedQuantity = quantity + 1;
   let minusUpdatedQuantity = quantity - 1;
 
@@ -40,12 +16,7 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
       <div className="cart-card">
         <div className="cart-card-sub-div">
           <Link to={`/products/${item._id}`} className="cart-card-img-div">
-            <img
-              src={item.image[0]}
-              alt="img"
-              className="cart-card-img"
-              // onClick={() => goToProductPage(item)}
-            />
+            <img src={item.image[0]} alt="img" className="cart-card-img" />
           </Link>
           <div className="cart-card-content-div">
             <h2>{item.price}/- Rs. </h2>
@@ -69,7 +40,6 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
                     dispatch
                   )
                 }
-                // onClick={() => dispatch({ type: "INCREMENT", payload: item })}
               >
                 +
               </button>
@@ -84,7 +54,6 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
               ) : (
                 <button
                   className="btn-cart add-minus-btn"
-                  // onClick={() => dispatch({ type: "DECREMENT", payload: item })}
                   onClick={() =>
                     updateCart(
                       productObject_Id,

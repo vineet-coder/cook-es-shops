@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-// import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { ApiService } from "../../utils/ApiServices";
-import { InformationalModal } from "../../components/informationalModal/InformationalModal";
 import { useAuth } from "../../providers/AuthProvider";
-import Interceptor from "../../middlewares/interseptor";
+import { IoAlertCircleOutline } from "react-icons/io5";
 
 export const SignUp = () => {
   const [userName, setUserName] = useState("");
@@ -38,62 +35,63 @@ export const SignUp = () => {
 
   return (
     <>
-      <Interceptor />
-      {isAxiosFullfil && (
-        <InformationalModal
-          info={
-            "You may have filled wrong data or existing username or existing email!!"
-          }
-        />
-      )}
       <div className="signup-page">
         <div className="main">
+          {isAxiosFullfil && (
+            <p className="incorrect-information-text">
+              <IoAlertCircleOutline /> You filled something wrong!!
+            </p>
+          )}
           <p className="sign" align="center">
             Sign Up
           </p>
-          <form className="form1" />
-          <input
-            className="input"
-            type="text"
-            placeholder="Username"
-            align="center"
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <input
-            className="input"
-            type="email"
-            placeholder="Email"
-            align="center"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className="input"
-            type="password"
-            placeholder="Password"
-            align="center"
-            onChange={(e) => setPassword1(e.target.value)}
-          />
-          <input
-            className="input"
-            type="password"
-            placeholder="Confirm Password"
-            align="center"
-            onChange={(e) => setPassword2(e.target.value)}
-          />
-          <div className="login-signup-btn-div">
-            <Link to="/login">
-              <button className="submit">Log In</button>{" "}
-            </Link>
+          <form className="form1" onSubmit={(e) => SignUpHandler(e)}>
+            <input
+              className="input"
+              type="text"
+              placeholder="Username"
+              align="center"
+              required
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <input
+              className="input"
+              type="email"
+              placeholder="Email"
+              align="center"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className="input"
+              type="password"
+              placeholder="Password"
+              align="center"
+              required
+              onChange={(e) => setPassword1(e.target.value)}
+            />
+            <input
+              className="input"
+              type="password"
+              placeholder="Confirm Password"
+              align="center"
+              required
+              onChange={(e) => setPassword2(e.target.value)}
+            />
+            <div className="login-signup-btn-div">
+              <Link to="/login">
+                <button className="submit">Log In</button>{" "}
+              </Link>
 
-            <button className="submit" onClick={(e) => SignUpHandler(e)}>
-              Sign Up
-            </button>
-          </div>
+              <button className="submit" type="submit">
+                Sign Up
+              </button>
+            </div>
 
-          <p className="forgot" align="center">
-            <a href="#" />
-            Forgot Password?
-          </p>
+            <p className="forgot" align="center">
+              Forgot Password?
+            </p>
+          </form>
         </div>
       </div>
     </>

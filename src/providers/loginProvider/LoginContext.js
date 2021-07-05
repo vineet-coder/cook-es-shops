@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import { createContext, useContext, useReducer } from "react";
 import { loginInitialState, LoginReducer } from "./LoginReducer";
 const LoginContext = createContext();
 
@@ -7,7 +7,6 @@ export const LoginProvider = ({ children }) => {
     LoginReducer,
     loginInitialState
   );
-  console.log(loginState);
 
   return (
     <LoginContext.Provider value={{ loginState, loginDispatch }}>

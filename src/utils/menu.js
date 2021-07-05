@@ -8,7 +8,9 @@ export const addToWishlist = async (
   setIsAddLoading
 ) => {
   setIsAddLoading(true);
-
+  setTimeout(() => {
+    setIsAddLoading(false);
+  }, 1000);
   try {
     const data = await ApiService(
       "post",
@@ -26,8 +28,6 @@ export const addToWishlist = async (
         wishlistProducts: data.result[0].products,
       },
     });
-
-    setIsAddLoading(false);
   } catch (error) {
     console.log(error);
   }
@@ -41,6 +41,9 @@ export const addToCart = async (
   setIsAddLoading
 ) => {
   setIsAddLoading(true);
+  setTimeout(() => {
+    setIsAddLoading(false);
+  }, 1000);
   try {
     const data = await ApiService(
       "post",
@@ -51,15 +54,12 @@ export const addToCart = async (
       }
     );
 
-    console.log(data);
-
     dispatch({
       type: "ADD_TO_CART",
       payload: {
         cartProducts: data.result[0].products,
       },
     });
-    setIsAddLoading(false);
   } catch (error) {
     console.log(error, "axios error");
   }
@@ -70,9 +70,7 @@ export const updateCart = async (
   updatedQuantity,
   token,
   dispatch
-  // setIsAddLoading
 ) => {
-  // setIsAddLoading(true);
   try {
     const data = await ApiService(
       "post",
@@ -83,14 +81,12 @@ export const updateCart = async (
       }
     );
 
-    console.log(data.result[0].products);
     dispatch({
       type: "ADD_TO_CART",
       payload: {
         cartProducts: data.result[0].products,
       },
     });
-    // setIsAddLoading(false);
   } catch (error) {
     console.log(error, "axios error");
   }

@@ -2,7 +2,7 @@ import { createContext, useContext, useReducer, useState } from "react";
 import {
   getDiscountedData,
   getFastDeliveryData,
-  getPopulorData,
+  getPopularData,
 } from "./CartContext.utils";
 import { CartReducer } from "./CartContextReducer";
 
@@ -28,16 +28,16 @@ export const CartProvider = ({ children }) => {
     isLowToHigh: false,
     Ready: false,
     Discount: false,
-    Populor: false,
+    popular: false,
     productPage: [],
   });
 
-  const populorState = getPopulorData(state);
+  const popularState = getPopularData(state);
 
-  const discountedState = getDiscountedData(populorState);
+  const discountedState = getDiscountedData(popularState);
 
   const finalState = getFastDeliveryData(discountedState);
-  console.log(state);
+
   return (
     <CartContext.Provider
       value={{
