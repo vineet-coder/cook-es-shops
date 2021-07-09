@@ -4,17 +4,17 @@ import { Header } from "../../components/header/Header";
 import { ToggleSideNav } from "../../components/toggleSideNav/ToggleSideNav";
 import { ToggleHeader } from "../../components/toggleHeader/ToggleHeader";
 import { Footer } from "../../components/footer/Footer";
-import axios from "axios";
 import { useEffect } from "react";
 import { Loader } from "../../components/loader/Loader";
 import { AddProductLoader } from "../../components/addProductLoader/AddProductLoader";
 import { ApiService } from "../../utils/ApiServices";
 import { useAuth } from "../../providers/AuthProvider";
 import { InformationalModal } from "../../components/informationalModal/InformationalModal";
+import Interceptor from "../../middlewares/interseptor";
 
 export const Wishlist = () => {
   const { state, dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
-  const { token, isAxiosFullfil, setIsAxiosFullfil } = useAuth();
+  const { token, isAxiosFullfil } = useAuth();
 
   useEffect(() => {
     (async function () {
@@ -37,23 +37,19 @@ export const Wishlist = () => {
           category: "cake",
 
           payload: {
-            // data: cakeResponse,
             cartProducts: cartResponse.result[0]?.products,
             wishlistProducts: wishlistResponse.result[0]?.products,
           },
         });
       } catch (error) {
         console.log(error);
-        setIsAxiosFullfil(true);
-        setTimeout(() => {
-          setIsAxiosFullfil(false);
-        }, 2000);
       }
     })();
-  }, []);
+  }, [dispatch , setIsLoader , token]);
 
   return (
     <>
+      <Interceptor />
       {isAxiosFullfil && (
         <InformationalModal info={"You Haven't Logged In!!"} />
       )}

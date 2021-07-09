@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../providers/AuthProvider";
 import { useCart } from "../../providers/cartContext/CartContext";
@@ -7,18 +6,11 @@ import {
   addToWishlist,
   removeFromCart,
   removeFromWishlist,
-} from "../../utils/menu.utils";
+} from "../../utils/menu";
 
 export const CupCakeMenuCard = ({ item }) => {
   const { dispatch, setIsAddLoading, finalState } = useCart();
   const { token } = useAuth();
-  // const goToProductPage = (item) => {
-  //   dispatch({
-  //     type: "GO_TO_PRODUCT_PAGE",
-
-  //     payload: item,
-  //   });
-  // };
 
   let isProductInCart = finalState.cartListItem
     ?.map((item) => item.productid?._id)
@@ -28,18 +20,10 @@ export const CupCakeMenuCard = ({ item }) => {
     ?.map((item) => item.productid?._id)
     .includes(item._id);
 
-  // console.log({ isProductInCart });
-  // console.log({ isProductInWishlist });
-
   return (
     <div className="product-menu-card ">
       <Link to={`/products/${item._id}`} className="product-menu-img-div link">
-        <img
-          src={item.image[0]}
-          alt="img"
-          className="product-menu-img"
-          // onClick={() => goToProductPage(item)}
-        />
+        <img src={item.image[0]} alt="img" className="product-menu-img" />
       </Link>
       <div className="product-menu-card-content">
         <div className="product-menu-card-price">

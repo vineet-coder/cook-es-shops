@@ -6,7 +6,6 @@ import { Header } from "../../components/header/Header";
 import { SubHeader } from "../../components/subHeader/SubHeader";
 import { Footer } from "../../components/footer/Footer";
 import { ToggleSideNav } from "../../components/toggleSideNav/ToggleSideNav";
-import axios from "axios";
 import { useEffect } from "react";
 import { Loader } from "../../components/loader/Loader";
 import { FilterNav } from "../../components/filterNav/FilterNav";
@@ -14,10 +13,11 @@ import { AddProductLoader } from "../../components/addProductLoader/AddProductLo
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
 import { InformationalModal } from "../../components/informationalModal/InformationalModal";
+import Interceptor from "../../middlewares/interseptor";
 
 export const CakeList = () => {
   const { dispatch, setIsLoader, isLoader, isAddLoading } = useCart();
-  const { token, isAxiosFullfil, setIsAxiosFullfil } = useAuth();
+  const { token, isAxiosFullfil } = useAuth();
 
   const openRightNav = () => {
     document.getElementById("right-nav-id").style.width = "300px";
@@ -29,13 +29,19 @@ export const CakeList = () => {
       try {
         const cakeResponse = await ApiService("get", "product/cakes");
 
-        // console.log(cakeResponse);
+        await dispatch({
+          type: "INITIALIZE_DATA",
+          category: "cake",
+
+          payload: {
+            data: cakeResponse,
+          },
+        });
+        setIsLoader(false);
 
         const cartResponse = await ApiService("get", "cartproducts", {
           headers: { authorization: token },
         });
-
-        console.log(cartResponse);
 
         const wishlistResponse = await ApiService("get", "wishlistproducts", {
           headers: { authorization: token },
@@ -51,20 +57,15 @@ export const CakeList = () => {
             wishlistProducts: wishlistResponse.result[0]?.products,
           },
         });
-
-        setIsLoader(false);
       } catch (error) {
         console.log(error);
-        setIsAxiosFullfil(true);
-        setTimeout(() => {
-          setIsAxiosFullfil(false);
-        }, 2000);
       }
     })();
-  }, []);
+  }, [setIsLoader, token, dispatch]);
 
   return (
     <>
+      <Interceptor />
       {isAxiosFullfil && (
         <InformationalModal info={"You Haven't Logged In!!"} />
       )}

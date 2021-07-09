@@ -94,4 +94,7 @@ form.form1 {
   .main {
     border-radius: 0px;
   }
+  .main-login {
+    width: 350px;
+  }
 }

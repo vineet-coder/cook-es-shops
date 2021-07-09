@@ -7,12 +7,12 @@ import { Header } from "../../components/header/Header";
 import { ToggleHeader } from "../../components/toggleHeader/ToggleHeader";
 import { Footer } from "../../components/footer/Footer";
 import { ToggleSideNav } from "../../components/toggleSideNav/ToggleSideNav";
-import axios from "axios";
 import { useEffect } from "react";
 import { useCart } from "../../providers/cartContext/CartContext";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
+import Interceptor from "../../middlewares/interseptor";
 
 export const Home = () => {
   const { dispatch } = useCart();
@@ -24,13 +24,9 @@ export const Home = () => {
           headers: { authorization: token },
         });
 
-        console.log(cartResponse);
-
         const wishlistResponse = await ApiService("get", "wishlistproducts", {
           headers: { authorization: token },
         });
-
-        console.log(wishlistResponse);
 
         dispatch({
           type: "INITIALIZE_DATA",
@@ -44,10 +40,11 @@ export const Home = () => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [dispatch, token]);
 
   return (
     <>
+      <Interceptor />
       <ToggleHeader />
       <ToggleSideNav />
 

@@ -19,7 +19,8 @@ export const FilterNav = () => {
             <input
               type="radio"
               onClick={() => dispatch({ type: "HIGH_TO_LOW" })}
-              checked={state.isHighToLow}
+              checked={state.isHighToLow === true}
+              readOnly
             />{" "}
             Price- High to Low
           </div>
@@ -27,7 +28,8 @@ export const FilterNav = () => {
             <input
               type="radio"
               onClick={() => dispatch({ type: "LOW_TO_HIGH" })}
-              checked={state.isLowToHigh}
+              checked={state.isLowToHigh === true}
+              readOnly
             />{" "}
             Price- Low to High
           </div>
@@ -40,7 +42,8 @@ export const FilterNav = () => {
             <input
               type="checkbox"
               onClick={() => dispatch({ type: "READY" })}
-              checked={finalState.Ready}
+              checked={finalState.Ready === true}
+              readOnly
             />{" "}
             Fast pickup's
           </div>
@@ -48,15 +51,17 @@ export const FilterNav = () => {
             <input
               type="checkbox"
               onClick={() => dispatch({ type: "DISCOUNT" })}
-              checked={finalState.Discount}
+              checked={finalState.Discount === true}
+              readOnly
             />{" "}
             Discount
           </div>
           <div>
             <input
               type="checkbox"
-              onClick={() => dispatch({ type: "POPULOR" })}
-              checked={finalState.Populor}
+              onClick={() => dispatch({ type: "POPULAR" })}
+              checked={finalState.popular}
+              readOnly
             />{" "}
             Popular cakes
           </div>

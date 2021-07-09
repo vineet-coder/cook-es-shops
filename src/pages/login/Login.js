@@ -1,23 +1,18 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { Header } from "../../components/header/Header";
 import { useAuth } from "../../providers/AuthProvider";
-import { useLogin } from "../../providers/loginProvider/LoginContext";
 import { ApiService } from "../../utils/ApiServices";
-// import "./Login.css";
-import { LoginHandler } from "./Login.Utils";
 export const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {
+    isAxiosFullfil,
     setToken,
     setLogin,
     isUserLogin,
     setUserName,
-    loginFailedModel,
     setLoginFailedModel,
   } = useAuth();
 
@@ -33,17 +28,6 @@ export const Login = () => {
           password,
         }
       );
-
-      // const res = await axios.post(
-      //   // "http://localhost:8000/login",
-      //   `https://cook-es-shops.herokuapp.com/login`,
-
-      //   {
-      //     email,
-      //     password,
-      //   }
-      // );
-      console.log(data);
 
       setEmail("");
       setPassword("");
@@ -76,10 +60,8 @@ export const Login = () => {
     setLogin(false);
     setToken(null);
   }
-
   return (
     <div className="login-page">
-      {/* <Header /> */}
       <div className="main-login">
         <Link to="/" className=" link">
           <img
@@ -91,41 +73,48 @@ export const Login = () => {
         <p className="login-sign" align="center">
           Log In
         </p>
-        <form className="form1" />
-        <input
-          className="input"
-          type="email"
-          align="center"
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          className="input"
-          type="password"
-          align="center"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {isAxiosFullfil && (
+          <p className="incorrect-information-text">
+            Check your Email or Password
+          </p>
+        )}
+        <form className="form1" onSubmit={(e) => LogInHandler(e)}>
+          <input
+            className="input"
+            type="email"
+            align="center"
+            placeholder="Email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            className="input"
+            type="password"
+            align="center"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-        <div className="login-signup-btn-div">
-          {isUserLogin ? (
-            <button className="submit" onClick={() => Logout()}>
-              Log Out
-            </button>
-          ) : (
-            <button className="submit" onClick={(e) => LogInHandler(e)}>
-              Log In
-            </button>
-          )}
-          <Link to="/signup">
-            <button className="submit">Sign Up</button>
-          </Link>
-        </div>
+          <div className="login-signup-btn-div">
+            {isUserLogin ? (
+              <button className="submit" onClick={() => Logout()}>
+                Log Out
+              </button>
+            ) : (
+              <button className="submit" type="submit">
+                Log In
+              </button>
+            )}
+            <Link to="/signup">
+              <button className="submit">Sign Up</button>
+            </Link>
+          </div>
 
-        <p className="forgot" align="center">
-          <a href="#" />
-          Forgot Password?
-        </p>
+          <p className="forgot" align="center">
+            Forgot Password?
+          </p>
+        </form>
       </div>
     </div>
   );

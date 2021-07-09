@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "../../providers/AuthProvider";
 import { useCart } from "../../providers/cartContext/CartContext";
@@ -8,7 +7,7 @@ import {
   addToWishlist,
   removeFromCart,
   removeFromWishlist,
-} from "../../utils/menu.utils";
+} from "../../utils/menu";
 
 export const ProductCard = ({ item }) => {
   const { dispatch, finalState, setIsAddLoading } = useCart();
@@ -16,20 +15,14 @@ export const ProductCard = ({ item }) => {
 
   useEffect(() => {
     (async function () {
-      // setIsLoader(true);
       try {
         const cartResponse = await ApiService("get", "cartproducts", {
           headers: { authorization: token },
         });
 
-        console.log(cartResponse);
-
         const wishlistResponse = await ApiService("get", "wishlistproducts", {
           headers: { authorization: token },
         });
-
-        // setIsLoader(false);
-        console.log({ wishlistResponse });
 
         dispatch({
           type: "INITIALIZE_DATA",
@@ -44,7 +37,7 @@ export const ProductCard = ({ item }) => {
         console.log(error);
       }
     })();
-  }, []);
+  }, [token, dispatch]);
 
   let isProductInCart = finalState.cartListItem
     ?.map((item) => item.productid?._id)
@@ -118,7 +111,7 @@ export const ProductCard = ({ item }) => {
                 <li key={item}>{item}</li>
               ))}
             </div>
-            <div className="product-instrections">
+            <div className="product-instructions">
               <h2>Details:</h2>
               {item.Description.Instructions.map((item) => (
                 <li key={item}>{item}</li>
