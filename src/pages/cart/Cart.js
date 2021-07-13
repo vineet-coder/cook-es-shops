@@ -45,19 +45,15 @@ export const Cart = () => {
       }
     })();
   }, [setIsLoader, token, dispatch]);
-
   return (
     <>
       <Interceptor />
       {isAxiosFullfil && (
         <InformationalModal info={"You Haven't Logged In!!"} />
       )}
-
       {isAddLoading && <AddProductLoader />}
-
       <ToggleHeader />
       <ToggleSideNav />
-
       <Header />
       {isLoader ? (
         <Loader />

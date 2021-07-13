@@ -24,7 +24,7 @@ export default function App() {
         <Route path="/cakes" element={<CakeList />} />
         <Route path="/cupcakes" element={<CupCakeList />} />
         <Route path="/brownies" element={<BrowniesList />} />
-        <Route path="/cookie" element={<CookiesList />} />
+        <Route path="/cookies" element={<CookiesList />} />
         <Route path="/products/:productId" element={<ProductPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/wishlist" element={<Wishlist />} />

@@ -4,6 +4,7 @@
   align-items: flex-start;
   /* justify-content: center; */
 }
+
 .cart-div {
   height: 90%;
   width: 70%;
@@ -105,6 +106,7 @@
   height: 20%;
   width: 100%;
 }
+
 .cart-calculation {
   height: 100%;
   width: 30%;
@@ -209,7 +211,7 @@
   .cart-card-content-div {
     font-size: 00.75rem;
   }
-  .btn-cart {
+  . {
     font-size: 0.75rem;
   }
   .cart-card-img-div {
@@ -223,6 +225,9 @@
   }
   .order-price {
     width: 35%;
+  }
+  .remove-btn {
+    font-size: 0.75rem;
   }
   .product-sub-div {
     flex-direction: column;

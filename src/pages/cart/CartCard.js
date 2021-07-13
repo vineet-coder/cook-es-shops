@@ -5,7 +5,7 @@ import { removeFromCart, updateCart } from "../../utils/menu";
 import { useAuth } from "../../providers/AuthProvider";
 
 export const CartCard = ({ item, quantity, productObject_Id }) => {
-  const { dispatch } = useCart();
+  const { dispatch, setIsAddLoading } = useCart();
   const { token } = useAuth();
 
   let plusUpdatedQuantity = quantity + 1;
@@ -23,7 +23,9 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
             <p>{item.name} </p>
             <button
               className="btn-cart remove-btn"
-              onClick={() => removeFromCart(item._id, token, dispatch)}
+              onClick={() =>
+                removeFromCart(item._id, token, dispatch, setIsAddLoading)
+              }
             >
               Remove from cart{" "}
             </button>
@@ -37,7 +39,8 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
                     productObject_Id,
                     plusUpdatedQuantity,
                     token,
-                    dispatch
+                    dispatch,
+                    setIsAddLoading
                   )
                 }
               >
@@ -47,7 +50,9 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
               {quantity === 1 ? (
                 <button
                   className="btn-cart add-minus-btn"
-                  onClick={() => removeFromCart(item._id, token, dispatch)}
+                  onClick={() =>
+                    removeFromCart(item._id, token, dispatch, setIsAddLoading)
+                  }
                 >
                   <MdDeleteForever />
                 </button>
@@ -59,7 +64,8 @@ export const CartCard = ({ item, quantity, productObject_Id }) => {
                       productObject_Id,
                       minusUpdatedQuantity,
                       token,
-                      dispatch
+                      dispatch,
+                      setIsAddLoading
                     )
                   }
                 >

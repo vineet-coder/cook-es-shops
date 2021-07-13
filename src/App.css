@@ -10,8 +10,8 @@
 @import "./style/InformationalModal.css";
 @import "./style/Home.css";
 @import "./style/Product.css";
-@import "./style/Cart.css";
 @import "./style/Menu.css";
+@import "./style/Cart.css";
 
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Krona+One&display=swap");
