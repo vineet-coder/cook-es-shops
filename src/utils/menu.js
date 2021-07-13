@@ -69,8 +69,13 @@ export const updateCart = async (
   productObject_Id,
   updatedQuantity,
   token,
-  dispatch
+  dispatch,
+  setIsAddLoading
 ) => {
+  setIsAddLoading(true);
+  setTimeout(() => {
+    setIsAddLoading(false);
+  }, 1000);
   try {
     const data = await ApiService(
       "post",
@@ -92,7 +97,16 @@ export const updateCart = async (
   }
 };
 
-export const removeFromCart = async (productId, token, dispatch) => {
+export const removeFromCart = async (
+  productId,
+  token,
+  dispatch,
+  setIsAddLoading
+) => {
+  setIsAddLoading(true);
+  setTimeout(() => {
+    setIsAddLoading(false);
+  }, 1000);
   try {
     const data = await ApiService(
       "delete",
@@ -116,7 +130,16 @@ export const removeFromCart = async (productId, token, dispatch) => {
   }
 };
 
-export const removeFromWishlist = async (productId, token, dispatch) => {
+export const removeFromWishlist = async (
+  productId,
+  token,
+  dispatch,
+  setIsAddLoading
+) => {
+  setIsAddLoading(true);
+  setTimeout(() => {
+    setIsAddLoading(false);
+  }, 1000);
   try {
     const data = await ApiService(
       "delete",

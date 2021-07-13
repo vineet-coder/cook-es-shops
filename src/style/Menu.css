@@ -83,6 +83,7 @@
   font-weight: bolder;
   color: var(--primary-color);
 }
+
 .btn-wishlist:hover {
   opacity: 0.7;
 }

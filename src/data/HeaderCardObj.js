@@ -11,7 +11,7 @@ export const headerCardObj = [
   },
   {
     name: "COOKIE",
-    route: "cookie",
+    route: "cookies",
 
     image: <BiCookie className="header-menu-icon" />,
   },
