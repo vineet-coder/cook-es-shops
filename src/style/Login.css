@@ -16,7 +16,13 @@
   align-items: center;
   justify-content: center;
 }
-
+.switch-page-description {
+  margin-top: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+.switch-page-link {
+  color: #8c55aa;
+}
 .login-sign {
   padding-top: 10px;
   color: #8c55aa;
@@ -72,6 +78,7 @@ form.form1 {
   margin: 0rem 1rem;
   font-size: 13px;
   box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  position: relative;
 }
 
 .forgot {

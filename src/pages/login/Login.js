@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
+import { SmallLoader } from "../../components/smallLoader/SmallLoader";
 import { useAuth } from "../../providers/AuthProvider";
 import { ApiService } from "../../utils/ApiServices";
 export const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSmallLoader, setIsSmallLoader] = useState(false);
   const {
     isAxiosFullfil,
     setToken,
@@ -18,6 +20,7 @@ export const Login = () => {
 
   const LogInHandler = async (e) => {
     e.preventDefault();
+    setIsSmallLoader(true);
     try {
       const data = await ApiService(
         "post",
@@ -33,33 +36,61 @@ export const Login = () => {
       setPassword("");
       loginUser(data);
     } catch (error) {
+      setIsSmallLoader(false);
+
       setLoginFailedModel(true);
       setEmail("");
       setPassword("");
     }
-    function loginUser(data) {
-      setLogin(true);
-
-      setToken(data.token);
-      navigate("/");
-      setUserName(data.userName);
-
-      localStorage?.setItem(
-        "login",
-        JSON.stringify({
-          isUserLoggedIn: true,
-          token: data.token,
-          name: data.userName,
-        })
-      );
-    }
   };
+  function loginUser(data) {
+    setLogin(true);
+
+    setToken(data.token);
+    setIsSmallLoader(false);
+
+    navigate("/");
+    setUserName(data.userName);
+
+    localStorage?.setItem(
+      "login",
+      JSON.stringify({
+        isUserLoggedIn: true,
+        token: data.token,
+        name: data.userName,
+      })
+    );
+  }
 
   function Logout() {
     localStorage?.removeItem("login");
     setLogin(false);
     setToken(null);
   }
+  const loginAsGuest = async () => {
+    setIsSmallLoader(true);
+    try {
+      const data = await ApiService(
+        "post",
+        "login",
+
+        {
+          email: "demoaccount@gmail.com",
+          password: "123456",
+        }
+      );
+
+      setEmail("");
+      setPassword("");
+      loginUser(data);
+    } catch (error) {
+      setIsSmallLoader(false);
+      setLoginFailedModel(true);
+      setEmail("");
+      setPassword("");
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="main-login">
@@ -103,16 +134,23 @@ export const Login = () => {
               </button>
             ) : (
               <button className="submit" type="submit">
-                Log In
+                {isSmallLoader ? <SmallLoader /> : <p>LOG IN</p>}
               </button>
             )}
-            <Link to="/signup">
-              <button className="submit">Sign Up</button>
-            </Link>
+            <button
+              className="submit"
+              onClick={() => loginAsGuest()}
+              disabled={isUserLogin}
+            >
+              {isSmallLoader ? <SmallLoader /> : <p>GUEST</p>}
+            </button>
           </div>
 
-          <p className="forgot" align="center">
-            Forgot Password?
+          <p className="switch-page-description">
+            create an account{" "}
+            <Link to="/signup" className="switch-page-link">
+              Sign Up
+            </Link>
           </p>
         </form>
       </div>
