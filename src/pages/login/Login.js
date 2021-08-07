@@ -69,6 +69,8 @@ export const Login = () => {
   }
   const loginAsGuest = async () => {
     setIsSmallLoader(true);
+    setEmail("demoaccount@gmail.com");
+    setPassword("123456");
     try {
       const data = await ApiService(
         "post",
@@ -80,8 +82,6 @@ export const Login = () => {
         }
       );
 
-      setEmail("");
-      setPassword("");
       loginUser(data);
     } catch (error) {
       setIsSmallLoader(false);
@@ -116,6 +116,7 @@ export const Login = () => {
             align="center"
             placeholder="Email"
             required
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
@@ -124,6 +125,7 @@ export const Login = () => {
             align="center"
             placeholder="Password"
             required
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
 

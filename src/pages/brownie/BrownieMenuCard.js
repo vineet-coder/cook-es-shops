@@ -39,7 +39,7 @@ export const BrownieMenuCard = ({ item }) => {
           {isProductInCart ? (
             <button
               className="btn-cart"
-              onClick={() => removeFromCart(item._id, token, dispatch)}
+              onClick={() => removeFromCart(item._id, token, dispatch , setIsAddLoading)}
             >
               Added to Cart
             </button>
@@ -57,7 +57,7 @@ export const BrownieMenuCard = ({ item }) => {
           {isProductInWishlist ? (
             <button
               className="btn-wishlist"
-              onClick={() => removeFromWishlist(item._id, token, dispatch)}
+              onClick={() => removeFromWishlist(item._id, token, dispatch, setIsAddLoading)}
             >
               Added to Wishlist
             </button>

@@ -62,9 +62,9 @@ export const Cart = () => {
           <div className="cart-div">
             <div className="cart-heading">
               <h2>My Cart</h2>
-              <h2>Items in cart: {state.cartListItem.length}</h2>
+              <h2>Items in cart: {state.cartListItem?.length}</h2>
             </div>
-            {state.cartListItem.map((item) => (
+            {state.cartListItem?.map((item) => (
               <CartCard
                 key={item._id}
                 item={item.productid}
