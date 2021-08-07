@@ -190,6 +190,22 @@
   align-items: center;
 }
 
+.btn-order-place {
+  width: 75%;
+  height: 50px;
+  font-size: 1rem;
+  border: 1px solid var(--secondary-color);
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  letter-spacing: 0.1rem;
+  font-weight: bolder;
+  color: var(--primary-color);
+}
+
+.btn-order-place:hover {
+  opacity: 0.7;
+}
+
 @media only screen and (max-width: 500px) {
   .cart-background {
     flex-direction: column;

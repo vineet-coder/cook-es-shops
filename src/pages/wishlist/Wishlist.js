@@ -45,7 +45,7 @@ export const Wishlist = () => {
         console.log(error);
       }
     })();
-  }, [dispatch , setIsLoader , token]);
+  }, [dispatch, setIsLoader, token]);
 
   return (
     <>
@@ -61,18 +61,18 @@ export const Wishlist = () => {
 
       {isLoader ? (
         <Loader />
-      ) : state.wishlistListItem.length === 0 ? (
+      ) : state.wishlistListItem?.length === 0 ? (
         <div className="empty-wishlist-card">
           {" "}
           <h1 className="empty-wishlist-heading">
             {" "}
-            You haven't add anythimg in the wishlist yet...{" "}
+            You haven't add anything in the wishlist yet...{" "}
           </h1>
         </div>
       ) : (
         <div className="background-img-div">
           <div className="product-list">
-            {state.wishlistListItem.map((item) => (
+            {state.wishlistListItem?.map((item) => (
               <WishlistCard key={item._id} item={item.productid} />
             ))}
           </div>
